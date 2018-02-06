@@ -5,13 +5,23 @@ import window.Window;
 
 public class Character implements Glyph {
 
-    @Override
-    public void draw(Window window) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private char c;
+    private int x;
+    private int y;
+
+    public Character(char c, int x, int y) {
+        this.c = c;
+        this.x = x;
+        this.y = y;
     }
 
     @Override
-    public void bounds() {
+    public void draw(Window window) {
+        window.drawCharacter(c, x, y);
+    }
+
+    @Override
+    public void getBounds() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -31,12 +41,12 @@ public class Character implements Glyph {
     }
 
     @Override
-    public Glyph child(int i) {
+    public Glyph getChild(int i) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Glyph parent() {
+    public Glyph getParent() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -1,7 +1,6 @@
 package window;
 
 import glyph.*;
-
 import java.awt.*;
 import javax.swing.*;
 

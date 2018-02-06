@@ -3,7 +3,7 @@ package glyph;
 import java.awt.Point;
 import window.Window;
 
-public class Column implements Glyph {
+public class Composition implements Glyph {
 
     @Override
     public void draw(Window window) {
@@ -39,5 +39,5 @@ public class Column implements Glyph {
     public Glyph getParent() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

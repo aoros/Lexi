@@ -5,13 +5,25 @@ import window.Window;
 
 public class Rectangle implements Glyph {
 
-    @Override
-    public void draw(Window window) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private int x;
+    private int y;
+    private int width;
+    private int height;
+
+    public Rectangle(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
     }
 
     @Override
-    public void bounds() {
+    public void draw(Window window) {
+        window.drawRectangle(x, y, width, height);
+    }
+
+    @Override
+    public void getBounds() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -31,12 +43,12 @@ public class Rectangle implements Glyph {
     }
 
     @Override
-    public Glyph child(int i) {
+    public Glyph getChild(int i) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Glyph parent() {
+    public Glyph getParent() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

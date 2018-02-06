@@ -1,6 +1,5 @@
 package glyph;
 
-
 import java.awt.Point;
 import window.Window;
 
@@ -10,20 +9,20 @@ public interface Glyph {
     void draw(Window window);
 
     // responsibility: appearance
-    void bounds();
+    void getBounds();
 
     // responsibility: hit detection
-    boolean intersects(Point p);
+    boolean intersects(Point point);
 
     // responsibility: structure
-    void insert(Glyph glyph, int i);
+    void insert(Glyph glyph, int position);
 
     // responsibility: structure
     void remove(Glyph glyph);
 
     // responsibility: structure
-    Glyph child(int i);
+    Glyph getChild(int position);
 
     // responsibility: structure
-    Glyph parent();
+    Glyph getParent();
 }

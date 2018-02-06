@@ -11,7 +11,7 @@ public class Row implements Glyph {
     }
 
     @Override
-    public void bounds() {
+    public void getBounds() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -31,12 +31,12 @@ public class Row implements Glyph {
     }
 
     @Override
-    public Glyph child(int i) {
+    public Glyph getChild(int i) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Glyph parent() {
+    public Glyph getParent() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
