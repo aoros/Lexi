@@ -1,15 +1,16 @@
 
 import glyph.Character;
+import glyph.Rect;
 import glyph.Rectangle;
 import window.SwingWindow;
 
 public class Lexi {
 
     public static void main(String[] args) {
-        SwingWindow window = new SwingWindow("title");
-        window.setContents(new Character('a', 0, 0));
-        window.setContents(new Character('b', 0, 0));
-        window.setContents(new Rectangle(0, 0, 100, 100));
+        SwingWindow window = new SwingWindow("Lexi");
+
+        window.setContents(new Character(null, 'a', new Rect(0, 0, window.charHeight('a'), window.charWidth('a'))));
+        window.setContents(new Rectangle(null, new Rect(0, 0, 10, 20)));
     }
 
 }

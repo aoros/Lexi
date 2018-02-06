@@ -11,17 +11,17 @@ public class Composition implements Glyph {
     }
 
     @Override
-    public void getBounds() {
+    public Rect getBounds() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean intersects(Point p) {
+    public boolean intersects(Point point) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void insert(Glyph glyph, int i) {
+    public void insert(Glyph glyph, int position) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -31,7 +31,7 @@ public class Composition implements Glyph {
     }
 
     @Override
-    public Glyph getChild(int i) {
+    public Glyph getChild(int position) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

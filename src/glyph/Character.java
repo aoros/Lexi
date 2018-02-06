@@ -5,49 +5,49 @@ import window.Window;
 
 public class Character implements Glyph {
 
-    private char c;
-    private int x;
-    private int y;
+    private final Glyph parent;
+    private final char c;
+    private final Rect rect;
 
-    public Character(char c, int x, int y) {
+    public Character(Glyph parent, char c, Rect rect) {
+        this.parent = parent;
         this.c = c;
-        this.x = x;
-        this.y = y;
+        this.rect = rect;
     }
 
     @Override
     public void draw(Window window) {
-        window.drawCharacter(c, x, y);
+        window.drawCharacter(c, rect.getX(), rect.getY());
     }
 
     @Override
-    public void getBounds() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Rect getBounds() {
+        return rect;
     }
 
     @Override
-    public boolean intersects(Point p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean intersects(Point point) {
+        return rect.containsCoordinate(point.x, point.y);
     }
 
     @Override
-    public void insert(Glyph glyph, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void insert(Glyph glyph, int position) {
+        throw new UnsupportedOperationException("Character is leaf Glyph.");
     }
 
     @Override
     public void remove(Glyph glyph) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Character is leaf Glyph.");
     }
 
     @Override
-    public Glyph getChild(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Glyph getChild(int position) {
+        return null;
     }
 
     @Override
     public Glyph getParent() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return parent;
     }
 
 }

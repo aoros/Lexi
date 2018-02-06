@@ -9,7 +9,8 @@ public interface Glyph {
     void draw(Window window);
 
     // responsibility: appearance
-    void getBounds();
+    // returns the rectangular area that the glyph occupies
+    Rect getBounds();
 
     // responsibility: hit detection
     boolean intersects(Point point);
