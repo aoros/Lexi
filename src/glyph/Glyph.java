@@ -3,27 +3,27 @@ package glyph;
 import java.awt.Point;
 import window.Window;
 
-public interface Glyph {
+public abstract class Glyph {
 
     // responsibility: appearance
-    void draw(Window window);
+    public abstract void draw(Window window);
 
     // responsibility: appearance
     // returns the rectangular area that the glyph occupies
-    Rect getBounds();
+    abstract Bounds getBounds();
 
     // responsibility: hit detection
-    boolean intersects(Point point);
+    abstract boolean intersects(Point point);
 
     // responsibility: structure
-    void insert(Glyph glyph, int position);
+    abstract void insert(Glyph glyph, int position);
 
     // responsibility: structure
-    void remove(Glyph glyph);
+    abstract void remove(Glyph glyph);
 
     // responsibility: structure
-    Glyph getChild(int position);
+    abstract Glyph getChild(int position);
 
     // responsibility: structure
-    Glyph getParent();
+    abstract Glyph getParent();
 }

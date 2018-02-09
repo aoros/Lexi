@@ -4,25 +4,23 @@ import java.awt.Point;
 import java.util.List;
 import window.Window;
 
-public class Column implements Glyph {
+public class Column extends CompositeGlyph {
 
     private Glyph parent;
     private List<Glyph> children;
 
-    @Override
-    public void draw(Window window) {
-        for (Glyph glyph : children)
-            glyph.draw(window);
+    public Column(Glyph parent) {
+        this.parent = parent;
     }
 
     @Override
-    public Rect getBounds() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Bounds getBounds() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public boolean intersects(Point point) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -43,6 +41,11 @@ public class Column implements Glyph {
     @Override
     public Glyph getParent() {
         return parent;
+    }
+
+    @Override
+    public void draw(Window window) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

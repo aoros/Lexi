@@ -1,13 +1,13 @@
 package glyph;
 
-public class Rect {
+public class Bounds {
 
     private final int x;
     private final int y;
     private final int width;
     private final int height;
 
-    public Rect(int x, int y, int width, int height) {
+    public Bounds(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;

@@ -4,14 +4,20 @@ import glyph.Composition;
 
 public class SimpleCompositor implements Compositor {
 
+    private Composition composition;
+
+    public SimpleCompositor() {
+    }
+    
+
     @Override
     public void setComposition(Composition composition) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.composition = composition;
     }
 
     @Override
     public void compose() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 }
