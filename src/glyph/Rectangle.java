@@ -1,26 +1,23 @@
 package glyph;
 
-import java.awt.Point;
 import window.Window;
 
 public class Rectangle extends Glyph {
 
-    private final Glyph parent;
-    private Bounds bounds;
+    private Glyph parent;
+    private int x;
+    private int y;
+    private final int width;
+    private final int height;
 
-    public Rectangle(Glyph parent, Bounds bounds) {
-        this.parent = parent;
-        this.bounds = bounds;
+    public Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
     }
 
     @Override
     public void draw(Window window) {
-        window.drawRectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
-    }
-
-    @Override
-    public Bounds getBounds() {
-        return bounds;
+        window.drawRectangle(x, y, width, height);
     }
 
     @Override
@@ -29,8 +26,8 @@ public class Rectangle extends Glyph {
     }
 
     @Override
-    public boolean intersects(Point point) {
-        return bounds.containsCoordinate(point.x, point.y);
+    public boolean intersects(Cursor point) {
+        return false;
     }
 
     @Override
@@ -46,5 +43,20 @@ public class Rectangle extends Glyph {
     @Override
     public void remove(Glyph glyph) {
         throw new UnsupportedOperationException("Rectangle glyph is a leaf node.");
+    }
+
+    @Override
+    public void setSize(Window window) {
+    }
+
+    @Override
+    public void setPosition(Cursor cursor) {
+        x = cursor.getX();
+        y = cursor.getY();
+    }
+
+    @Override
+    public Bounds getBounds() {
+        return new Bounds(x, y, width, height);
     }
 }

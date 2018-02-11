@@ -1,28 +1,23 @@
 package glyph;
 
-import java.awt.Point;
 import window.Window;
 
 public class Character extends Glyph {
 
-    private final Glyph parent;
+    private Glyph parent;
     private final char c;
-    private final Bounds bounds;
+    private int x;
+    private int y;
+    private int width;
+    private int height;
 
-    public Character(char c, Glyph parent, Bounds bounds) {
-        this.parent = parent;
+    public Character(char c) {
         this.c = c;
-        this.bounds = bounds;
     }
 
     @Override
     public void draw(Window window) {
-        window.drawCharacter(c, bounds.getX(), bounds.getY());
-    }
-
-    @Override
-    public Bounds getBounds() {
-        return bounds;
+        window.drawCharacter(c, x, y);
     }
 
     @Override
@@ -31,8 +26,8 @@ public class Character extends Glyph {
     }
 
     @Override
-    public boolean intersects(Point point) {
-        return bounds.containsCoordinate(point.x, point.y);
+    public boolean intersects(Cursor point) {
+        return false;
     }
 
     @Override
@@ -48,5 +43,22 @@ public class Character extends Glyph {
     @Override
     public void remove(Glyph glyph) {
         throw new UnsupportedOperationException("Character glyph is a leaf node.");
+    }
+
+    @Override
+    public void setSize(Window window) {
+        width = window.charWidth(c);
+        height = window.charHeight(c);
+    }
+
+    @Override
+    public void setPosition(Cursor cursor) {
+        x = cursor.getX();
+        y = cursor.getY();
+    }
+
+    @Override
+    public Bounds getBounds() {
+        return new Bounds(x, y, width, height);
     }
 }

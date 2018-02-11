@@ -1,29 +1,24 @@
 package glyph;
 
-import java.awt.Point;
 import window.Window;
 
 public abstract class Glyph {
 
-    // responsibility: appearance
     public abstract void draw(Window window);
 
-    // responsibility: appearance
-    // returns the rectangular area that the glyph occupies
-    abstract Bounds getBounds();
+    public abstract void setSize(Window window);
 
-    // responsibility: hit detection
-    abstract boolean intersects(Point point);
+    public abstract void setPosition(Cursor cursor);
 
-    // responsibility: structure
-    abstract void insert(Glyph glyph, int position);
+    public abstract Bounds getBounds();
 
-    // responsibility: structure
-    abstract void remove(Glyph glyph);
+    public abstract boolean intersects(Cursor point);
 
-    // responsibility: structure
-    abstract Glyph getChild(int position);
+    public abstract void insert(Glyph glyph, int position);
 
-    // responsibility: structure
-    abstract Glyph getParent();
+    public abstract void remove(Glyph glyph);
+
+    public abstract Glyph getChild(int position);
+
+    public abstract Glyph getParent();
 }

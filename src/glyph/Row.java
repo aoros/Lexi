@@ -1,47 +1,43 @@
 package glyph;
 
-import java.awt.Point;
-import java.util.List;
 import window.Window;
 
 public class Row extends CompositeGlyph {
 
-    private Glyph parent;
-    private List<Glyph> children;
+    int x;
+    int y;
+    int width;
+    int height;
 
     @Override
     public Bounds getBounds() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new Bounds(x, y, width, height);
     }
 
     @Override
-    public boolean intersects(Point point) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setSize(Window window) {
+        // set children size first
+        for (Glyph glyph : children)
+            glyph.setSize(window);
+
+        for (Glyph glyph : children) {
+            width += glyph.getBounds().getWidth();
+
+            if (height < glyph.getBounds().getHeight())
+                height = glyph.getBounds().getHeight();
+        }
     }
 
     @Override
-    public void insert(Glyph glyph, int position) {
-        children.add(position, glyph);
-    }
+    public void setPosition(Cursor cursor) {
+        x = cursor.getX();
+        y = cursor.getY();
 
-    @Override
-    public void remove(Glyph glyph) {
-        children.remove(glyph);
+        for (Glyph glyph : children) {
+            glyph.setPosition(cursor);
+            cursor.setX(glyph.getBounds().getX() + glyph.getBounds().getWidth());
+        }
+        cursor.setX(x);
+        cursor.setY(y);
     }
-
-    @Override
-    public Glyph getChild(int position) {
-        return children.get(position);
-    }
-
-    @Override
-    public Glyph getParent() {
-        return parent;
-    }
-
-    @Override
-    public void draw(Window window) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
