@@ -1,5 +1,6 @@
 package glyph;
 
+import compositor.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 import window.Window;
@@ -28,6 +29,7 @@ public abstract class CompositeGlyph extends Composition {
     @Override
     public void insert(Glyph glyph, int position) {
         children.add(position, glyph);
+        compositor.compose();
     }
 
     @Override
@@ -43,5 +45,10 @@ public abstract class CompositeGlyph extends Composition {
     @Override
     public boolean intersects(Cursor point) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void compose() {
+        compositor.compose();
     }
 }

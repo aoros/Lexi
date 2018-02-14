@@ -1,5 +1,6 @@
 package glyph;
 
+import compositor.Cursor;
 import window.Window;
 
 public abstract class Glyph {
@@ -21,4 +22,8 @@ public abstract class Glyph {
     public abstract Glyph getChild(int position);
 
     public abstract Glyph getParent();
+
+    public abstract void compose();
+
+    public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
 }

@@ -1,9 +1,17 @@
-package glyph;
+package compositor;
 
 public class Cursor {
 
     int x;
     int y;
+
+    public Cursor() {
+    }
+
+    public Cursor(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public int getX() {
         return x;

@@ -1,5 +1,6 @@
 package glyph;
 
+import compositor.Cursor;
 import window.Window;
 
 public class Row extends CompositeGlyph {
@@ -16,28 +17,26 @@ public class Row extends CompositeGlyph {
 
     @Override
     public void setSize(Window window) {
-        // set children size first
-        for (Glyph glyph : children)
-            glyph.setSize(window);
-
-        for (Glyph glyph : children) {
-            width += glyph.getBounds().getWidth();
-
-            if (height < glyph.getBounds().getHeight())
-                height = glyph.getBounds().getHeight();
-        }
     }
 
     @Override
     public void setPosition(Cursor cursor) {
         x = cursor.getX();
         y = cursor.getY();
+    }
 
-        for (Glyph glyph : children) {
-            glyph.setPosition(cursor);
-            cursor.setX(glyph.getBounds().getX() + glyph.getBounds().getWidth());
-        }
-        cursor.setX(x);
+    @Override
+    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
+        int childHeight = glyph.getBounds().getHeight();
+
+        height = height > childHeight ? height : childHeight;
+        width = cursor.getX() + glyph.getBounds().getWidth();
+        cursor.setX(x + width);
         cursor.setY(y);
+    }
+
+    @Override
+    public String toString() {
+        return "Row{" + "x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + '}';
     }
 }

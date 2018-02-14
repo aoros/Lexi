@@ -1,7 +1,6 @@
 package compositor;
 
 import glyph.Composition;
-import glyph.Cursor;
 import glyph.Glyph;
 import window.Window;
 
@@ -21,42 +20,23 @@ public class SimpleCompositor implements Compositor {
 
     @Override
     public void compose() {
-        // Initialize with root
-        int root_x = composition.getBounds().getX();
-        int root_y = composition.getBounds().getY();
-        Cursor cursor = new Cursor();
-        cursor.setX(root_x);
-        cursor.setY(root_y);
-        
+
+        // create cursor based on parent
+        Cursor cursor = new Cursor(composition.getBounds().getX(), composition.getBounds().getY());
+
         int i = 0;
-        while(true) {
-            Glyph glyph;
+        while (true) {
             try {
-                glyph = composition.getChild(i);
-                glyph.setSize(window);
+                Glyph child = composition.getChild(i);
+                child.setSize(window);
+                child.setPosition(cursor);
+                child.compose();
+
+                composition.adjustBoundsAndCursor(child, cursor);
+                i++;
             } catch (Exception ex) {
                 break;
             }
-            i++;
         }
-        
-//        composition.setSize(window);
-        composition.setPosition(cursor);
-        
-        window.setContents(composition);
     }
-    
-    // I think the idea now is to pull the logic for setting the size and positions
-    // into this class.  This should separate the formatting logic from the glyph
-    // logic.
-    
-    
-    // create cursor based on parent
-    // for (... child= ...) {
-    // ask (leaf) child to set size, based on window
-    // ask child to set position, based on cursor
-    // ask child to compose itself, recursively
-    // ask parent to adjust itself and cursor, based on child
-    // }
-    // ask parent to adjust itself, based on cursor
 }

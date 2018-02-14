@@ -1,5 +1,6 @@
 package glyph;
 
+import compositor.Cursor;
 import window.Window;
 
 public class Rectangle extends Glyph {
@@ -58,5 +59,19 @@ public class Rectangle extends Glyph {
     @Override
     public Bounds getBounds() {
         return new Bounds(x, y, width, height);
+    }
+
+    @Override
+    public void compose() {
+    }
+
+    @Override
+    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" + "parent=" + parent + ", x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + '}';
     }
 }

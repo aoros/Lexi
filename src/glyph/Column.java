@@ -1,5 +1,6 @@
 package glyph;
 
+import compositor.Cursor;
 import window.Window;
 
 public class Column extends CompositeGlyph {
@@ -16,28 +17,27 @@ public class Column extends CompositeGlyph {
 
     @Override
     public void setSize(Window window) {
-        // set children size first
-        for (Glyph glyph : children)
-            glyph.setSize(window);
-
-        for (Glyph glyph : children) {
-            height += glyph.getBounds().getHeight();
-
-            if (width < glyph.getBounds().getWidth())
-                width = glyph.getBounds().getWidth();
-        }
     }
 
     @Override
     public void setPosition(Cursor cursor) {
         x = cursor.getX();
         y = cursor.getY();
-
-        for (Glyph glyph : children) {
-            glyph.setPosition(cursor);
-            cursor.setY(glyph.getBounds().getY() + glyph.getBounds().getHeight());
-        }
-        cursor.setX(x);
-        cursor.setY(y);
     }
+
+    @Override
+    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
+        int childWidth = glyph.getBounds().getWidth();
+
+        height = cursor.getY() + glyph.getBounds().getHeight();
+        width = width > childWidth ? width : childWidth;
+        cursor.setX(x);
+        cursor.setY(y + height);
+    }
+
+    @Override
+    public String toString() {
+        return "Column{" + "x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + '}';
+    }
+    
 }
