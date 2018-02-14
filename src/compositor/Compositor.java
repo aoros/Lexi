@@ -1,3 +1,4 @@
+// Strategy(315).Strategy
 package compositor;
 
 import glyph.Composition;

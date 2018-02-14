@@ -1,3 +1,5 @@
+// Composite(163).Client
+// Strategy(315).ConcreteStrategy
 package compositor;
 
 import glyph.Composition;

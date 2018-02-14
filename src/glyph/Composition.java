@@ -1,3 +1,5 @@
+// Composite(163).Composite
+// Strategy(315).Context
 package glyph;
 
 import compositor.Compositor;
