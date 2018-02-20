@@ -27,7 +27,7 @@ public abstract class Glyph {
 
 	public abstract Glyph getParent();
 
-	public abstract void compose();
+	public void compose() {};
 
     public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
 }

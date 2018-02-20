@@ -57,10 +57,6 @@ public class Rectangle extends Glyph {
     }
 
     @Override
-    public void compose() {
-    }
-
-    @Override
     public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
