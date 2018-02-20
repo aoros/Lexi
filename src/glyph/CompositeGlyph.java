@@ -8,8 +8,7 @@ import window.Window;
 
 public abstract class CompositeGlyph extends Composition {
 
-    Glyph parent;
-    List<Glyph> children = new ArrayList<>();
+    private final List<Glyph> children = new ArrayList<>();
 
     @Override
     public Glyph getParent() {
@@ -45,11 +44,6 @@ public abstract class CompositeGlyph extends Composition {
 
     @Override
     public boolean intersects(Cursor point) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void compose() {
-        compositor.compose();
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

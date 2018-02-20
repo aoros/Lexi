@@ -6,12 +6,7 @@ import window.Window;
 
 public class Character extends Glyph {
 
-    private Glyph parent;
     private final char c;
-    private int x;
-    private int y;
-    private int width;
-    private int height;
 
     public Character(char c) {
         this.c = c;
@@ -19,7 +14,7 @@ public class Character extends Glyph {
 
     @Override
     public void draw(Window window) {
-        window.drawCharacter(c, x, y);
+        window.drawCharacter(c, bounds.getX(), bounds.getY());
     }
 
     @Override
@@ -49,19 +44,19 @@ public class Character extends Glyph {
 
     @Override
     public void setSize(Window window) {
-        width = window.charWidth(c);
-        height = window.charHeight(c);
+		bounds.setWidth(window.charWidth(c));
+		bounds.setHeight(window.charHeight(c));
     }
 
     @Override
     public void setPosition(Cursor cursor) {
-        x = cursor.getX();
-        y = cursor.getY();
+        bounds.setX(cursor.getX());
+        bounds.setY(cursor.getY());
     }
 
     @Override
     public Bounds getBounds() {
-        return new Bounds(x, y, width, height);
+        return bounds;
     }
 
     @Override
@@ -74,8 +69,9 @@ public class Character extends Glyph {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public String toString() {
-        return "Character{" + "parent=" + parent + ", c=" + c + ", x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + '}';
-    }
+	@Override
+	public String toString()
+	{
+		return "Character{" + "c=" + c + ", bounds=" + bounds + '}';
+	}
 }

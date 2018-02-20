@@ -5,21 +5,15 @@ import compositor.Cursor;
 import window.Window;
 
 public class Rectangle extends Glyph {
-
-    private Glyph parent;
-    private int x;
-    private int y;
-    private final int width;
-    private final int height;
-
+	
     public Rectangle(int width, int height) {
-        this.width = width;
-        this.height = height;
+		bounds.setWidth(width);
+		bounds.setHeight(height);
     }
 
     @Override
     public void draw(Window window) {
-        window.drawRectangle(x, y, width, height);
+		window.drawRectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
     }
 
     @Override
@@ -53,13 +47,13 @@ public class Rectangle extends Glyph {
 
     @Override
     public void setPosition(Cursor cursor) {
-        x = cursor.getX();
-        y = cursor.getY();
+		bounds.setX(cursor.getX());
+		bounds.setY(cursor.getY());
     }
 
     @Override
     public Bounds getBounds() {
-        return new Bounds(x, y, width, height);
+		return bounds;
     }
 
     @Override
@@ -68,11 +62,12 @@ public class Rectangle extends Glyph {
 
     @Override
     public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public String toString() {
-        return "Rectangle{" + "parent=" + parent + ", x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + '}';
-    }
+	@Override
+	public String toString()
+	{
+		return "Rectangle{" + "bounds=" + bounds + '}';
+	}
 }

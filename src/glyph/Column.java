@@ -6,14 +6,9 @@ import window.Window;
 
 public class Column extends CompositeGlyph {
 
-    int x;
-    int y;
-    int width;
-    int height;
-
     @Override
     public Bounds getBounds() {
-        return new Bounds(x, y, width, height);
+		return bounds;
     }
 
     @Override
@@ -22,23 +17,22 @@ public class Column extends CompositeGlyph {
 
     @Override
     public void setPosition(Cursor cursor) {
-        x = cursor.getX();
-        y = cursor.getY();
+		bounds.setX(cursor.getX());
+		bounds.setY(cursor.getY());
     }
 
     @Override
     public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
         int childWidth = glyph.getBounds().getWidth();
 
-        height = cursor.getY() + glyph.getBounds().getHeight();
-        width = width > childWidth ? width : childWidth;
-        cursor.setX(x);
-        cursor.setY(y + height);
+		bounds.setHeight(cursor.getY() + glyph.getBounds().getHeight());
+		bounds.setWidth(bounds.getWidth() > childWidth ? bounds.getWidth() : childWidth);
+        cursor.setX(bounds.getX());
+        cursor.setY(bounds.getY() + bounds.getHeight());
     }
 
     @Override
     public String toString() {
-        return "Column{" + "x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + '}';
-    }
-    
+        return "Column{" + "bounds=" + bounds + '}';
+    }    
 }
