@@ -6,6 +6,21 @@ import window.Window;
 
 public class Column extends CompositeGlyph {
 
+    public Column(Window window) {
+        super(window);
+    }
+
+    public Column(String[] strings, Window window) {
+        super(window);
+        try {
+            for (int i = 0; i < strings.length; i++) {
+                super.insert(new Row(strings[i], window), i);
+            }
+        } catch (GlyphException e) {
+            System.out.println(e);
+        }
+    }
+
     @Override
     public Bounds getBounds() {
         return bounds;

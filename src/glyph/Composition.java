@@ -4,14 +4,19 @@ package glyph;
 
 import compositor.Compositor;
 import compositor.Cursor;
+import compositor.SimpleCompositor;
+import window.Window;
 
 public abstract class Composition extends Glyph {
 
     Compositor compositor;
+    Window window;
 
-    public void setCompositor(Compositor compositor) {
-        this.compositor = compositor;
+    public Composition(Window window) {
+        this.window = window;
+        this.compositor = new SimpleCompositor();
         compositor.setComposition(this);
+        compositor.setWindow(window);
     }
 
     @Override

@@ -19,7 +19,7 @@ public abstract class Glyph {
 
     public abstract boolean intersects(Cursor point);
 
-    public abstract void insert(Glyph glyph, int position);
+    public abstract void insert(Glyph glyph, int position)  throws GlyphException;
 
     public abstract void remove(Glyph glyph);
 

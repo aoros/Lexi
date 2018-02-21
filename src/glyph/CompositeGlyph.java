@@ -10,6 +10,10 @@ public abstract class CompositeGlyph extends Composition {
 
     private final List<Glyph> children = new ArrayList<>();
 
+    public CompositeGlyph(Window window) {
+        super(window);
+    }
+
     @Override
     public Glyph getParent() {
         return parent;
@@ -27,7 +31,7 @@ public abstract class CompositeGlyph extends Composition {
     }
 
     @Override
-    public void insert(Glyph glyph, int position) {
+    public void insert(Glyph glyph, int position) throws GlyphException {
         children.add(position, glyph);
         compositor.compose();
     }

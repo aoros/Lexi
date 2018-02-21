@@ -11,7 +11,11 @@ public class SimpleCompositor implements Compositor {
     private Composition composition;
     private Window window;
 
-    public SimpleCompositor(Window window) {
+    public SimpleCompositor() {
+    }
+
+    @Override
+    public void setWindow(Window window) {
         this.window = window;
     }
 
