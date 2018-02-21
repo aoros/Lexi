@@ -5,29 +5,30 @@ import compositor.Cursor;
 import window.Window;
 
 public abstract class Glyph {
-	
-	Glyph parent;
-	Bounds bounds = new Bounds(0, 0, 0, 0);
 
-	public abstract void draw(Window window);
+    Glyph parent;
+    Bounds bounds = new Bounds(0, 0, 0, 0);
 
-	public abstract void setSize(Window window);
+    public abstract void draw(Window window);
 
-	public abstract void setPosition(Cursor cursor);
+    public abstract void setSize(Window window);
 
-	public abstract Bounds getBounds();
+    public abstract void setPosition(Cursor cursor);
 
-	public abstract boolean intersects(Cursor point);
+    public abstract Bounds getBounds();
 
-	public abstract void insert(Glyph glyph, int position);
+    public abstract boolean intersects(Cursor point);
 
-	public abstract void remove(Glyph glyph);
+    public abstract void insert(Glyph glyph, int position);
 
-	public abstract Glyph getChild(int position);
+    public abstract void remove(Glyph glyph);
 
-	public abstract Glyph getParent();
+    public abstract Glyph getChild(int position);
 
-	public void compose() {};
+    public abstract Glyph getParent();
+
+    public void compose() {
+    }
 
     public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
 }

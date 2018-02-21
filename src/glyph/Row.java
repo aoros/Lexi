@@ -24,7 +24,7 @@ public class Row extends CompositeGlyph {
     @Override
     public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
         int childHeight = glyph.getBounds().getHeight();
-		bounds.setHeight(bounds.getHeight() > childHeight ? bounds.getHeight() : childHeight);
+        bounds.setHeight(bounds.getHeight() > childHeight ? bounds.getHeight() : childHeight);
         bounds.setWidth(cursor.getX() + glyph.getBounds().getWidth());
         cursor.setX(bounds.getX() + bounds.getWidth());
         cursor.setY(bounds.getY());

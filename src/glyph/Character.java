@@ -44,8 +44,8 @@ public class Character extends Glyph {
 
     @Override
     public void setSize(Window window) {
-		bounds.setWidth(window.charWidth(c));
-		bounds.setHeight(window.charHeight(c));
+        bounds.setWidth(window.charWidth(c));
+        bounds.setHeight(window.charHeight(c));
     }
 
     @Override
@@ -64,9 +64,8 @@ public class Character extends Glyph {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-	@Override
-	public String toString()
-	{
-		return "Character{" + "c=" + c + ", bounds=" + bounds + '}';
-	}
+    @Override
+    public String toString() {
+        return "Character{" + "c=" + c + ", bounds=" + bounds + '}';
+    }
 }

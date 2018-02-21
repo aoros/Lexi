@@ -30,33 +30,28 @@ public class Bounds {
         return height;
     }
 
-	public void setX(int x)
-	{
-		this.x = x;
-	}
+    public void setX(int x) {
+        this.x = x;
+    }
 
-	public void setY(int y)
-	{
-		this.y = y;
-	}
+    public void setY(int y) {
+        this.y = y;
+    }
 
-	public void setWidth(int width)
-	{
-		this.width = width;
-	}
+    public void setWidth(int width) {
+        this.width = width;
+    }
 
-	public void setHeight(int height)
-	{
-		this.height = height;
-	}
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
     public boolean containsCoordinate(int _x, int _y) {
         return (_x >= x && _x <= x + width && _y >= y && _y <= y + height);
     }
 
-	@Override
-	public String toString()
-	{
-		return "Bounds{" + "x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + '}';
-	}
+    @Override
+    public String toString() {
+        return "Bounds{" + "x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + '}';
+    }
 }

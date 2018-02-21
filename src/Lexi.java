@@ -28,12 +28,12 @@ public class Lexi {
         // Create row 1
         Composition row1 = new Row();
         row1.setCompositor(new SimpleCompositor(window));
-        
+
         root.insert(row1, 0);
         // Add a character and a rectangle
         row1.insert(new Character('a'), 0);
         row1.insert(new Rectangle(10, 20), 1);
-        
+
         // Create a column in row 1
         Composition row1_col = new Column();
         row1_col.setCompositor(new SimpleCompositor(window));
@@ -49,7 +49,7 @@ public class Lexi {
         // Create row 2
         Composition row2 = new Row();
         row2.setCompositor(new SimpleCompositor(window));
-        
+
         root.insert(row2, 1);
         // Add 2 characters and a rectangle to row 2
         row2.insert(new Character('x'), 0);

@@ -18,7 +18,7 @@ public abstract class Composition extends Glyph {
     public void compose() {
         compositor.compose();
     }
-	
+
     @Override
     public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
 

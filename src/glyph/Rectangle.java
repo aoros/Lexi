@@ -5,15 +5,15 @@ import compositor.Cursor;
 import window.Window;
 
 public class Rectangle extends Glyph {
-	
+
     public Rectangle(int width, int height) {
-		bounds.setWidth(width);
-		bounds.setHeight(height);
+        bounds.setWidth(width);
+        bounds.setHeight(height);
     }
 
     @Override
     public void draw(Window window) {
-		window.drawRectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
+        window.drawRectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
     }
 
     @Override
@@ -47,13 +47,13 @@ public class Rectangle extends Glyph {
 
     @Override
     public void setPosition(Cursor cursor) {
-		bounds.setX(cursor.getX());
-		bounds.setY(cursor.getY());
+        bounds.setX(cursor.getX());
+        bounds.setY(cursor.getY());
     }
 
     @Override
     public Bounds getBounds() {
-		return bounds;
+        return bounds;
     }
 
     @Override
@@ -61,9 +61,8 @@ public class Rectangle extends Glyph {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-	@Override
-	public String toString()
-	{
-		return "Rectangle{" + "bounds=" + bounds + '}';
-	}
+    @Override
+    public String toString() {
+        return "Rectangle{" + "bounds=" + bounds + '}';
+    }
 }
