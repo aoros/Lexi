@@ -3,6 +3,7 @@
 import glyph.Character;
 import glyph.Column;
 import glyph.Composition;
+import glyph.Glyph;
 import glyph.GlyphException;
 import glyph.Rectangle;
 import glyph.Row;
@@ -22,55 +23,90 @@ public class Lexi {
     public static void main(String[] args) {
         Window window = new SwingWindow("Lexi");
         try {
-            buildHw1_configuration(window);
-            buildHw2_configuration(window);
+//            build_hw1_configuration(window);
+//            build_hw2_configuration(window);
+            test_configuration(window);
         } catch (GlyphException ex) {
-
         }
     }
 
-    private static void buildHw2_configuration(Window window) {
+    private static void test_configuration(Window window) throws GlyphException {
+        Glyph ch_a = new Character('a');
+        Composition row1_lev_1 = new Row(window);
+        Composition row2_lev_1 = new Row("gh", window);
 
-    }
+        Composition root = new Row(window);
 
-    private static void buildHw1_configuration(Window window) throws GlyphException {
-        Composition root = new Column(window);
+        root.insert(row1_lev_1, 0);
+        row1_lev_1.insert(ch_a, 0);
+        root.insert(row2_lev_1, 1);
 
-        // Create row 1
-        Composition row1 = new Row(window);
-
-        root.insert(row1, 0);
-        // Add a character and a rectangle
-        row1.insert(new Character('a'), 0);
-        row1.insert(new Rectangle(10, 20), 1);
-
-        // Create a column in row 1
-        Composition row1_col = new Column(window);
-
-        // Add 3 characters to the column
-        row1_col.insert(new Character('X'), 0);
-        row1_col.insert(new Character('Y'), 1);
-        row1_col.insert(new Character('Z'), 2);
-        // Add column to row 1
-        row1.insert(row1_col, 2);
-        // Add character to row 1
-        row1.insert(new Character('b'), 3);
-
-        // Create row 2
-        Composition row2 = new Row(window);
-
-        root.insert(row2, 1);
-        // Add 2 characters and a rectangle to row 2
-        row2.insert(new Character('x'), 0);
-        row2.insert(new Rectangle(20, 10), 1);
-        row2.insert(new Character('y'), 2);
-
-        Composition row3 = new Row("Scroller too!", window);
-        root.insert(row3, 2);
-
-        // At this point, the glyphs should be drawn on the SwingWindow
         window.setContents(root);
-
     }
 
+    private static void build_hw1_configuration(Window window) throws GlyphException {
+        Glyph ch_a = new Character('a');
+        Glyph rect_A = new Rectangle(10, 20);
+        Glyph ch_X = new Character('X');
+        Glyph ch_Y = new Character('Y');
+        Glyph ch_Z = new Character('Z');
+        Glyph ch_b = new Character('b');
+        Glyph ch_x = new Character('x');
+        Glyph ch_y = new Character('y');
+        Glyph rect_B = new Rectangle(20, 10);
+
+        Composition root = new Column(window);
+        Composition row1_lev_1 = new Row(window);
+        Composition row2_lev_1 = new Row(window);
+        Composition row3_lev_1 = new Row("Scroller too!", window);
+        Composition col1_lev_2 = new Column(window);
+
+        root.insert(row1_lev_1, 0);
+        row1_lev_1.insert(ch_a, 0);
+        row1_lev_1.insert(rect_A, 1);
+        col1_lev_2.insert(ch_X, 0);
+        col1_lev_2.insert(ch_Y, 1);
+        col1_lev_2.insert(ch_Z, 2);
+        row1_lev_1.insert(col1_lev_2, 2);
+        row1_lev_1.insert(ch_b, 3);
+        root.insert(row2_lev_1, 1);
+        row2_lev_1.insert(ch_x, 0);
+        row2_lev_1.insert(rect_B, 1);
+        row2_lev_1.insert(ch_y, 2);
+        root.insert(row3_lev_1, 2);
+
+        window.setContents(root);
+    }
+
+    private static void build_hw2_configuration(Window window) throws GlyphException {
+        Glyph ch_a = new Character('a');
+        Glyph rect_A = new Rectangle(10, 20);
+        Glyph ch_b = new Character('b');
+        Glyph ch_x = new Character('x');
+        Glyph ch_y = new Character('y');
+        Glyph rect_B = new Rectangle(20, 10);
+
+        Composition root = new Column(window);
+        Composition row1_lev_1 = new Row(window);
+        Composition row2_lev_1 = new Row(window);
+        Composition col1_lev_2 = new Column(window);
+        Composition row1_lev_3 = new Row("This is a", window);
+        Composition row2_lev_3 = new Row("border demonstration.", window);
+        Composition row3_lev_3 = new Row("Scroller too!", window);
+
+        root.insert(row1_lev_1, 0);
+        row1_lev_1.insert(ch_a, 0);
+        row1_lev_1.insert(rect_A, 1);
+        col1_lev_2.insert(row1_lev_3, 0);
+        col1_lev_2.insert(row2_lev_3, 1);
+        col1_lev_2.insert(row3_lev_3, 2);
+        row1_lev_1.insert(col1_lev_2, 2);
+        row1_lev_1.insert(ch_b, 3);
+        root.insert(row2_lev_1, 1);
+        row2_lev_1.insert(ch_x, 0);
+        row2_lev_1.insert(rect_B, 1);
+        row2_lev_1.insert(ch_y, 2);
+
+        window.setContents(root);
+    }
 }
