@@ -2,6 +2,7 @@
 package glyph;
 
 import compositor.Cursor;
+import compositor.SimpleCompositor;
 import java.util.ArrayList;
 import java.util.List;
 import window.Window;
@@ -12,6 +13,14 @@ public abstract class CompositeGlyph extends Composition {
 
     public CompositeGlyph(Window window) {
         super(window);
+        this.compositor = new SimpleCompositor();
+        compositor.setComposition(this);
+        compositor.setWindow(window);
+    }
+
+    @Override
+    public void compose() {
+        compositor.compose();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package glyph;
 
 import compositor.Cursor;
+import compositor.SimpleCompositor;
 import window.Window;
 
 public abstract class Embellishment extends Composition {
@@ -10,6 +11,9 @@ public abstract class Embellishment extends Composition {
     public Embellishment(Composition composition) {
         super(composition.window);
         this.composition = composition;
+        this.compositor = new SimpleCompositor();
+        compositor.setComposition(this);
+        compositor.setWindow(window);
     }
 
     @Override

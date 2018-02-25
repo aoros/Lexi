@@ -14,7 +14,7 @@ public class Row extends CompositeGlyph {
         super(window);
         super.name = name;
     }
-    
+
     public Row(String string, Window window) {
         super(window);
         try {
@@ -25,10 +25,15 @@ public class Row extends CompositeGlyph {
             System.out.println(e);
         }
     }
-    
+
     public Row(String string, Window window, String name) {
         this(string, window);
         super.name = name;
+    }
+
+    @Override
+    public void compose() {
+        compositor.compose();
     }
 
     @Override
@@ -49,7 +54,7 @@ public class Row extends CompositeGlyph {
     @Override
     public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
         int childHeight = glyph.getBounds().getHeight();
-        
+
         bounds.setWidth(cursor.getX() + glyph.getBounds().getWidth() - bounds.getX());
         bounds.setHeight(bounds.getHeight() > childHeight ? bounds.getHeight() : childHeight);
 

@@ -1,6 +1,5 @@
 // Composite(163).Client
 
-import glyph.Border;
 import glyph.Character;
 import glyph.Column;
 import glyph.Composition;
@@ -38,6 +37,7 @@ public class Lexi {
         Composition root = new Row(window, "root");
         Composition row1 = new Row(window, "row1");
         Composition row2 = new Scroller(new Row("ghk", window, "row2"));
+//        Composition row2 = new Row("ghk", window, "row2");
         Composition row3 = new Row(window, "row3");
 
         // insert into the glyph tree
@@ -47,6 +47,7 @@ public class Lexi {
         root.insert(row3, 2);
         row3.insert(ch_m, 0);
 
+        root.compose();
         window.setContents(root);
     }
 
@@ -93,7 +94,7 @@ public class Lexi {
         Composition root = new Column(window);
         Composition row1_lev_1 = new Row(window);
         Composition row2_lev_1 = new Row(window);
-        Composition col1_lev_2 = new Border(new Scroller(new Column(window)));
+        Composition col1_lev_2 = new Scroller(new Column(window), 6);
         Composition row1_lev_3 = new Row("This is a", window);
         Composition row2_lev_3 = new Row("border demonstration.", window);
         Composition row3_lev_3 = new Row("Scroller too!", window);
