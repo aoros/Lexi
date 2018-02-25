@@ -7,6 +7,7 @@ import window.Window;
 public abstract class Glyph {
 
     Glyph parent;
+    String name;
     Bounds bounds = new Bounds(0, 0, 0, 0);
 
     public abstract void draw(Window window);
@@ -19,7 +20,7 @@ public abstract class Glyph {
 
     public abstract boolean intersects(Cursor point);
 
-    public abstract void insert(Glyph glyph, int position)  throws GlyphException;
+    public abstract void insert(Glyph glyph, int position) throws GlyphException;
 
     public abstract void remove(Glyph glyph);
 
@@ -31,4 +32,12 @@ public abstract class Glyph {
     }
 
     public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

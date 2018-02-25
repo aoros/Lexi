@@ -40,14 +40,10 @@ public class Column extends CompositeGlyph {
     public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
         int childWidth = glyph.getBounds().getWidth();
         
-        bounds.setHeight(cursor.getY() + glyph.getBounds().getHeight());
+        bounds.setHeight(cursor.getY() + glyph.getBounds().getHeight() - bounds.getY());
         bounds.setWidth(bounds.getWidth() > childWidth ? bounds.getWidth() : childWidth);
 
-        if (cursor.getY() == glyph.getBounds().getY())
-            cursor.setY(bounds.getHeight());
-        else
-            cursor.setY(bounds.getY() + bounds.getHeight());
-
+        cursor.setY(bounds.getY() + bounds.getHeight());
         cursor.setX(bounds.getX());
     }
 

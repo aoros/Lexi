@@ -40,14 +40,10 @@ public class Row extends CompositeGlyph {
     public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
         int childHeight = glyph.getBounds().getHeight();
         
-        bounds.setWidth(cursor.getX() + glyph.getBounds().getWidth());
+        bounds.setWidth(cursor.getX() + glyph.getBounds().getWidth() - bounds.getX());
         bounds.setHeight(bounds.getHeight() > childHeight ? bounds.getHeight() : childHeight);
-        
-        if (cursor.getX() == glyph.getBounds().getX())
-            cursor.setX(bounds.getWidth());
-        else
-            cursor.setX(bounds.getX() + bounds.getWidth());
-        
+
+        cursor.setX(bounds.getX() + bounds.getWidth());
         cursor.setY(bounds.getY());
     }
 

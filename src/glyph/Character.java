@@ -10,6 +10,7 @@ public class Character extends Glyph {
 
     public Character(char c) {
         this.c = c;
+        this.name = "char_" + c;
     }
 
     @Override

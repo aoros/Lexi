@@ -32,23 +32,29 @@ public class Lexi {
 
     private static void test_configuration(Window window) throws GlyphException {
         Glyph ch_a = new Character('a');
-        Composition row1_lev_1 = new Row(window);
+        Composition row1 = new Row(window);
+        row1.setName("row1");
 //        Composition row2_lev_1 = new Row("ghk", window);
-        Composition row2_lev_1 = new Row(window);
-        Composition row3_lev_1 = new Row(window);
+        Composition row2 = new Row(window);
+        row2.setName("row2");
+        Composition row3 = new Row(window);
+        row3.setName("row3");
         Glyph ch_g = new Character('g');
         Glyph ch_h = new Character('h');
         Glyph ch_k = new Character('k');
 
         Composition root = new Row(window);
+        root.setName("root");
 
-        root.insert(row1_lev_1, 0);
-        row1_lev_1.insert(ch_a, 0);
-        root.insert(row2_lev_1, 1);
-        row2_lev_1.insert(ch_g, 0);
-        row2_lev_1.insert(ch_h, 1);
-        root.insert(row3_lev_1, 2);
-        row3_lev_1.insert(ch_k, 0);
+        root.insert(row1, 0);
+        row1.insert(ch_a, 0);
+        
+        root.insert(row2, 1);
+        row2.insert(ch_g, 0);
+        row2.insert(ch_h, 1);
+        
+        root.insert(row3, 2);
+        row3.insert(ch_k, 0);
 
         System.out.println("######################################################");
         root.compose();
