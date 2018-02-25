@@ -7,6 +7,7 @@ import glyph.GlyphException;
 import glyph.Rectangle;
 import glyph.Row;
 import window.SwingWindow;
+import window.Window;
 
 /**
  * Lexi A WYSIWYG document editor
@@ -19,8 +20,16 @@ import window.SwingWindow;
 public class Lexi {
 
     public static void main(String[] args) {
-        SwingWindow window = new SwingWindow("Lexi");
+        buildHw1_configuration();
+        buildHw2_configuration();
+    }
 
+    private static void buildHw2_configuration() {
+        
+    }
+
+    private static void buildHw1_configuration() {
+        Window window = new SwingWindow("Lexi");
         try {
             Composition root = new Column(window);
 
