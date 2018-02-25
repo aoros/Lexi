@@ -18,8 +18,20 @@ public class Scroller extends Embellishment {
     }
 
     @Override
-    public void compose() {
-        compositor.compose();
+    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
+        super.adjustBoundsAndCursor(glyph, cursor);
+        int glyphWidth = glyph.getBounds().getWidth();
+
+        if (areGlyphsInColumn(cursor)) {
+            maxWidth = glyphWidth > maxWidth ? glyphWidth : maxWidth;
+        } else {
+            maxWidth += glyphWidth;
+        }
+        super.getBounds().setWidth(maxWidth + thickness);
+    }
+
+    private boolean areGlyphsInColumn(Cursor cursor) {
+        return super.getBounds().getX() == cursor.getX();
     }
 
     @Override
@@ -35,15 +47,7 @@ public class Scroller extends Embellishment {
     }
 
     @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        super.adjustBoundsAndCursor(glyph, cursor);
-        int glyphWidth = glyph.getBounds().getWidth();
-        if (super.getBounds().getX() == cursor.getX()) {
-            maxWidth = glyphWidth > maxWidth ? glyphWidth : maxWidth;
-            super.getBounds().setWidth(maxWidth + thickness);
-        } else {
-            maxWidth += glyphWidth;
-            super.getBounds().setWidth(maxWidth + thickness);
-        }
+    public void compose() {
+        compositor.compose();
     }
 }

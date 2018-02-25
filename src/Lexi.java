@@ -1,5 +1,6 @@
 // Composite(163).Client
 
+import glyph.Border;
 import glyph.Character;
 import glyph.Column;
 import glyph.Composition;
@@ -26,19 +27,42 @@ public class Lexi {
         try {
 //            build_hw1_configuration(window);
             build_hw2_configuration(window);
-//            test_configuration(window);
+//            test_configuration_rows(window);
+//            test_configuration_cols(window);
         } catch (GlyphException ex) {
         }
     }
 
-    private static void test_configuration(Window window) throws GlyphException {
+    private static void test_configuration_rows(Window window) throws GlyphException {
         Glyph ch_a = new Character('a');
         Glyph ch_m = new Character('m');
         Composition root = new Row(window, "root");
         Composition row1 = new Row(window, "row1");
-        Composition row2 = new Scroller(new Row("ghk", window, "row2"));
+        Composition row2 = new Border(new Scroller(new Row("ghk", window, "row2")));
 //        Composition row2 = new Row("ghk", window, "row2");
         Composition row3 = new Row(window, "row3");
+
+        // insert into the glyph tree
+        root.insert(row1, 0);
+        row1.insert(ch_a, 0);
+        root.insert(row2, 1);
+        root.insert(row3, 2);
+        row3.insert(ch_m, 0);
+
+        root.compose();
+        window.setContents(root);
+    }
+
+    private static void test_configuration_cols(Window window) throws GlyphException {
+        Glyph ch_a = new Character('a');
+        Glyph ch_m = new Character('m');
+        Composition root = new Column(window, "root");
+        Composition row1 = new Column(window, "row1");
+        String[] arr = new String[1];
+        arr[0] = "ghk";
+        Composition row2 = new Scroller(new Border(new Column(arr, window, "row2")));
+//        Composition row2 = new Row("ghk", window, "row2");
+        Composition row3 = new Column(window, "row3");
 
         // insert into the glyph tree
         root.insert(row1, 0);
@@ -94,7 +118,7 @@ public class Lexi {
         Composition root = new Column(window);
         Composition row1_lev_1 = new Row(window);
         Composition row2_lev_1 = new Row(window);
-        Composition col1_lev_2 = new Scroller(new Column(window), 6);
+        Composition col1_lev_2 = new Border(new Scroller(new Column(window)));
         Composition row1_lev_3 = new Row("This is a", window);
         Composition row2_lev_3 = new Row("border demonstration.", window);
         Composition row3_lev_3 = new Row("Scroller too!", window);
