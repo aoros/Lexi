@@ -24,8 +24,8 @@ public class Lexi {
         Window window = new SwingWindow("Lexi");
         try {
 //            build_hw1_configuration(window);
-//            build_hw2_configuration(window);
-            test_configuration(window);
+            build_hw2_configuration(window);
+//            test_configuration(window);
         } catch (GlyphException ex) {
         }
     }
@@ -33,14 +33,25 @@ public class Lexi {
     private static void test_configuration(Window window) throws GlyphException {
         Glyph ch_a = new Character('a');
         Composition row1_lev_1 = new Row(window);
-        Composition row2_lev_1 = new Row("gh", window);
+//        Composition row2_lev_1 = new Row("ghk", window);
+        Composition row2_lev_1 = new Row(window);
+        Composition row3_lev_1 = new Row(window);
+        Glyph ch_g = new Character('g');
+        Glyph ch_h = new Character('h');
+        Glyph ch_k = new Character('k');
 
         Composition root = new Row(window);
 
         root.insert(row1_lev_1, 0);
         row1_lev_1.insert(ch_a, 0);
         root.insert(row2_lev_1, 1);
+        row2_lev_1.insert(ch_g, 0);
+        row2_lev_1.insert(ch_h, 1);
+        root.insert(row3_lev_1, 2);
+        row3_lev_1.insert(ch_k, 0);
 
+        System.out.println("######################################################");
+        root.compose();
         window.setContents(root);
     }
 
@@ -58,7 +69,6 @@ public class Lexi {
         Composition root = new Column(window);
         Composition row1_lev_1 = new Row(window);
         Composition row2_lev_1 = new Row(window);
-        Composition row3_lev_1 = new Row("Scroller too!", window);
         Composition col1_lev_2 = new Column(window);
 
         root.insert(row1_lev_1, 0);
@@ -73,7 +83,6 @@ public class Lexi {
         row2_lev_1.insert(ch_x, 0);
         row2_lev_1.insert(rect_B, 1);
         row2_lev_1.insert(ch_y, 2);
-        root.insert(row3_lev_1, 2);
 
         window.setContents(root);
     }

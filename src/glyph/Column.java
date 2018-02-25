@@ -43,7 +43,10 @@ public class Column extends CompositeGlyph {
         bounds.setHeight(cursor.getY() + glyph.getBounds().getHeight());
         bounds.setWidth(bounds.getWidth() > childWidth ? bounds.getWidth() : childWidth);
         cursor.setX(bounds.getX());
-        cursor.setY(bounds.getY() + bounds.getHeight());
+        if (cursor.getY() == bounds.getY())
+            cursor.setY(bounds.getHeight());
+        else
+            cursor.setY(bounds.getY() + bounds.getHeight());
     }
 
     @Override
