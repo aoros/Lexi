@@ -18,7 +18,7 @@ public abstract class Composition extends Glyph {
         compositor.setComposition(this);
         compositor.setWindow(window);
     }
-
+    
     @Override
     public void compose() {
         compositor.compose();

@@ -10,6 +10,11 @@ public class Row extends CompositeGlyph {
         super(window);
     }
 
+    public Row(Window window, String name) {
+        super(window);
+        super.name = name;
+    }
+    
     public Row(String string, Window window) {
         super(window);
         try {
@@ -19,6 +24,11 @@ public class Row extends CompositeGlyph {
         } catch (GlyphException e) {
             System.out.println(e);
         }
+    }
+    
+    public Row(String string, Window window, String name) {
+        this(string, window);
+        super.name = name;
     }
 
     @Override

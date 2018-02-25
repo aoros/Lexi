@@ -3,62 +3,82 @@ package glyph;
 import compositor.Cursor;
 import window.Window;
 
-public class Embellishment extends Glyph {
+public abstract class Embellishment extends Composition {
 
-    private final Composition composition;
+    private Composition composition;
 
     public Embellishment(Composition composition) {
+        super(composition.window);
         this.composition = composition;
     }
 
     @Override
-    public void draw(Window window) {
-        composition.draw(window);
+    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
+        this.composition.adjustBoundsAndCursor(glyph, cursor);
     }
 
     @Override
-    public void setSize(Window window) {
-        composition.setSize(window);
+    public void compose() {
+        this.composition.compose();
     }
 
     @Override
-    public void setPosition(Cursor cursor) {
-        composition.setPosition(cursor);
+    public void setName(String name) {
+        this.composition.setName(name);
     }
 
     @Override
-    public Bounds getBounds() {
-        return composition.getBounds();
-    }
-
-    @Override
-    public boolean intersects(Cursor point) {
-        return composition.intersects(point);
-    }
-
-    @Override
-    public void insert(Glyph glyph, int position) throws GlyphException {
-        composition.insert(glyph, position);
-    }
-
-    @Override
-    public void remove(Glyph glyph) {
-        composition.remove(glyph);
-    }
-
-    @Override
-    public Glyph getChild(int position) {
-        return composition.getChild(position);
+    public String getName() {
+        return this.composition.getName();
     }
 
     @Override
     public Glyph getParent() {
-        return composition.getParent();
+        return this.composition.getParent();
     }
 
     @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        composition.adjustBoundsAndCursor(glyph, cursor);
+    public Glyph getChild(int position) {
+        return this.composition.getChild(position);
     }
 
+    @Override
+    public void remove(Glyph glyph) {
+        this.composition.remove(glyph);
+    }
+
+    @Override
+    public void insert(Glyph glyph, int position) throws GlyphException {
+        this.composition.insert(glyph, position);
+    }
+
+    @Override
+    public boolean intersects(Cursor point) {
+        return this.composition.intersects(point);
+    }
+
+    @Override
+    public Bounds getBounds() {
+        return this.composition.getBounds();
+    }
+
+    @Override
+    public void setPosition(Cursor cursor) {
+        this.composition.setPosition(cursor);
+    }
+
+    @Override
+    public void setSize(Window window) {
+        this.composition.setSize(window);
+    }
+
+    @Override
+    public void draw(Window window) {
+        this.composition.draw(window);
+    }
+
+    @Override
+    public String toString() {
+        return "Embellishment{" + "composition=" + composition + '}';
+    }
 }

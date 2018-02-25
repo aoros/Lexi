@@ -1,5 +1,6 @@
 // Composite(163).Client
 
+import glyph.Border;
 import glyph.Character;
 import glyph.Column;
 import glyph.Composition;
@@ -7,6 +8,7 @@ import glyph.Glyph;
 import glyph.GlyphException;
 import glyph.Rectangle;
 import glyph.Row;
+import glyph.Scroller;
 import window.SwingWindow;
 import window.Window;
 
@@ -32,32 +34,19 @@ public class Lexi {
 
     private static void test_configuration(Window window) throws GlyphException {
         Glyph ch_a = new Character('a');
-        Composition row1 = new Row(window);
-        row1.setName("row1");
-//        Composition row2_lev_1 = new Row("ghk", window);
-        Composition row2 = new Row(window);
-        row2.setName("row2");
-        Composition row3 = new Row(window);
-        row3.setName("row3");
-        Glyph ch_g = new Character('g');
-        Glyph ch_h = new Character('h');
-        Glyph ch_k = new Character('k');
+        Glyph ch_m = new Character('m');
+        Composition root = new Row(window, "root");
+        Composition row1 = new Row(window, "row1");
+        Composition row2 = new Scroller(new Row("ghk", window, "row2"));
+        Composition row3 = new Row(window, "row3");
 
-        Composition root = new Row(window);
-        root.setName("root");
-
+        // insert into the glyph tree
         root.insert(row1, 0);
         row1.insert(ch_a, 0);
-        
         root.insert(row2, 1);
-        row2.insert(ch_g, 0);
-        row2.insert(ch_h, 1);
-        
         root.insert(row3, 2);
-        row3.insert(ch_k, 0);
+        row3.insert(ch_m, 0);
 
-        System.out.println("######################################################");
-        root.compose();
         window.setContents(root);
     }
 
@@ -104,7 +93,7 @@ public class Lexi {
         Composition root = new Column(window);
         Composition row1_lev_1 = new Row(window);
         Composition row2_lev_1 = new Row(window);
-        Composition col1_lev_2 = new Column(window);
+        Composition col1_lev_2 = new Border(new Scroller(new Column(window)));
         Composition row1_lev_3 = new Row("This is a", window);
         Composition row2_lev_3 = new Row("border demonstration.", window);
         Composition row3_lev_3 = new Row("Scroller too!", window);
