@@ -5,17 +5,16 @@ import window.Window;
 
 public class Border extends Embellishment {
 
-    private int thickness = 5;
+    private static final int DEFAULT_PADDING = 5;
     private int maxHeight;
     private int maxWidth;
 
     public Border(Composition composition) {
-        super(composition);
+        super(composition, DEFAULT_PADDING);
     }
 
-    public Border(Composition composition, int thickness) {
-        super(composition);
-        this.thickness = thickness;
+    public Border(Composition composition, int padding) {
+        super(composition, padding);
     }
 
     @Override
@@ -28,12 +27,12 @@ public class Border extends Embellishment {
 
         if (areGlyphsInColumn(cursor)) {
             maxWidth = glyphWidth > maxWidth ? glyphWidth : maxWidth;
-            super.getBounds().setWidth(maxWidth + thickness * 2);
-            super.getBounds().setHeight(superHeight + thickness * 2);
+            super.getBounds().setWidth(maxWidth + padding * 2);
+            super.getBounds().setHeight(superHeight + padding * 2);
         } else {
             maxHeight = glyphHeight > maxHeight ? glyphHeight : maxHeight;
-            super.getBounds().setHeight(maxHeight + thickness * 2);
-            super.getBounds().setWidth(superWidth + thickness * 2);
+            super.getBounds().setHeight(maxHeight + padding * 2);
+            super.getBounds().setWidth(superWidth + padding * 2);
         }
         shiftGlyphAndAllChildren(glyph);
     }
@@ -46,7 +45,7 @@ public class Border extends Embellishment {
         int x2 = super.getBounds().getX() + super.getBounds().getWidth();
         int y2 = super.getBounds().getY() + super.getBounds().getHeight();
 
-        window.addBorder(x1, y1, x2, y2, thickness);
+        window.addBorder(x1, y1, x2, y2, padding);
     }
 
     @Override
@@ -59,14 +58,14 @@ public class Border extends Embellishment {
     }
 
     private void shiftGlyphAndAllChildren(Glyph glyph) {
-        glyph.getBounds().setX(glyph.getBounds().getX() + thickness);
-        glyph.getBounds().setY(glyph.getBounds().getY() + thickness);
+        glyph.getBounds().setX(glyph.getBounds().getX() + padding);
+        glyph.getBounds().setY(glyph.getBounds().getY() + padding);
         int i = 0;
         while (true) {
             try {
                 Glyph child = glyph.getChild(i);
-                child.getBounds().setX(child.getBounds().getX() + thickness);
-                child.getBounds().setY(child.getBounds().getY() + thickness);
+                child.getBounds().setX(child.getBounds().getX() + padding);
+                child.getBounds().setY(child.getBounds().getY() + padding);
                 i++;
             } catch (Exception ex) {
                 break;

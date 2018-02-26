@@ -39,6 +39,7 @@ public class Lexi {
         Composition root = new Row(window, "root");
         Composition row1 = new Row(window, "row1");
         Composition row2 = new Border(new Scroller(new Row("ghk", window, "row2")));
+//        Composition row2 = new Scroller(new Row("ghk", window, "row2"));
 //        Composition row2 = new Row("ghk", window, "row2");
         Composition row3 = new Row(window, "row3");
 

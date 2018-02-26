@@ -7,13 +7,22 @@ import window.Window;
 public abstract class Embellishment extends Composition {
 
     private Composition composition;
-
-    public Embellishment(Composition composition) {
+    
+    public Embellishment(Composition composition, int padding) {
         super(composition.window);
         this.composition = composition;
         this.compositor = new SimpleCompositor();
         compositor.setComposition(this);
         compositor.setWindow(window);
+        this.padding = padding;
+    }
+
+    public Composition getComposition() {
+        return composition;
+    }
+
+    public void setComposition(Composition composition) {
+        this.composition = composition;
     }
 
     @Override

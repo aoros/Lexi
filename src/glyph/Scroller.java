@@ -5,16 +5,17 @@ import window.Window;
 
 public class Scroller extends Embellishment {
 
-    private int thickness = 10;
+    private static final int DEFAULT_PADDING = 5;
+    private int scrollbarWidth = 10;
     private int maxWidth;
 
     public Scroller(Composition composition) {
-        super(composition);
+        super(composition, DEFAULT_PADDING);
     }
 
-    public Scroller(Composition composition, int thickness) {
-        super(composition);
-        this.thickness = thickness;
+    public Scroller(Composition composition, int scrollbarWidth) {
+        super(composition, DEFAULT_PADDING);
+        this.scrollbarWidth = scrollbarWidth;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class Scroller extends Embellishment {
         } else {
             maxWidth += glyphWidth;
         }
-        super.getBounds().setWidth(maxWidth + thickness);
+        super.getBounds().setWidth(maxWidth + scrollbarWidth);
     }
 
     private boolean areGlyphsInColumn(Cursor cursor) {
@@ -38,10 +39,10 @@ public class Scroller extends Embellishment {
     public void draw(Window window) {
         super.draw(window);
 
-        int x = super.getBounds().getX() + super.getBounds().getWidth() - thickness;
-        int y = super.getBounds().getY();
-        int w = thickness;
-        int h = super.getBounds().getHeight();
+        int x = super.getBounds().getX() + super.getBounds().getWidth() - scrollbarWidth - padding;
+        int y = super.getBounds().getY() + padding;
+        int w = scrollbarWidth;
+        int h = super.getBounds().getHeight() - padding*2;
 
         window.addScrollBar(x, y, w, h);
     }
