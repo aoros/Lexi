@@ -32,11 +32,6 @@ public class Column extends CompositeGlyph {
     }
 
     @Override
-    public void compose() {
-        compositor.compose();
-    }
-
-    @Override
     public Bounds getBounds() {
         return bounds;
     }

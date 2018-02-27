@@ -16,6 +16,17 @@ public class SwingWindow implements Window {
     private JFrame _jFrame;
     private Graphics _graphics;
     private FontMetrics _fm;
+    private boolean debug = false;
+
+    @Override
+    public void setDebug(boolean debug) {
+        this.debug = debug;
+    }
+
+    @Override
+    public boolean getDebug() {
+        return debug;
+    }
 
     private class Pane extends JPanel {
 

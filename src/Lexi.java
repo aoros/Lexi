@@ -22,8 +22,11 @@ import window.Window;
  */
 public class Lexi {
 
+    private static final boolean DEBUG = true;
+
     public static void main(String[] args) {
         Window window = new SwingWindow("Lexi");
+        window.setDebug(DEBUG);
         try {
 //            build_hw1_configuration(window);
             build_hw2_configuration(window);
@@ -39,18 +42,17 @@ public class Lexi {
         Composition root = new Row(window, "root");
         Composition row1 = new Row(window, "row1");
         Composition row2 = new Border(new Scroller(new Row("ghk", window, "row2")));
-//        Composition row2 = new Scroller(new Row("ghk", window, "row2"));
-//        Composition row2 = new Row("ghk", window, "row2");
+        // Composition row2 = new Scroller(new Row("ghk", window, "row2"));
+        // Composition row2 = new Row("ghk", window, "row2");
         Composition row3 = new Row(window, "row3");
 
         // insert into the glyph tree
-        root.insert(row1, 0);
-        row1.insert(ch_a, 0);
-        root.insert(row2, 1);
-        root.insert(row3, 2);
-        row3.insert(ch_m, 0);
+        insert(root, row1, 0);
+        insert(row1, ch_a, 0);
+        insert(root, row2, 1);
+        insert(root, row3, 2);
+        insert(row3, ch_m, 0);
 
-        root.compose();
         window.setContents(root);
     }
 
@@ -58,21 +60,20 @@ public class Lexi {
         Glyph ch_a = new Character('a');
         Glyph ch_m = new Character('m');
         Composition root = new Column(window, "root");
-        Composition row1 = new Column(window, "row1");
+        Composition col1 = new Column(window, "row1");
         String[] arr = new String[1];
         arr[0] = "ghk";
-        Composition row2 = new Scroller(new Border(new Column(arr, window, "row2")));
+        Composition col2 = new Scroller(new Border(new Column(arr, window, "row2")));
 //        Composition row2 = new Row("ghk", window, "row2");
-        Composition row3 = new Column(window, "row3");
+        Composition col3 = new Column(window, "row3");
 
         // insert into the glyph tree
-        root.insert(row1, 0);
-        row1.insert(ch_a, 0);
-        root.insert(row2, 1);
-        root.insert(row3, 2);
-        row3.insert(ch_m, 0);
+        insert(root, col1, 0);
+        insert(col1, ch_a, 0);
+        insert(root, col2, 1);
+        insert(root, col3, 2);
+        insert(col3, ch_m, 0);
 
-        root.compose();
         window.setContents(root);
     }
 
@@ -92,18 +93,18 @@ public class Lexi {
         Composition row2_lev_1 = new Row(window);
         Composition col1_lev_2 = new Column(window);
 
-        root.insert(row1_lev_1, 0);
-        row1_lev_1.insert(ch_a, 0);
-        row1_lev_1.insert(rect_A, 1);
-        col1_lev_2.insert(ch_X, 0);
-        col1_lev_2.insert(ch_Y, 1);
-        col1_lev_2.insert(ch_Z, 2);
-        row1_lev_1.insert(col1_lev_2, 2);
-        row1_lev_1.insert(ch_b, 3);
-        root.insert(row2_lev_1, 1);
-        row2_lev_1.insert(ch_x, 0);
-        row2_lev_1.insert(rect_B, 1);
-        row2_lev_1.insert(ch_y, 2);
+        insert(root, row1_lev_1, 0);
+        insert(row1_lev_1, ch_a, 0);
+        insert(row1_lev_1, rect_A, 1);
+        insert(col1_lev_2, ch_X, 0);
+        insert(col1_lev_2, ch_Y, 1);
+        insert(col1_lev_2, ch_Z, 2);
+        insert(row1_lev_1, col1_lev_2, 2);
+        insert(row1_lev_1, ch_b, 3);
+        insert(root, row2_lev_1, 1);
+        insert(row2_lev_1, ch_x, 0);
+        insert(row2_lev_1, rect_B, 1);
+        insert(row2_lev_1, ch_y, 2);
 
         window.setContents(root);
     }
@@ -124,19 +125,27 @@ public class Lexi {
         Composition row2_lev_3 = new Row("border demonstration.", window);
         Composition row3_lev_3 = new Row("Scroller too!", window);
 
-        root.insert(row1_lev_1, 0);
-        row1_lev_1.insert(ch_a, 0);
-        row1_lev_1.insert(rect_A, 1);
-        col1_lev_2.insert(row1_lev_3, 0);
-        col1_lev_2.insert(row2_lev_3, 1);
-        col1_lev_2.insert(row3_lev_3, 2);
-        row1_lev_1.insert(col1_lev_2, 2);
-        row1_lev_1.insert(ch_b, 3);
-        root.insert(row2_lev_1, 1);
-        row2_lev_1.insert(ch_x, 0);
-        row2_lev_1.insert(rect_B, 1);
-        row2_lev_1.insert(ch_y, 2);
+        insert(root, row1_lev_1, 0);
+        insert(row1_lev_1, ch_a, 0);
+        insert(row1_lev_1, rect_A, 1);
+        insert(col1_lev_2, row1_lev_3, 0);
+        insert(col1_lev_2, row2_lev_3, 1);
+        insert(col1_lev_2, row3_lev_3, 2);
+        insert(row1_lev_1, col1_lev_2, 2);
+        insert(row1_lev_1, ch_b, 3);
+        insert(root, row2_lev_1, 1);
+        insert(row2_lev_1, ch_x, 0);
+        insert(row2_lev_1, rect_B, 1);
+        insert(row2_lev_1, ch_y, 2);
 
         window.setContents(root);
+    }
+
+    private static void insert(Composition parent, Glyph child, int i) throws GlyphException {
+        if (DEBUG) {
+            System.out.println("=======================================================================");
+            System.out.println("   inserting... " + child);
+        }
+        parent.insert(child, i);
     }
 }

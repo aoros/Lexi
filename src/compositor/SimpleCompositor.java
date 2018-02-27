@@ -10,6 +10,7 @@ public class SimpleCompositor implements Compositor {
 
     private Composition composition;
     private Window window;
+    private boolean debug;
 
     public SimpleCompositor() {
     }
@@ -29,32 +30,37 @@ public class SimpleCompositor implements Compositor {
 
         // create cursor based on parent
         Cursor cursor = new Cursor(composition.getBounds().getX(), composition.getBounds().getY());
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-        System.out.println(composition.getName() + ":   " + composition.getClass().getName());
-        System.out.println(" 0. cursor: " + cursor);
+        debugPrint("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        debugPrint(composition.getName() + ":   " + composition.getClass().getName());
+        debugPrint(" 0. cursor: " + cursor);
 
         int i = 0;
         while (true) {
             try {
                 Glyph child = composition.getChild(i);
-                System.out.println("   1. getChild(" + i + "): " + child.getName());
+                debugPrint("   1. getChild(" + i + "): " + child.getName());
                 child.setSize(window);
-                System.out.println("   2. child.setSize(window): " + child);
+                debugPrint("   2. child.setSize(window): " + child);
                 child.setPosition(cursor);
-                System.out.println("   3. child.setPosition(cursor): " + child);
-                System.out.println("   4. child.compose()");
+                debugPrint("   3. child.setPosition(cursor): " + child);
+                debugPrint("   4. child.compose()");
                 child.compose();
                 composition.adjustBoundsAndCursor(child, cursor);
-                System.out.println("   5. composition.adjustBoundsAndCursor(child, cursor):");
-                System.out.println("                child: " + child);
-                System.out.println("                cursor: " + cursor);
+                debugPrint("   5. composition.adjustBoundsAndCursor(child, cursor):");
+                debugPrint("                child: " + child);
+                debugPrint("                cursor: " + cursor);
                 i++;
             } catch (Exception ex) {
                 break;
             }
         }
-        
-        System.out.println(" 6. Exiting compose");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+        debugPrint(" 6. Exiting compose");
+        debugPrint(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    }
+
+    private void debugPrint(String msg) {
+        if (window.getDebug())
+            System.out.println(msg);
     }
 }
