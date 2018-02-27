@@ -98,4 +98,11 @@ public class Bounds {
                 + ", paddinRight=" + paddinRight
                 + ", paddinBottom=" + paddinBottom + '}';
     }
+
+    void reset() {
+        x = 0;
+        y = 0;
+        width = 0;
+        height = 0;
+    }
 }

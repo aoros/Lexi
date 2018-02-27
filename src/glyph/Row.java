@@ -32,11 +32,6 @@ public class Row extends CompositeGlyph {
     }
 
     @Override
-    public Bounds getBounds() {
-        return bounds;
-    }
-
-    @Override
     public void setSize(Window window) {
     }
 
@@ -49,18 +44,18 @@ public class Row extends CompositeGlyph {
     @Override
     public void adjustBoundsAndCursor(Glyph child, Cursor cursor) {
         int childWidth = child.getBounds().getWidth();
-		int childHeight = child.getBounds().getHeight();
+        int childHeight = child.getBounds().getHeight();
 
-        bounds.setWidth(cursor.getX() + childWidth - bounds.getX());
+        bounds.setWidth(bounds.getWidth() + childWidth);
         bounds.setHeight(bounds.getHeight() > childHeight ? bounds.getHeight() : childHeight);
 
         cursor.setX(cursor.getX() + childWidth);
     }
 
-	@Override
-	public void adjustSelf(Cursor cursor) {
-	}
-	
+    @Override
+    public void adjustSelf(Cursor cursor) {
+    }
+
     @Override
     public String toString() {
         return "Row{" + "bounds=" + bounds + '}';

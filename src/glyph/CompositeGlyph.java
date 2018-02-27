@@ -41,13 +41,13 @@ public abstract class CompositeGlyph extends Composition {
 
     @Override
     public void insert(Glyph glyph, int position) throws GlyphException {
-		if (window.getDebug()) {
+        if (window.getDebug()) {
             System.out.println("=======================================================================");
             System.out.println("   inserting... " + glyph);
         }
         glyph.parent = this;
         children.add(position, glyph);
-        
+
         // go to the root and compose from there
         Glyph current = this;
         Glyph currentParent = this.getParent();
@@ -72,4 +72,10 @@ public abstract class CompositeGlyph extends Composition {
     public boolean intersects(Cursor point) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public void resetBounds() {
+        bounds.reset();
+    }
+
 }

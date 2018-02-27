@@ -29,6 +29,7 @@ public class SimpleCompositor implements Compositor {
 
         // create cursor based on parent
         Cursor cursor = new Cursor(composition.getBounds().getX(), composition.getBounds().getY());
+        composition.resetBounds();
         debugPrint("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         debugPrint(composition.getName() + ":   " + composition.getClass().getName());
         debugPrint(" 0. cursor: " + cursor);
@@ -44,8 +45,10 @@ public class SimpleCompositor implements Compositor {
                 debugPrint("   3. child.setPosition(cursor): " + child);
                 debugPrint("   4. child.compose()");
                 child.compose();
-                composition.adjustBoundsAndCursor(child, cursor);
-                debugPrint("   5. composition.adjustBoundsAndCursor(child, cursor):");
+                child.getParent().adjustBoundsAndCursor(child, cursor);
+//                composition.adjustBoundsAndCursor(child, cursor);
+                debugPrint("   5. child.getParent().adjustBoundsAndCursor(child, cursor):");
+                debugPrint("                parent: " + child);
                 debugPrint("                child: " + child);
                 debugPrint("                cursor: " + cursor);
                 i++;

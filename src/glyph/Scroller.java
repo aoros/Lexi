@@ -17,17 +17,34 @@ public class Scroller extends Embellishment {
         this.scrollbarWidth = scrollbarWidth;
     }
 
+//    @Override
+//    public void setSize(Window window) {
+//        super.setSize(window);
+//        getGlyph().getBounds().setWidth(getGlyph().getBounds().getWidth() + scrollbarWidth);
+//        getGlyph().getBounds().setHeight(getGlyph().getBounds().getHeight());
+//    }
+//
+//    @Override
+//    public void setPosition(Cursor cursor) {
+//        super.setPosition(cursor);
+//        cursor.setX(cursor.getX() + scrollbarWidth);
+//    }
     @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        super.adjustBoundsAndCursor(glyph, cursor);
-        int glyphWidth = glyph.getBounds().getWidth();
+    public void adjustBoundsAndCursor(Glyph child, Cursor cursor) {
+        getGlyph().adjustBoundsAndCursor(child, cursor);
+        int wrappedGlyphWidth = child.getBounds().getWidth();
 
-        if (areGlyphsInColumn(cursor)) {
-            maxWidth = glyphWidth > maxWidth ? glyphWidth : maxWidth;
-        } else {
-            maxWidth += glyphWidth;
-        }
-        super.getBounds().setWidth(maxWidth + scrollbarWidth);
+        bounds.setX(super.getGlyph().getBounds().getX());
+        bounds.setY(super.getGlyph().getBounds().getY());
+        bounds.setWidth(super.getGlyph().getBounds().getWidth() + scrollbarWidth);
+        bounds.setHeight(super.getGlyph().getBounds().getHeight());
+
+//        if (areGlyphsInColumn(cursor)) {
+//            maxWidth = wrappedGlyphWidth > maxWidth ? wrappedGlyphWidth : maxWidth;
+//        } else {
+//            maxWidth += wrappedGlyphWidth;
+//        }
+//        super.getBounds().setWidth(maxWidth + scrollbarWidth);
     }
 
     private boolean areGlyphsInColumn(Cursor cursor) {
@@ -38,10 +55,10 @@ public class Scroller extends Embellishment {
     public void draw(Window window) {
         super.draw(window);
 
-        int x = super.getBounds().getX() + super.getBounds().getWidth() - scrollbarWidth;
-        int y = super.getBounds().getY();
+        int x = getGlyph().getBounds().getX() + getGlyph().getBounds().getWidth() + scrollbarWidth;
+        int y = getGlyph().getBounds().getY();
         int w = scrollbarWidth;
-        int h = super.getBounds().getHeight();
+        int h = getGlyph().getBounds().getHeight();
 
         window.addScrollBar(x, y, w, h);
     }

@@ -15,5 +15,7 @@ public abstract class Composition extends Glyph {
         this.window = window;
     }
 
-	public abstract void adjustSelf(Cursor cursor);
+    public abstract void adjustSelf(Cursor cursor);
+
+    public abstract void resetBounds();
 }

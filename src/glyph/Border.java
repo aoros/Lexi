@@ -20,7 +20,7 @@ public class Border extends Embellishment {
 
     @Override
     public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        super.adjustBoundsAndCursor(glyph, cursor);
+        getGlyph().adjustBoundsAndCursor(glyph, cursor);
         int glyphWidth = glyph.getBounds().getWidth();
         int glyphHeight = glyph.getBounds().getHeight();
         int superWidth = super.getBounds().getWidth();

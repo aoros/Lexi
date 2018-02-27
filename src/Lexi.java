@@ -31,37 +31,37 @@ public class Lexi {
 //            build_hw1_configuration(window);
 //            build_hw2_configuration(window);
 
-//			test_configuration_simple(window);
+//            test_configuration_simple(window);
             test_configuration_rows(window);
 //            test_configuration_cols(window);
 
         } catch (GlyphException ex) {
-			System.err.println(ex);
-			System.exit(1);
+            System.err.println(ex);
+            System.exit(1);
         }
     }
 
-	private static void test_configuration_simple(Window window) throws GlyphException {
+    private static void test_configuration_simple(Window window) throws GlyphException {
         Glyph root = new Row(window, "root");
-		root.insert(new Character('a'), 0);
-		root.insert(new Character('b'), 1);
-		root.insert(new Character('z'), 2);
-        
+        root.insert(new Character('a'), 0);
+        root.insert(new Scroller(new Character('b')), 1);
+        root.insert(new Character('z'), 2);
+
         window.setContents(root);
     }
-	   
+
     private static void test_configuration_rows(Window window) throws GlyphException {
         Glyph ch_a = new Character('a');
         Glyph ch_m = new Character('m');
         Composition root = new Row(window, "root");
         Composition row1 = new Row(window, "row1");
-		/////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////
 //		Glyph row2 = new Row("ghk", window, "row2");
-		Glyph row2 = new Scroller(new Row("ghk", window, "row2"));
+        Glyph row2 = new Scroller(new Row("ghk", window, "row2"));
 //		Glyph row2 = new Border(new Row("ghk", window, "row2"));
 //        Glyph row2 = new Border(new Scroller(new Row("ghk", window, "row2")));
-		/////////////////////////////////////////////////////////////        
-		Composition row3 = new Row(window, "row3");
+        /////////////////////////////////////////////////////////////        
+        Composition row3 = new Row(window, "row3");
 
         // insert into the glyph tree
         insert(root, row1, 0);
@@ -70,7 +70,7 @@ public class Lexi {
         insert(root, row3, 2);
         insert(row3, ch_m, 0);
 
-		root.compose();
+        root.compose();
         window.setContents(root);
     }
 
@@ -114,7 +114,7 @@ public class Lexi {
         insert(root, row1_lev_1, 0);
         insert(row1_lev_1, ch_a, 0);
         insert(row1_lev_1, rect_A, 1);
-		insert(row1_lev_1, col1_lev_2, 2);
+        insert(row1_lev_1, col1_lev_2, 2);
         insert(col1_lev_2, ch_X, 0);
         insert(col1_lev_2, ch_Y, 1);
         insert(col1_lev_2, ch_Z, 2);

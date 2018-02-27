@@ -6,7 +6,7 @@ import window.Window;
 public abstract class Embellishment extends Glyph {
 
     private Glyph glyph;
-    
+
     public Embellishment(Glyph glyph) {
         this.glyph = glyph;
     }
@@ -17,11 +17,6 @@ public abstract class Embellishment extends Glyph {
 
     public void setComposition(Composition composition) {
         this.glyph = composition;
-    }
-
-    @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        this.glyph.adjustBoundsAndCursor(glyph, cursor);
     }
 
     @Override
@@ -41,7 +36,7 @@ public abstract class Embellishment extends Glyph {
 
     @Override
     public Glyph getParent() {
-        return this.glyph.getParent();
+        return parent;
     }
 
     @Override

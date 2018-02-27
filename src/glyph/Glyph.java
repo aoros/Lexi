@@ -16,7 +16,11 @@ public abstract class Glyph {
 
     public abstract void setPosition(Cursor cursor);
 
-    public abstract Bounds getBounds();
+    public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
+
+    public Bounds getBounds() {
+        return bounds;
+    }
 
     public abstract boolean intersects(Cursor point);
 
@@ -29,13 +33,11 @@ public abstract class Glyph {
     public abstract Glyph getParent();
 
     public void compose() throws GlyphException {
-		// at root and not a Composition
-		if (this.getParent() == null) {
-			throw new GlyphException("Root glyph can only be a Composition object");
-		}
+        // at root and not a Composition
+        if (this.getParent() == null) {
+            throw new GlyphException("Root glyph can only be a Composition object");
+        }
     }
-
-    public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
 
     public String getName() {
         return name;
