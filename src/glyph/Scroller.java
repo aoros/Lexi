@@ -5,16 +5,15 @@ import window.Window;
 
 public class Scroller extends Embellishment {
 
-    private static final int DEFAULT_PADDING = 5;
     private int scrollbarWidth = 10;
     private int maxWidth;
 
-    public Scroller(Composition composition) {
-        super(composition, DEFAULT_PADDING);
+    public Scroller(Glyph glyph) {
+        super(glyph);
     }
 
-    public Scroller(Composition composition, int scrollbarWidth) {
-        super(composition, DEFAULT_PADDING);
+    public Scroller(Glyph glyph, int scrollbarWidth) {
+        super(glyph);
         this.scrollbarWidth = scrollbarWidth;
     }
 
@@ -39,16 +38,11 @@ public class Scroller extends Embellishment {
     public void draw(Window window) {
         super.draw(window);
 
-        int x = super.getBounds().getX() + super.getBounds().getWidth() - scrollbarWidth - padding;
-        int y = super.getBounds().getY() + padding;
+        int x = super.getBounds().getX() + super.getBounds().getWidth() - scrollbarWidth;
+        int y = super.getBounds().getY();
         int w = scrollbarWidth;
-        int h = super.getBounds().getHeight() - padding*2;
+        int h = super.getBounds().getHeight();
 
         window.addScrollBar(x, y, w, h);
-    }
-
-    @Override
-    public void compose() {
-        compositor.compose();
     }
 }

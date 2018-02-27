@@ -5,16 +5,17 @@ import window.Window;
 
 public class Border extends Embellishment {
 
-    private static final int DEFAULT_PADDING = 5;
+    private int padding = 5;
     private int maxHeight;
     private int maxWidth;
 
-    public Border(Composition composition) {
-        super(composition, DEFAULT_PADDING);
+    public Border(Glyph glyph) {
+        super(glyph);
     }
 
-    public Border(Composition composition, int padding) {
-        super(composition, padding);
+    public Border(Glyph glyph, int padding) {
+        super(glyph);
+		this.padding = padding;
     }
 
     @Override
@@ -46,11 +47,6 @@ public class Border extends Embellishment {
         int y2 = super.getBounds().getY() + super.getBounds().getHeight();
 
         window.addBorder(x1, y1, x2, y2, padding);
-    }
-
-    @Override
-    public void compose() {
-        compositor.compose();
     }
 
     private boolean areGlyphsInColumn(Cursor cursor) {

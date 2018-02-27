@@ -28,7 +28,11 @@ public abstract class Glyph {
 
     public abstract Glyph getParent();
 
-    public void compose() {
+    public void compose() throws GlyphException {
+		// at root and not a Composition
+		if (this.getParent() == null) {
+			throw new GlyphException("Root glyph can only be a Composition object");
+		}
     }
 
     public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);

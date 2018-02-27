@@ -10,7 +10,6 @@ public class SimpleCompositor implements Compositor {
 
     private Composition composition;
     private Window window;
-    private boolean debug;
 
     public SimpleCompositor() {
     }
