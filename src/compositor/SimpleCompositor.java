@@ -54,6 +54,8 @@ public class SimpleCompositor implements Compositor {
             }
         }
 
+		composition.adjustSelf(cursor);
+		
         debugPrint(" 6. Exiting compose");
         debugPrint(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     }

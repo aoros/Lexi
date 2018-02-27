@@ -47,16 +47,20 @@ public class Row extends CompositeGlyph {
     }
 
     @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        int childHeight = glyph.getBounds().getHeight();
+    public void adjustBoundsAndCursor(Glyph child, Cursor cursor) {
+        int childWidth = child.getBounds().getWidth();
+		int childHeight = child.getBounds().getHeight();
 
-        bounds.setWidth(cursor.getX() + glyph.getBounds().getWidth() - bounds.getX());
+        bounds.setWidth(cursor.getX() + childWidth - bounds.getX());
         bounds.setHeight(bounds.getHeight() > childHeight ? bounds.getHeight() : childHeight);
 
-        cursor.setX(bounds.getX() + bounds.getWidth());
-        cursor.setY(bounds.getY());
+        cursor.setX(cursor.getX() + childWidth);
     }
 
+	@Override
+	public void adjustSelf(Cursor cursor) {
+	}
+	
     @Override
     public String toString() {
         return "Row{" + "bounds=" + bounds + '}';

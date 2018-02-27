@@ -47,15 +47,19 @@ public class Column extends CompositeGlyph {
     }
 
     @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        int childWidth = glyph.getBounds().getWidth();
+    public void adjustBoundsAndCursor(Glyph child, Cursor cursor) {
+        int childWidth = child.getBounds().getWidth();
+		int childHeight = child.getBounds().getHeight();
 
-        bounds.setHeight(cursor.getY() + glyph.getBounds().getHeight() - bounds.getY());
+		bounds.setHeight(cursor.getY() + childHeight - bounds.getY());
         bounds.setWidth(bounds.getWidth() > childWidth ? bounds.getWidth() : childWidth);
 
-        cursor.setY(bounds.getY() + bounds.getHeight());
-        cursor.setX(bounds.getX());
+        cursor.setY(cursor.getY() + childHeight);
     }
+	
+	@Override
+	public void adjustSelf(Cursor cursor) {
+	}
 
     @Override
     public String toString() {

@@ -30,9 +30,11 @@ public class Lexi {
         try {
 //            build_hw1_configuration(window);
 //            build_hw2_configuration(window);
-//            test_configuration_rows(window);
-			test_configuration_simple(window);
+
+//			test_configuration_simple(window);
+            test_configuration_rows(window);
 //            test_configuration_cols(window);
+
         } catch (GlyphException ex) {
 			System.err.println(ex);
 			System.exit(1);
@@ -104,18 +106,18 @@ public class Lexi {
         Glyph ch_y = new Character('y');
         Glyph rect_B = new Rectangle(20, 10);
 
-        Composition root = new Column(window);
-        Composition row1_lev_1 = new Row(window);
-        Composition row2_lev_1 = new Row(window);
-        Composition col1_lev_2 = new Column(window);
+        Composition root = new Column(window, "root");
+        Composition row1_lev_1 = new Row(window, "row1_lev_1");
+        Composition row2_lev_1 = new Row(window, "row2_lev_1");
+        Composition col1_lev_2 = new Column(window, "col1_lev_2");
 
         insert(root, row1_lev_1, 0);
         insert(row1_lev_1, ch_a, 0);
         insert(row1_lev_1, rect_A, 1);
+		insert(row1_lev_1, col1_lev_2, 2);
         insert(col1_lev_2, ch_X, 0);
         insert(col1_lev_2, ch_Y, 1);
         insert(col1_lev_2, ch_Z, 2);
-        insert(row1_lev_1, col1_lev_2, 2);
         insert(row1_lev_1, ch_b, 3);
         insert(root, row2_lev_1, 1);
         insert(row2_lev_1, ch_x, 0);
