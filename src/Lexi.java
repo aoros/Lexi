@@ -142,10 +142,6 @@ public class Lexi {
     }
 
     private static void insert(Composition parent, Glyph child, int i) throws GlyphException {
-        if (DEBUG) {
-            System.out.println("=======================================================================");
-            System.out.println("   inserting... " + child);
-        }
         parent.insert(child, i);
     }
 }
