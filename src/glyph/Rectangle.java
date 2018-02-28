@@ -57,11 +57,6 @@ public class Rectangle extends Glyph {
     }
 
     @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public String toString() {
         return "Rectangle{" + "bounds=" + bounds + '}';
     }

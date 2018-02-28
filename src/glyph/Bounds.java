@@ -6,10 +6,6 @@ public class Bounds {
     private int y;
     private int width;
     private int height;
-    private int paddingTop;
-    private int paddinLeft;
-    private int paddinRight;
-    private int paddinBottom;
 
     public Bounds(int x, int y, int width, int height) {
         this.x = x;
@@ -54,50 +50,11 @@ public class Bounds {
         return (_x >= x && _x <= x + width && _y >= y && _y <= y + height);
     }
 
-    public int getPaddingTop() {
-        return paddingTop;
-    }
-
-    public void setPaddingTop(int paddingTop) {
-        this.paddingTop = paddingTop;
-    }
-
-    public int getPaddinLeft() {
-        return paddinLeft;
-    }
-
-    public void setPaddinLeft(int paddinLeft) {
-        this.paddinLeft = paddinLeft;
-    }
-
-    public int getPaddinRight() {
-        return paddinRight;
-    }
-
-    public void setPaddinRight(int paddinRight) {
-        this.paddinRight = paddinRight;
-    }
-
-    public int getPaddinBottom() {
-        return paddinBottom;
-    }
-
-    public void setPaddinBottom(int paddinBottom) {
-        this.paddinBottom = paddinBottom;
-    }
-
-    @Override
-    public String toString() {
-        return "Bounds{"
-                + "x=" + x
-                + ", y=" + y
-                + ", width=" + width
-                + ", height=" + height
-                + ", paddingTop=" + paddingTop
-                + ", paddinLeft=" + paddinLeft
-                + ", paddinRight=" + paddinRight
-                + ", paddinBottom=" + paddinBottom + '}';
-    }
+	@Override
+	public String toString()
+	{
+		return "Bounds{" + "x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + '}';
+	}
 
     void reset() {
         x = 0;

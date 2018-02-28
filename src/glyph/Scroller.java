@@ -29,28 +29,6 @@ public class Scroller extends Embellishment {
         super.setPosition(cursor);
         cursor.setX(cursor.getX() + scrollbarWidth);
     }
-	
-    @Override
-    public void adjustBoundsAndCursor(Glyph child, Cursor cursor) {
-        getGlyph().adjustBoundsAndCursor(child, cursor);
-        int wrappedGlyphWidth = child.getBounds().getWidth();
-
-        bounds.setX(super.getGlyph().getBounds().getX());
-        bounds.setY(super.getGlyph().getBounds().getY());
-        bounds.setWidth(super.getGlyph().getBounds().getWidth() + scrollbarWidth);
-        bounds.setHeight(super.getGlyph().getBounds().getHeight());
-
-//        if (areGlyphsInColumn(cursor)) {
-//            maxWidth = wrappedGlyphWidth > maxWidth ? wrappedGlyphWidth : maxWidth;
-//        } else {
-//            maxWidth += wrappedGlyphWidth;
-//        }
-//        super.getBounds().setWidth(maxWidth + scrollbarWidth);
-    }
-
-    private boolean areGlyphsInColumn(Cursor cursor) {
-        return super.getBounds().getX() == cursor.getX();
-    }
 
     @Override
     public void draw(Window window) {

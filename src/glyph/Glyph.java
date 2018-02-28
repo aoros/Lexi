@@ -16,8 +16,6 @@ public abstract class Glyph {
 
     public abstract void setPosition(Cursor cursor);
 
-    public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
-
     public Bounds getBounds() {
         return bounds;
     }

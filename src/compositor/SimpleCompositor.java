@@ -38,7 +38,7 @@ public class SimpleCompositor implements Compositor {
                 child.setSize(window);
                 child.setPosition(cursor);
                 child.compose();
-                child.getParent().adjustBoundsAndCursor(child, cursor);
+                composition.adjustBoundsAndCursor(child, cursor);
                 i++;
             } catch (Exception ex) {
                 break;
