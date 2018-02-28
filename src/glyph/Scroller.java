@@ -17,18 +17,19 @@ public class Scroller extends Embellishment {
         this.scrollbarWidth = scrollbarWidth;
     }
 
-//    @Override
-//    public void setSize(Window window) {
-//        super.setSize(window);
-//        getGlyph().getBounds().setWidth(getGlyph().getBounds().getWidth() + scrollbarWidth);
-//        getGlyph().getBounds().setHeight(getGlyph().getBounds().getHeight());
-//    }
-//
-//    @Override
-//    public void setPosition(Cursor cursor) {
-//        super.setPosition(cursor);
-//        cursor.setX(cursor.getX() + scrollbarWidth);
-//    }
+    @Override
+    public void setSize(Window window) {
+        super.setSize(window);
+        getGlyph().getBounds().setWidth(getGlyph().getBounds().getWidth() + scrollbarWidth);
+        getGlyph().getBounds().setHeight(getGlyph().getBounds().getHeight());
+    }
+
+    @Override
+    public void setPosition(Cursor cursor) {
+        super.setPosition(cursor);
+        cursor.setX(cursor.getX() + scrollbarWidth);
+    }
+	
     @Override
     public void adjustBoundsAndCursor(Glyph child, Cursor cursor) {
         getGlyph().adjustBoundsAndCursor(child, cursor);
@@ -55,7 +56,7 @@ public class Scroller extends Embellishment {
     public void draw(Window window) {
         super.draw(window);
 
-        int x = getGlyph().getBounds().getX() + getGlyph().getBounds().getWidth() + scrollbarWidth;
+        int x = getGlyph().getBounds().getX() + getGlyph().getBounds().getWidth();
         int y = getGlyph().getBounds().getY();
         int w = scrollbarWidth;
         int h = getGlyph().getBounds().getHeight();

@@ -41,10 +41,6 @@ public abstract class CompositeGlyph extends Composition {
 
     @Override
     public void insert(Glyph glyph, int position) throws GlyphException {
-        if (window.getDebug()) {
-            System.out.println("=======================================================================");
-            System.out.println("   inserting... " + glyph);
-        }
         glyph.parent = this;
         children.add(position, glyph);
 

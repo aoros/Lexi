@@ -30,27 +30,15 @@ public class SimpleCompositor implements Compositor {
         // create cursor based on parent
         Cursor cursor = new Cursor(composition.getBounds().getX(), composition.getBounds().getY());
         composition.resetBounds();
-        debugPrint("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-        debugPrint(composition.getName() + ":   " + composition.getClass().getName());
-        debugPrint(" 0. cursor: " + cursor);
 
         int i = 0;
         while (true) {
             try {
                 Glyph child = composition.getChild(i);
-                debugPrint("   1. getChild(" + i + "): " + child.getName());
                 child.setSize(window);
-                debugPrint("   2. child.setSize(window): " + child);
                 child.setPosition(cursor);
-                debugPrint("   3. child.setPosition(cursor): " + child);
-                debugPrint("   4. child.compose()");
                 child.compose();
                 child.getParent().adjustBoundsAndCursor(child, cursor);
-//                composition.adjustBoundsAndCursor(child, cursor);
-                debugPrint("   5. child.getParent().adjustBoundsAndCursor(child, cursor):");
-                debugPrint("                parent: " + child);
-                debugPrint("                child: " + child);
-                debugPrint("                cursor: " + cursor);
                 i++;
             } catch (Exception ex) {
                 break;
@@ -58,9 +46,6 @@ public class SimpleCompositor implements Compositor {
         }
 
 		composition.adjustSelf(cursor);
-		
-        debugPrint(" 6. Exiting compose");
-        debugPrint(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     }
 
     private void debugPrint(String msg) {

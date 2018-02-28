@@ -29,10 +29,10 @@ public class Lexi {
         window.setDebug(DEBUG);
         try {
 //            build_hw1_configuration(window);
-//            build_hw2_configuration(window);
+            build_hw2_configuration(window);
 
 //            test_configuration_simple(window);
-            test_configuration_rows(window);
+//            test_configuration_rows(window);
 //            test_configuration_cols(window);
 
         } catch (GlyphException ex) {
@@ -138,7 +138,7 @@ public class Lexi {
         Composition root = new Column(window);
         Composition row1_lev_1 = new Row(window);
         Composition row2_lev_1 = new Row(window);
-        Glyph col1_lev_2 = new Border(new Scroller(new Column(window)));
+        Glyph col1_lev_2 = new Scroller(new Border(new Column(window)));
         Composition row1_lev_3 = new Row("This is a", window);
         Composition row2_lev_3 = new Row("border demonstration.", window);
         Composition row3_lev_3 = new Row("Scroller too!", window);
