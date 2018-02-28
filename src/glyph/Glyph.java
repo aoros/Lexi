@@ -1,4 +1,5 @@
 // Composite(163).Component
+//Decorator(175).Component
 package glyph;
 
 import compositor.Cursor;

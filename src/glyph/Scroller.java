@@ -1,3 +1,4 @@
+//Decorator(175).ConcreteDecoratorB
 package glyph;
 
 import compositor.Cursor;
