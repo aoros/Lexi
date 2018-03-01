@@ -21,24 +21,24 @@ public class Border extends Embellishment {
 
     @Override
     public void setSize(Window window) {
-        super.setSize(window);
-        super.getBounds().setWidth(_glyph.getBounds().getWidth() + padding * 2);
-        super.getBounds().setHeight(_glyph.getBounds().getHeight() + padding * 2);
+        _glyph.setSize(window);
+        _glyph.getBounds().setWidth(_glyph.getBounds().getWidth() + padding * 2);
+        _glyph.getBounds().setHeight(_glyph.getBounds().getHeight() + padding * 2);
         shiftGlyphAndAllChildren(_glyph);
     }
 
     @Override
     public void setPosition(Cursor cursor) {
-        super.setPosition(cursor);
+        _glyph.setPosition(cursor);
     }
 
     @Override
     public void draw(Window window) {
-        super.draw(window);
-        int x1 = super.getBounds().getX();
-        int y1 = super.getBounds().getY();
-        int x2 = super.getBounds().getX() + super.getBounds().getWidth();
-        int y2 = super.getBounds().getY() + super.getBounds().getHeight();
+        _glyph.draw(window);
+        int x1 = _glyph.getBounds().getX();
+        int y1 = _glyph.getBounds().getY();
+        int x2 = _glyph.getBounds().getX() + _glyph.getBounds().getWidth();
+        int y2 = _glyph.getBounds().getY() + _glyph.getBounds().getHeight();
 
         window.addBorder(x1, y1, x2, y2, padding);
     }

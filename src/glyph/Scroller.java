@@ -7,7 +7,6 @@ import window.Window;
 public class Scroller extends Embellishment {
 
     private int scrollbarWidth = 10;
-    private int maxWidth;
 
     public Scroller(Glyph glyph) {
         super(glyph);
@@ -20,22 +19,22 @@ public class Scroller extends Embellishment {
 
     @Override
     public void setSize(Window window) {
-        super.setSize(window);
+        _glyph.setSize(window);
         _glyph.getBounds().setWidth(_glyph.getBounds().getWidth() + scrollbarWidth);
         _glyph.getBounds().setHeight(_glyph.getBounds().getHeight());
     }
 
     @Override
     public void setPosition(Cursor cursor) {
-        super.setPosition(cursor);
+        _glyph.setPosition(cursor);
         cursor.setX(cursor.getX() + scrollbarWidth);
     }
 
     @Override
     public void draw(Window window) {
-        super.draw(window);
+        _glyph.draw(window);
 
-        int x = _glyph.getBounds().getX() + getGlyph().getBounds().getWidth();
+        int x = _glyph.getBounds().getX() + _glyph.getBounds().getWidth();
         int y = _glyph.getBounds().getY();
         int w = scrollbarWidth;
         int h = _glyph.getBounds().getHeight();
