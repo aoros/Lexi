@@ -34,7 +34,6 @@ public class Lexi {
 //            test_configuration_simple(window);
 //            test_configuration_rows(window);
 //            test_configuration_cols(window);
-
         } catch (GlyphException ex) {
             System.err.println(ex);
             System.exit(1);

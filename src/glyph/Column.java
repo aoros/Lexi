@@ -55,8 +55,8 @@ public class Column extends CompositeGlyph {
 
     @Override
     public void adjustSelf(Cursor cursor) {
-		bounds.setX(cursor.getX());
-		bounds.setY(cursor.getY() - bounds.getHeight());
+        bounds.setX(cursor.getX());
+        bounds.setY(cursor.getY() - bounds.getHeight());
     }
 
     @Override

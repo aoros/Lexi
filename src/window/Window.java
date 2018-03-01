@@ -19,6 +19,6 @@ public interface Window {
     void addScrollBar(int x, int y, int width, int height);
 
     void setDebug(boolean debug);
-    
+
     boolean getDebug();
 }

@@ -55,8 +55,8 @@ public class Row extends CompositeGlyph {
 
     @Override
     public void adjustSelf(Cursor cursor) {
-		bounds.setX(cursor.getX() - bounds.getWidth());
-		bounds.setY(cursor.getY());
+        bounds.setX(cursor.getX() - bounds.getWidth());
+        bounds.setY(cursor.getY());
     }
 
     @Override

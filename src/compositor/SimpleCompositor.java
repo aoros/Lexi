@@ -45,11 +45,12 @@ public class SimpleCompositor implements Compositor {
             }
         }
 
-		composition.adjustSelf(cursor);
+        composition.adjustSelf(cursor);
     }
 
     private void debugPrint(String msg) {
-        if (window.getDebug())
+        if (window.getDebug()) {
             System.out.println(msg);
+        }
     }
 }
