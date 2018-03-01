@@ -21,8 +21,8 @@ public class Scroller extends Embellishment {
     @Override
     public void setSize(Window window) {
         super.setSize(window);
-        getGlyph().getBounds().setWidth(getGlyph().getBounds().getWidth() + scrollbarWidth);
-        getGlyph().getBounds().setHeight(getGlyph().getBounds().getHeight());
+        _glyph.getBounds().setWidth(_glyph.getBounds().getWidth() + scrollbarWidth);
+        _glyph.getBounds().setHeight(_glyph.getBounds().getHeight());
     }
 
     @Override
@@ -35,10 +35,10 @@ public class Scroller extends Embellishment {
     public void draw(Window window) {
         super.draw(window);
 
-        int x = getGlyph().getBounds().getX() + getGlyph().getBounds().getWidth();
-        int y = getGlyph().getBounds().getY();
+        int x = _glyph.getBounds().getX() + getGlyph().getBounds().getWidth();
+        int y = _glyph.getBounds().getY();
         int w = scrollbarWidth;
-        int h = getGlyph().getBounds().getHeight();
+        int h = _glyph.getBounds().getHeight();
 
         window.addScrollBar(x, y, w, h);
     }

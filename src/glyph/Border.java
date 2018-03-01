@@ -22,9 +22,9 @@ public class Border extends Embellishment {
     @Override
     public void setSize(Window window) {
         super.setSize(window);
-        super.getBounds().setWidth(getGlyph().getBounds().getWidth() + padding * 2);
-        super.getBounds().setHeight(getGlyph().getBounds().getHeight() + padding * 2);
-        shiftGlyphAndAllChildren(getGlyph());
+        super.getBounds().setWidth(_glyph.getBounds().getWidth() + padding * 2);
+        super.getBounds().setHeight(_glyph.getBounds().getHeight() + padding * 2);
+        shiftGlyphAndAllChildren(_glyph);
     }
 
     @Override
