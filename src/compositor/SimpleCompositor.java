@@ -30,22 +30,23 @@ public class SimpleCompositor implements Compositor {
         // create cursor based on parent
         Cursor cursor = new Cursor(composition.getBounds().getX(), composition.getBounds().getY());
         composition.resetBounds();
+        Glyph parent = composition;
 
         int i = 0;
         while (true) {
             try {
-                Glyph child = composition.getChild(i);
+                Glyph child = parent.getChild(i);
                 child.setSize(window);
                 child.setPosition(cursor);
                 child.compose();
-                composition.adjustBoundsAndCursor(child, cursor);
+                parent.adjustBoundsAndCursor(child, cursor);
                 i++;
             } catch (Exception ex) {
                 break;
             }
         }
 
-        composition.adjustSelf(cursor);
+        parent.adjustSelf(cursor);
     }
 
     private void debugPrint(String msg) {

@@ -45,4 +45,8 @@ public abstract class Glyph {
     public void setName(String name) {
         this.name = name;
     }
+
+    public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
+
+    public abstract void adjustSelf(Cursor cursor);
 }

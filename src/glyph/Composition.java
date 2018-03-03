@@ -3,7 +3,6 @@
 package glyph;
 
 import compositor.Compositor;
-import compositor.Cursor;
 import window.Window;
 
 public abstract class Composition extends Glyph {
@@ -14,10 +13,6 @@ public abstract class Composition extends Glyph {
     public Composition(Window window) {
         this.window = window;
     }
-
-    public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
-
-    public abstract void adjustSelf(Cursor cursor);
 
     public abstract void resetBounds();
 }

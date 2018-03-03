@@ -81,6 +81,16 @@ public abstract class Embellishment extends Glyph {
     }
 
     @Override
+    public void adjustSelf(Cursor cursor) {
+        _glyph.adjustSelf(cursor);
+    }
+
+    @Override
+    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
+        _glyph.adjustBoundsAndCursor(glyph, cursor);
+    }
+
+    @Override
     public String toString() {
         return "Embellishment{" + "composition=" + _glyph + '}';
     }

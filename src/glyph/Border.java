@@ -62,4 +62,14 @@ public class Border extends Embellishment {
             }
         }
     }
+
+    @Override
+    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void adjustSelf(Cursor cursor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
