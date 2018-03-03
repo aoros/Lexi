@@ -8,14 +8,10 @@ import window.Window;
 
 public class SimpleCompositor implements Compositor {
 
-    private Composition composition;
-    private Window window;
+    Composition composition;
+    Window window;
 
-    public SimpleCompositor() {
-    }
-
-    @Override
-    public void setWindow(Window window) {
+    public SimpleCompositor(Window window) {
         this.window = window;
     }
 

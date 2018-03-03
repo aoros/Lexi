@@ -13,9 +13,8 @@ public abstract class CompositeGlyph extends Composition {
 
     public CompositeGlyph(Window window) {
         super(window);
-        this.compositor = new SimpleCompositor();
+        this.compositor = new SimpleCompositor(window);
         compositor.setComposition(this);
-        compositor.setWindow(window);
     }
 
     @Override
