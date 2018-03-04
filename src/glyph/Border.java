@@ -43,10 +43,6 @@ public class Border extends Embellishment {
         window.addBorder(x1, y1, x2, y2, padding);
     }
 
-    private boolean areGlyphsInColumn(Cursor cursor) {
-        return super.getBounds().getX() == cursor.getX();
-    }
-
     private void shiftGlyphAndAllChildren(Glyph glyph) {
         glyph.getBounds().setX(glyph.getBounds().getX() + padding);
         glyph.getBounds().setY(glyph.getBounds().getY() + padding);

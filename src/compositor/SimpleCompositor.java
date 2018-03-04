@@ -26,7 +26,7 @@ public class SimpleCompositor implements Compositor {
 
         // create cursor based on parent
         Cursor cursor = new Cursor(composition.getBounds().getX(), composition.getBounds().getY());
-        composition.resetBounds();
+//        composition.resetBounds();
         Glyph parent = composition;
         try {
             Glyph child;

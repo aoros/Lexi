@@ -62,10 +62,6 @@ public class Rectangle extends Glyph {
     }
 
     @Override
-    public void compose() {
-    }
-
-    @Override
     public void adjustCursorBeforeComposingChild(Cursor cursor) {
     }
 

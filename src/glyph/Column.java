@@ -44,6 +44,12 @@ public class Column extends CompositeGlyph {
 
     @Override
     public void adjustCursorBeforeComposingChild(Cursor cursor) {
+        if (cursor.getX() == _bounds.getX() && cursor.getY() == _bounds.getY()) {
+            _bounds.setWidth(0);
+            _bounds.setHeight(0);
+        }
+        cursor.setX(_bounds.getX());
+        cursor.setY(_bounds.getY() + _bounds.getHeight());
     }
 
     @Override

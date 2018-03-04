@@ -66,10 +66,6 @@ public class Character extends Glyph {
     }
 
     @Override
-    public void compose() {
-    }
-
-    @Override
     public void adjustCursorBeforeComposingChild(Cursor cursor) {
     }
 

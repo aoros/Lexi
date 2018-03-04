@@ -31,7 +31,8 @@ public abstract class Glyph {
 
     public abstract Glyph getParent();
 
-    public abstract void compose();
+    public void compose() {
+    }
 
     public String getName() {
         return name;
