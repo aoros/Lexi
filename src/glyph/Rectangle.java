@@ -7,13 +7,13 @@ import window.Window;
 public class Rectangle extends Glyph {
 
     public Rectangle(int width, int height) {
-        bounds.setWidth(width);
-        bounds.setHeight(height);
+        _bounds.setWidth(width);
+        _bounds.setHeight(height);
     }
 
     @Override
     public void draw(Window window) {
-        window.drawRectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
+        window.drawRectangle(_bounds.getX(), _bounds.getY(), _bounds.getWidth(), _bounds.getHeight());
     }
 
     @Override
@@ -47,23 +47,18 @@ public class Rectangle extends Glyph {
 
     @Override
     public void setPosition(Cursor cursor) {
-        bounds.setX(cursor.getX());
-        bounds.setY(cursor.getY());
+        _bounds.setX(cursor.getX());
+        _bounds.setY(cursor.getY());
     }
 
     @Override
     public Bounds getBounds() {
-        return bounds;
+        return _bounds;
     }
 
     @Override
     public String toString() {
-        return "Rectangle{" + "bounds=" + bounds + '}';
-    }
-
-    @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Rectangle{" + "bounds=" + _bounds + '}';
     }
 
     @Override

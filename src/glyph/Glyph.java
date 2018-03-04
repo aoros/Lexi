@@ -9,7 +9,7 @@ public abstract class Glyph {
 
     Glyph parent;
     String name;
-    Bounds bounds = new Bounds(0, 0, 0, 0);
+    Bounds _bounds = new Bounds(0, 0, 0, 0);
 
     public abstract void draw(Window window);
 
@@ -18,7 +18,7 @@ public abstract class Glyph {
     public abstract void setPosition(Cursor cursor);
 
     public Bounds getBounds() {
-        return bounds;
+        return _bounds;
     }
 
     public abstract boolean intersects(Cursor point);
@@ -40,8 +40,6 @@ public abstract class Glyph {
     public void setName(String name) {
         this.name = name;
     }
-
-    public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
 
     public Glyph getRoot() {
         Glyph curr = this;

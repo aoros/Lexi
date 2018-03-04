@@ -36,13 +36,12 @@ public class SimpleCompositor implements Compositor {
                 child.setPosition(cursor);
                 child.compose();
                 parent.adjustCursorAfterComposingChild(cursor, child.getBounds());
-                parent.adjustBoundsAndCursor(child, cursor);
             }
         } catch (GlyphException ex) {
         }
         parent.adjustBounds(cursor);
     }
-    
+
     @Override
     public void composeRoot() {
         Glyph root = composition.getRoot();

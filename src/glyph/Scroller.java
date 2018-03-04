@@ -41,9 +41,4 @@ public class Scroller extends Embellishment {
 
         window.addScrollBar(x, y, w, h);
     }
-
-    @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

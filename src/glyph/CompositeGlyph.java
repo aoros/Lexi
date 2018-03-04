@@ -74,6 +74,6 @@ public abstract class CompositeGlyph extends Composition {
 
     @Override
     public void resetBounds() {
-        bounds.reset();
+        _bounds.reset();
     }
 }

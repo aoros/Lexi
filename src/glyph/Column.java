@@ -38,19 +38,8 @@ public class Column extends CompositeGlyph {
 
     @Override
     public void setPosition(Cursor cursor) {
-        bounds.setX(cursor.getX());
-        bounds.setY(cursor.getY());
-    }
-
-    @Override
-    public void adjustBoundsAndCursor(Glyph child, Cursor cursor) {
-        int childWidth = child.getBounds().getWidth();
-        int childHeight = child.getBounds().getHeight();
-
-        bounds.setHeight(bounds.getHeight() + childHeight);
-        bounds.setWidth(bounds.getWidth() > childWidth ? bounds.getWidth() : childWidth);
-
-        cursor.setY(cursor.getY() + childHeight);
+        _bounds.setX(cursor.getX());
+        _bounds.setY(cursor.getY());
     }
 
     @Override
@@ -59,16 +48,23 @@ public class Column extends CompositeGlyph {
 
     @Override
     public void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds) {
+        int childWidth = bounds.getWidth();
+        int childHeight = bounds.getHeight();
+
+        _bounds.setHeight(_bounds.getHeight() + childHeight);
+        _bounds.setWidth(_bounds.getWidth() > childWidth ? _bounds.getWidth() : childWidth);
+
+        cursor.setY(cursor.getY() + childHeight);
     }
 
     @Override
     public void adjustBounds(Cursor cursor) {
-        bounds.setX(cursor.getX());
-        bounds.setY(cursor.getY() - bounds.getHeight());
+        _bounds.setX(cursor.getX());
+        _bounds.setY(cursor.getY() - _bounds.getHeight());
     }
 
     @Override
     public String toString() {
-        return "Column{" + "bounds=" + bounds + '}';
+        return "Column{" + "bounds=" + _bounds + '}';
     }
 }

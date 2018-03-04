@@ -81,16 +81,13 @@ public abstract class Embellishment extends Glyph {
     }
 
     @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        _glyph.adjustBoundsAndCursor(glyph, cursor);
-    }
-
-    @Override
     public void adjustCursorBeforeComposingChild(Cursor cursor) {
+        _glyph.adjustCursorBeforeComposingChild(cursor);
     }
 
     @Override
     public void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds) {
+        _glyph.adjustCursorAfterComposingChild(cursor, bounds);
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Character extends Glyph {
 
     @Override
     public void draw(Window window) {
-        window.drawCharacter(c, bounds.getX(), bounds.getY());
+        window.drawCharacter(c, _bounds.getX(), _bounds.getY());
     }
 
     @Override
@@ -45,29 +45,24 @@ public class Character extends Glyph {
 
     @Override
     public void setSize(Window window) {
-        bounds.setWidth(window.charWidth(c));
-        bounds.setHeight(window.charHeight(c));
+        _bounds.setWidth(window.charWidth(c));
+        _bounds.setHeight(window.charHeight(c));
     }
 
     @Override
     public void setPosition(Cursor cursor) {
-        bounds.setX(cursor.getX());
-        bounds.setY(cursor.getY());
+        _bounds.setX(cursor.getX());
+        _bounds.setY(cursor.getY());
     }
 
     @Override
     public Bounds getBounds() {
-        return bounds;
+        return _bounds;
     }
 
     @Override
     public String toString() {
-        return "Character{" + "c=" + c + ", bounds=" + bounds + '}';
-    }
-
-    @Override
-    public void adjustBoundsAndCursor(Glyph glyph, Cursor cursor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Character{" + "c=" + c + ", bounds=" + _bounds + '}';
     }
 
     @Override
