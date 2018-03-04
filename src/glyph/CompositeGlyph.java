@@ -59,8 +59,12 @@ public abstract class CompositeGlyph extends Composition {
     }
 
     @Override
-    public Glyph getChild(int position) {
-        return children.get(position);
+    public Glyph getChild(int position) throws GlyphException {
+        try {
+            return children.get(position);
+        } catch (IndexOutOfBoundsException ex) {
+            throw new GlyphException("No more children");
+        }
     }
 
     @Override

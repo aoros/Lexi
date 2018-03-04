@@ -4,6 +4,7 @@ package compositor;
 
 import glyph.Composition;
 import glyph.Glyph;
+import glyph.GlyphException;
 import window.Window;
 
 public class SimpleCompositor implements Compositor {
@@ -27,22 +28,23 @@ public class SimpleCompositor implements Compositor {
         Cursor cursor = new Cursor(composition.getBounds().getX(), composition.getBounds().getY());
         composition.resetBounds();
         Glyph parent = composition;
-
-        int i = 0;
-        while (true) {
-            try {
-                Glyph child = parent.getChild(i);
+        try {
+            Glyph child;
+            for (int i = 0; (child = parent.getChild(i)) != null; i++) {
                 child.setSize(window);
                 child.setPosition(cursor);
                 child.compose();
                 parent.adjustBoundsAndCursor(child, cursor);
-                i++;
-            } catch (Exception ex) {
-                break;
             }
+        } catch (GlyphException ex) {
         }
-
         parent.adjustSelf(cursor);
+    }
+    
+    public void composeRoot() throws GlyphException {
+        Glyph root = composition.getRoot();
+        if (root != null)
+            root.compose();
     }
 
     private void debugPrint(String msg) {

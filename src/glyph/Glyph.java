@@ -27,16 +27,11 @@ public abstract class Glyph {
 
     public abstract void remove(Glyph glyph);
 
-    public abstract Glyph getChild(int position);
+    public abstract Glyph getChild(int position) throws GlyphException;
 
     public abstract Glyph getParent();
 
-    public void compose() throws GlyphException {
-        // at root and not a Composition
-        if (this.getParent() == null) {
-            throw new GlyphException("Root glyph can only be a Composition object");
-        }
-    }
+    public abstract void compose();
 
     public String getName() {
         return name;
@@ -49,4 +44,14 @@ public abstract class Glyph {
     public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
 
     public abstract void adjustSelf(Cursor cursor);
+
+    public Glyph getRoot() {
+        Glyph curr = this;
+        Glyph p = this.getParent();
+        while (p != null) {
+            curr = p;
+            p = p.getParent();
+        }
+        return curr;
+    }
 }

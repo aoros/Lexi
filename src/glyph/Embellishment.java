@@ -21,7 +21,7 @@ public abstract class Embellishment extends Glyph {
     }
 
     @Override
-    public void compose() throws GlyphException {
+    public void compose() {
         _glyph.compose();
     }
 
@@ -41,7 +41,7 @@ public abstract class Embellishment extends Glyph {
     }
 
     @Override
-    public Glyph getChild(int position) {
+    public Glyph getChild(int position) throws GlyphException {
         return _glyph.getChild(position);
     }
 
