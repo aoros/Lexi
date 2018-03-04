@@ -27,14 +27,13 @@ public class Scroller extends Embellishment {
     @Override
     public void setPosition(Cursor cursor) {
         _glyph.setPosition(cursor);
-        cursor.setX(cursor.getX() + scrollbarWidth);
     }
 
     @Override
     public void draw(Window window) {
         _glyph.draw(window);
 
-        int x = _glyph.getBounds().getX() + _glyph.getBounds().getWidth();
+        int x = _glyph.getBounds().getX() + _glyph.getBounds().getWidth() - scrollbarWidth;
         int y = _glyph.getBounds().getY();
         int w = scrollbarWidth;
         int h = _glyph.getBounds().getHeight();

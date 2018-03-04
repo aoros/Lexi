@@ -28,8 +28,8 @@ public class Lexi {
         Window window = new SwingWindow("Lexi");
         window.setDebug(DEBUG);
         try {
-            build_hw1_configuration(window);
-//            build_hw2_configuration(window);
+//            build_hw1_configuration(window);
+            build_hw2_configuration(window);
 
 //            test_configuration_simple(window);
 //            test_configuration_rows(window);
@@ -41,18 +41,19 @@ public class Lexi {
     }
 
     private static void test_configuration_simple(Window window) throws GlyphException {
-        Glyph root = new Row(window, "root");
-//        Glyph row1 = new Row(window, "row1");
+        Glyph root = new Column(window, "root");
+        Glyph row = new Scroller(new Row(window, "row"));
 //        Glyph row2 = new Row(window, "row2");
 
 //        root.insert(row1, 0);
-        root.insert(new Scroller(new Character('a')), 0);
-        root.insert(new Character('b'), 1);
+        row.insert(new Character('a'), 0);
+        row.insert(new Character('b'), 1);
+        root.insert(row, 0);
+//        root.insert(new Character('b'), 1);
 
 //        root.insert(row2, 1);
 //        row1.insert(new Character('c'), 0);
 //        row1.insert(new Character('d'), 1);
-
         window.setContents(root);
     }
 

@@ -34,6 +34,8 @@ public class Column extends CompositeGlyph {
 
     @Override
     public void setSize(Window window) {
+        _bounds.setWidth(0);
+        _bounds.setHeight(0);
     }
 
     @Override
