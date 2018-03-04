@@ -43,8 +43,6 @@ public abstract class Glyph {
 
     public abstract void adjustBoundsAndCursor(Glyph glyph, Cursor cursor);
 
-    public abstract void adjustSelf(Cursor cursor);
-
     public Glyph getRoot() {
         Glyph curr = this;
         Glyph p = this.getParent();

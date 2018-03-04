@@ -40,7 +40,6 @@ public class SimpleCompositor implements Compositor {
             }
         } catch (GlyphException ex) {
         }
-        parent.adjustSelf(cursor);
         parent.adjustBounds(cursor);
     }
     
