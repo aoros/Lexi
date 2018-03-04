@@ -31,14 +31,17 @@ public class SimpleCompositor implements Compositor {
         try {
             Glyph child;
             for (int i = 0; (child = parent.getChild(i)) != null; i++) {
+                parent.adjustCursorBeforeComposingChild(cursor);
                 child.setSize(window);
                 child.setPosition(cursor);
                 child.compose();
+                parent.adjustCursorAfterComposingChild(cursor, child.getBounds());
                 parent.adjustBoundsAndCursor(child, cursor);
             }
         } catch (GlyphException ex) {
         }
         parent.adjustSelf(cursor);
+        parent.adjustBounds(cursor);
     }
     
     @Override

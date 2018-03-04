@@ -91,6 +91,18 @@ public abstract class Embellishment extends Glyph {
     }
 
     @Override
+    public void adjustCursorBeforeComposingChild(Cursor cursor) {
+    }
+
+    @Override
+    public void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds) {
+    }
+
+    @Override
+    public void adjustBounds(Cursor cursor) {
+    }
+
+    @Override
     public String toString() {
         return "Embellishment{" + "composition=" + _glyph + '}';
     }

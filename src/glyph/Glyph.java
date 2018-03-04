@@ -54,4 +54,10 @@ public abstract class Glyph {
         }
         return curr;
     }
+
+    public abstract void adjustCursorBeforeComposingChild(Cursor cursor);
+
+    public abstract void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds);
+
+    public abstract void adjustBounds(Cursor cursor);
 }

@@ -74,4 +74,16 @@ public class Rectangle extends Glyph {
     @Override
     public void compose() {
     }
+
+    @Override
+    public void adjustCursorBeforeComposingChild(Cursor cursor) {
+    }
+
+    @Override
+    public void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds) {
+    }
+
+    @Override
+    public void adjustBounds(Cursor cursor) {
+    }
 }
