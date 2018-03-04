@@ -50,7 +50,7 @@ public abstract class CompositeGlyph extends Composition {
             current = currentParent;
             currentParent = current.getParent();
         }
-        current.compose();
+        compositor.composeRoot();
     }
 
     @Override

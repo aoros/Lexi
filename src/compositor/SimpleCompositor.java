@@ -41,7 +41,8 @@ public class SimpleCompositor implements Compositor {
         parent.adjustSelf(cursor);
     }
     
-    public void composeRoot() throws GlyphException {
+    @Override
+    public void composeRoot() {
         Glyph root = composition.getRoot();
         if (root != null)
             root.compose();
