@@ -73,6 +73,6 @@ public class Row extends CompositeGlyph {
 
     @Override
     public String toString() {
-        return "Row{" + "bounds=" + _bounds + '}';
+        return "Row{" + "name=" + name + " bounds=" + _bounds + '}';
     }
 }

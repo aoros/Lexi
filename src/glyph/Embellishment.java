@@ -97,6 +97,6 @@ public abstract class Embellishment extends Glyph {
 
     @Override
     public String toString() {
-        return "Embellishment{" + "composition=" + _glyph + '}';
+        return "Embellishment{" + "_glyph=" + _glyph + '}';
     }
 }

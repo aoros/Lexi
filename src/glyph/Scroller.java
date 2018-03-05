@@ -20,6 +20,7 @@ public class Scroller extends Embellishment {
     @Override
     public void setSize(Window window) {
         _glyph.setSize(window);
+
         _glyph.getBounds().setWidth(_glyph.getBounds().getWidth() + scrollbarWidth);
         _glyph.getBounds().setHeight(_glyph.getBounds().getHeight());
     }
@@ -33,11 +34,16 @@ public class Scroller extends Embellishment {
     public void draw(Window window) {
         _glyph.draw(window);
 
-        int x = _glyph.getBounds().getX() + _glyph.getBounds().getWidth() - scrollbarWidth;
+        int x = _glyph.getBounds().getX() + _glyph.getBounds().getWidth();
         int y = _glyph.getBounds().getY();
         int w = scrollbarWidth;
         int h = _glyph.getBounds().getHeight();
 
         window.addScrollBar(x, y, w, h);
+    }
+
+    @Override
+    public String toString() {
+        return "Scroller{" + "_glyph=" + _glyph + '}';
     }
 }

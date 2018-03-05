@@ -2,11 +2,13 @@
 //Decorator(175).Component
 package glyph;
 
+import compositor.Compositor;
 import compositor.Cursor;
 import window.Window;
 
 public abstract class Glyph {
 
+    Compositor compositor;
     Glyph parent;
     String name;
     Bounds _bounds = new Bounds(0, 0, 0, 0);

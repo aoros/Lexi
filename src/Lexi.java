@@ -9,6 +9,8 @@ import glyph.GlyphException;
 import glyph.Rectangle;
 import glyph.Row;
 import glyph.Scroller;
+import java.util.LinkedList;
+import java.util.Queue;
 import window.SwingWindow;
 import window.Window;
 
@@ -22,16 +24,16 @@ import window.Window;
  */
 public class Lexi {
 
-    private static final boolean DEBUG = true;
+    private static boolean debug = false;
 
     public static void main(String[] args) {
         Window window = new SwingWindow("Lexi");
-        window.setDebug(DEBUG);
+        window.setDebug(debug);
         try {
 //            build_hw1_configuration(window);
-            build_hw2_configuration(window);
+//            build_hw2_configuration(window);
 
-//            test_configuration_simple(window);
+            test_configuration_simple(window);
 //            test_configuration_rows(window);
 //            test_configuration_cols(window);
         } catch (GlyphException ex) {
@@ -46,11 +48,15 @@ public class Lexi {
 //        Glyph row2 = new Row(window, "row2");
 
 //        root.insert(row1, 0);
-        row.insert(new Character('a'), 0);
+        row.insert(new Scroller(new Character('a')), 0);
         row.insert(new Character('b'), 1);
+        debug = true;
+        window.setDebug(debug);
         root.insert(row, 0);
-//        root.insert(new Character('b'), 1);
 
+        printLexiTree(root);
+
+//        root.insert(new Character('b'), 1);
 //        root.insert(row2, 1);
 //        row1.insert(new Character('c'), 0);
 //        row1.insert(new Character('d'), 1);
@@ -131,6 +137,9 @@ public class Lexi {
         insert(row2_lev_1, rect_B, 1);
         insert(row2_lev_1, ch_y, 2);
 
+        debug = true;
+        printLexiTree(root);
+        
         window.setContents(root);
     }
 
@@ -168,5 +177,29 @@ public class Lexi {
 
     private static void insert(Glyph parent, Glyph child, int i) throws GlyphException {
         parent.insert(child, i);
+    }
+
+    public static void printLexiTree(Glyph glyph) throws GlyphException {
+        if (debug) {
+            System.out.println("===================================================");
+            Glyph root = glyph.getRoot();
+            Queue<Glyph> queue = new LinkedList<>();
+            queue.add(root);
+
+            String spaces = "";
+            while (!queue.isEmpty()) {
+                Glyph g = queue.remove();
+                Glyph child;
+                try {
+                    for (int i = 0; (child = g.getChild(i)) != null; i++) {
+                        queue.add(child);
+                    }
+                } catch (Exception ex) {
+                }
+                System.out.println(spaces + g.toString());
+                spaces += " ";
+            }
+            System.out.println("===================================================");
+        }
     }
 }

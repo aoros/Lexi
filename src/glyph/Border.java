@@ -58,4 +58,10 @@ public class Border extends Embellishment {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "Border{" + "_glyph=" + _glyph + '}';
+    }
+    
 }

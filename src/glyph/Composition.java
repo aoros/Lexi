@@ -2,26 +2,18 @@
 // Strategy(315).Context
 package glyph;
 
-import compositor.Compositor;
+import compositor.SimpleCompositor;
 import window.Window;
 
 public abstract class Composition extends Glyph {
 
-    Compositor compositor;
     Window window;
 
     public Composition(Window window) {
         this.window = window;
+        this.compositor = new SimpleCompositor(window);
+        compositor.setComposition(this);
     }
 
     public abstract void resetBounds();
-
-//    @Override
-//    public abstract void adjustCursorBeforeComposingChild(Cursor cursor);
-//
-//    @Override
-//    public abstract void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds);
-//
-//    @Override
-//    public abstract void adjustBounds(Cursor cursor);
 }

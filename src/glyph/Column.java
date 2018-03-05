@@ -73,6 +73,6 @@ public class Column extends CompositeGlyph {
 
     @Override
     public String toString() {
-        return "Column{" + "bounds=" + _bounds + '}';
+        return "Column{" + "name=" + name + "bounds=" + _bounds + '}';
     }
 }
