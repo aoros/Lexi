@@ -33,7 +33,10 @@ public class Lexi {
 //            build_hw1_configuration(window);
 //            build_hw2_configuration(window);
 
-            test_configuration_simple(window);
+            test_root_row_and_2_rows_hw1(window);
+//            test_root_col_and_2_rows_hw1(window);
+//            test_root_col_and_2_rows_hw2(window);
+//            test_configuration_simple_w_scrollers(window);
 //            test_configuration_rows(window);
 //            test_configuration_cols(window);
         } catch (GlyphException ex) {
@@ -42,7 +45,62 @@ public class Lexi {
         }
     }
 
-    private static void test_configuration_simple(Window window) throws GlyphException {
+    private static void test_root_col_and_2_rows_hw2(Window window) throws GlyphException {
+        Glyph root = new Column(window, "root");
+        Glyph row1 = new Row("ab", window, "row1");
+        Glyph row2 = new Row("cd", window, "row2");
+
+        root.insert(row1, 0);
+
+        debug = true;
+        window.setDebug(debug);
+        root.insert(row2, 1);
+
+        printLexiTree(root);
+        window.setContents(root);
+    }
+
+        private static void test_root_row_and_2_rows_hw1(Window window) throws GlyphException {
+        Glyph root = new Row(window, "root"); // root -> (x=0, y=0, w=27, h=16)
+        Glyph row1 = new Row(window, "row1"); // row1 -> (x=0, y=0, w=14, h=16)
+        Glyph row2 = new Row(window, "row2"); // row2 -> (x=14, y=0, w=13, h=16)
+
+        row1.insert(new Character('a'), 0); // a -> (x=0, y=0, w=7, h=16)
+        row1.insert(new Character('b'), 1); // b -> (x=7, y=0, w=7, h=16)
+        row2.insert(new Character('c'), 0); // c -> (x=14, y=0, w=6, h=16)
+        row2.insert(new Character('d'), 1); // d -> (x=20, y=0, w=7, h=16)
+
+        root.insert(row1, 0);
+
+        debug = true;
+        window.setDebug(debug);
+        root.insert(row2, 1);
+
+        printLexiTree(root);
+        window.setContents(root);
+    }
+        
+    private static void test_root_col_and_2_rows_hw1(Window window) throws GlyphException {
+        Glyph root = new Column(window, "root");
+        Glyph row1 = new Row(window, "row1");
+        Glyph row2 = new Row(window, "row2");
+
+        row1.insert(new Character('a'), 0);
+        row1.insert(new Character('b'), 1);
+        row2.insert(new Character('c'), 0);
+        row2.insert(new Character('d'), 1);
+
+        root.insert(row1, 0);
+
+        debug = true;
+        window.setDebug(debug);
+        root.insert(row2, 1);
+
+        printLexiTree(root);
+        window.setContents(root);
+    }
+
+    private static void test_configuration_simple_w_scrollers(Window window) throws GlyphException {
         Glyph root = new Column(window, "root");
         Glyph row = new Scroller(new Row(window, "row"));
 //        Glyph row2 = new Row(window, "row2");
@@ -139,7 +197,7 @@ public class Lexi {
 
         debug = true;
         printLexiTree(root);
-        
+
         window.setContents(root);
     }
 
