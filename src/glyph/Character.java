@@ -1,7 +1,6 @@
 // Composite(163).Leaf
 package glyph;
 
-import compositor.Cursor;
 import window.Window;
 
 public class Character extends Glyph {
@@ -24,7 +23,7 @@ public class Character extends Glyph {
     }
 
     @Override
-    public boolean intersects(Cursor point) {
+    public boolean intersects(Bounds point) {
         return false;
     }
 
@@ -50,7 +49,7 @@ public class Character extends Glyph {
     }
 
     @Override
-    public void setPosition(Cursor cursor) {
+    public void setPosition(Bounds cursor) {
         _bounds.setX(cursor.getX());
         _bounds.setY(cursor.getY());
     }
@@ -62,18 +61,18 @@ public class Character extends Glyph {
 
     @Override
     public String toString() {
-        return "Character{" + "c=" + c + ", bounds=" + _bounds + '}';
+        return "Character{" + "c=" + c + ", bounds=" + _bounds + " parentName=" + parent.getName() + '}';
     }
 
     @Override
-    public void adjustCursorBeforeComposingChild(Cursor cursor) {
+    public void adjustCursorBeforeComposingChild(Bounds cursor) {
     }
 
     @Override
-    public void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds) {
+    public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
     }
 
     @Override
-    public void adjustBounds(Cursor cursor) {
+    public void adjustBounds(Bounds cursor) {
     }
 }

@@ -1,7 +1,6 @@
 //Decorator(175).ConcreteDecoratorA
 package glyph;
 
-import compositor.Cursor;
 import window.Window;
 
 public class Border extends Embellishment {
@@ -28,7 +27,7 @@ public class Border extends Embellishment {
     }
 
     @Override
-    public void setPosition(Cursor cursor) {
+    public void setPosition(Bounds cursor) {
         _glyph.setPosition(cursor);
     }
 

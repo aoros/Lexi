@@ -2,6 +2,8 @@
 // Strategy(315).ConcreteStrategy
 package compositor;
 
+import debug.DebugUtils;
+import glyph.Bounds;
 import glyph.Composition;
 import glyph.Glyph;
 import glyph.GlyphException;
@@ -23,47 +25,55 @@ public class SimpleCompositor implements Compositor {
 
     @Override
     public void compose() {
-        debugPrint("===========================================================");
-        debugPrint("compose()");
+        debugPrint("=== ENTERING ========================================================");
         // create cursor based on parent
-        Cursor cursor = new Cursor(composition.getBounds().getX(), composition.getBounds().getY());
-        
+        Bounds cursor = new Bounds(composition.getBounds().getX(), composition.getBounds().getY(), 0, 0);
+
         Glyph parent = composition;
-        debugPrint("   0. parent: " + parent.toString());
+        debugPrint("parent --> " + parent.getName());
+        debugPrint(parent, " ");
         debugPrint("   0. cursor: " + cursor.toString());
         try {
             Glyph child;
             for (int i = 0; (child = parent.getChild(i)) != null; i++) {
-                debugPrint("      1. (child): " + child.toString());
+                debugPrint("      child before compose --> " + child.getName());
+                debugPrint(child, "       ");
                 parent.adjustCursorBeforeComposingChild(cursor);
                 debugPrint("      2. (cursor): " + cursor.toString());
                 child.setSize(window);
-                debugPrint("      3. (child): " + child.toString());
                 child.setPosition(cursor);
-                debugPrint("      4. (child): " + child.toString());
+                debugPrint("      calling child.compose()");
                 child.compose();
-                debugPrint("      5. (child): " + child.toString());
+                debugPrint("      child after compose --> " + child.getName());
+                debugPrint(child, "       ");
                 parent.adjustCursorAfterComposingChild(cursor, child.getBounds());
-                debugPrint("      6. (parent): " + parent.toString());
                 debugPrint("      6. (cursor): " + cursor.toString());
             }
         } catch (GlyphException ex) {
         }
         parent.adjustBounds(cursor);
-        debugPrint("   7. parent: " + parent.toString());
-        debugPrint("===========================================================");
+        debugPrint("parent --> " + parent.getName());
+        debugPrint(parent, " ");
+        debugPrint("=== EXITING  ========================================================");
     }
 
     @Override
     public void composeRoot() {
         Glyph root = composition.getRoot();
-        if (root != null)
+        if (root != null) {
             root.compose();
+        }
     }
 
     private void debugPrint(String msg) {
         if (window.getDebug()) {
             System.out.println(msg);
+        }
+    }
+
+    private void debugPrint(Glyph glyph, String spaces) {
+        if (window.getDebug()) {
+            DebugUtils.printLexiTree(glyph, spaces);
         }
     }
 }

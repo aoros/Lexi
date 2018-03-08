@@ -2,7 +2,6 @@
 //Decorator(175).ConcreteComponent
 package glyph;
 
-import compositor.Cursor;
 import window.Window;
 
 public class Row extends CompositeGlyph {
@@ -34,45 +33,43 @@ public class Row extends CompositeGlyph {
 
     @Override
     public void setSize(Window window) {
-        _bounds.setWidth(0);
-        _bounds.setHeight(0);
     }
 
     @Override
-    public void setPosition(Cursor cursor) {
+    public void setPosition(Bounds cursor) {
         _bounds.setX(cursor.getX());
         _bounds.setY(cursor.getY());
     }
 
     @Override
-    public void adjustCursorBeforeComposingChild(Cursor cursor) {
-        if (cursor.getX() == _bounds.getX() && cursor.getY() == _bounds.getY()) {
-            _bounds.setWidth(0);
-            _bounds.setHeight(0);
-        }
-        cursor.setX(_bounds.getX() + _bounds.getWidth());
-        cursor.setY(_bounds.getY());
+    public void adjustCursorBeforeComposingChild(Bounds cursor) {
+//        cursor.setX(_bounds.getX());
+//        cursor.setY(_bounds.getY());
     }
 
     @Override
-    public void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds) {
-        int childWidth = bounds.getWidth();
-        int childHeight = bounds.getHeight();
+    public void adjustCursorAfterComposingChild(Bounds cursor, Bounds childBounds) {
+        _bounds.setWidth(cursor.getX() + childBounds.getWidth());
+        _bounds.setHeight(_bounds.getHeight() > childBounds.getHeight() ? _bounds.getHeight() : childBounds.getHeight());
 
-        _bounds.setWidth(cursor.getX() + childWidth);
-        _bounds.setHeight(_bounds.getHeight() > childHeight ? _bounds.getHeight() : childHeight);
-
-        cursor.setX(cursor.getX() + childWidth);
+        cursor.setX(cursor.getX() + childBounds.getWidth());
+        cursor.setY(cursor.getY());
+        cursor.setWidth(cursor.getX() - _bounds.getX());
+        cursor.setHeight(_bounds.getHeight());
     }
 
     @Override
-    public void adjustBounds(Cursor cursor) {
-        _bounds.setX(cursor.getX() - _bounds.getWidth());
-        _bounds.setY(cursor.getY());
+    public void adjustBounds(Bounds cursor) {
+        _bounds.setWidth(cursor.getWidth());
+        _bounds.setHeight(cursor.getHeight());
     }
 
     @Override
     public String toString() {
-        return "Row{" + "name=" + name + " bounds=" + _bounds + '}';
+        if (parent != null) {
+            return "Row{" + "name=" + name + " bounds=" + _bounds + " parentName=" + parent.getName() + '}';
+        } else {
+            return "Row{" + "name=" + name + " bounds=" + _bounds + " root}";
+        }
     }
 }

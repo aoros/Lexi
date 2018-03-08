@@ -1,7 +1,6 @@
 // Composite(163).Composite
 package glyph;
 
-import compositor.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 import window.Window;
@@ -65,7 +64,7 @@ public abstract class CompositeGlyph extends Composition {
     }
 
     @Override
-    public boolean intersects(Cursor point) {
+    public boolean intersects(Bounds point) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

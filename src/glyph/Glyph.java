@@ -3,7 +3,6 @@
 package glyph;
 
 import compositor.Compositor;
-import compositor.Cursor;
 import window.Window;
 
 public abstract class Glyph {
@@ -17,13 +16,13 @@ public abstract class Glyph {
 
     public abstract void setSize(Window window);
 
-    public abstract void setPosition(Cursor cursor);
+    public abstract void setPosition(Bounds cursor);
 
     public Bounds getBounds() {
         return _bounds;
     }
 
-    public abstract boolean intersects(Cursor point);
+    public abstract boolean intersects(Bounds point);
 
     public abstract void insert(Glyph glyph, int position) throws GlyphException;
 
@@ -54,9 +53,9 @@ public abstract class Glyph {
         return curr;
     }
 
-    public abstract void adjustCursorBeforeComposingChild(Cursor cursor);
+    public abstract void adjustCursorBeforeComposingChild(Bounds cursor);
 
-    public abstract void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds);
+    public abstract void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds);
 
-    public abstract void adjustBounds(Cursor cursor);
+    public abstract void adjustBounds(Bounds cursor);
 }

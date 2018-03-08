@@ -1,7 +1,6 @@
 //Decorator(175).Decorator
 package glyph;
 
-import compositor.Cursor;
 import window.Window;
 
 public abstract class Embellishment extends Glyph {
@@ -56,7 +55,7 @@ public abstract class Embellishment extends Glyph {
     }
 
     @Override
-    public boolean intersects(Cursor point) {
+    public boolean intersects(Bounds point) {
         return _glyph.intersects(point);
     }
 
@@ -66,7 +65,7 @@ public abstract class Embellishment extends Glyph {
     }
 
     @Override
-    public void setPosition(Cursor cursor) {
+    public void setPosition(Bounds cursor) {
         _glyph.setPosition(cursor);
     }
 
@@ -81,17 +80,17 @@ public abstract class Embellishment extends Glyph {
     }
 
     @Override
-    public void adjustCursorBeforeComposingChild(Cursor cursor) {
+    public void adjustCursorBeforeComposingChild(Bounds cursor) {
         _glyph.adjustCursorBeforeComposingChild(cursor);
     }
 
     @Override
-    public void adjustCursorAfterComposingChild(Cursor cursor, Bounds bounds) {
+    public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
         _glyph.adjustCursorAfterComposingChild(cursor, bounds);
     }
 
     @Override
-    public void adjustBounds(Cursor cursor) {
+    public void adjustBounds(Bounds cursor) {
         _glyph.adjustBounds(cursor);
     }
 

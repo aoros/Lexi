@@ -1,5 +1,6 @@
 // Composite(163).Client
 
+import debug.DebugUtils;
 import glyph.Border;
 import glyph.Character;
 import glyph.Column;
@@ -9,8 +10,6 @@ import glyph.GlyphException;
 import glyph.Rectangle;
 import glyph.Row;
 import glyph.Scroller;
-import java.util.LinkedList;
-import java.util.Queue;
 import window.SwingWindow;
 import window.Window;
 
@@ -33,9 +32,10 @@ public class Lexi {
 //            build_hw1_configuration(window);
 //            build_hw2_configuration(window);
 
-            test_root_row_and_2_rows_hw1(window);
+//            test_root_col_and_2_cols_hw1(window);
+//            test_root_row_and_2_rows_hw1(window);
 //            test_root_col_and_2_rows_hw1(window);
-//            test_root_col_and_2_rows_hw2(window);
+            test_root_col_and_2_rows_hw2(window);
 //            test_configuration_simple_w_scrollers(window);
 //            test_configuration_rows(window);
 //            test_configuration_cols(window);
@@ -43,6 +43,26 @@ public class Lexi {
             System.err.println(ex);
             System.exit(1);
         }
+    }
+
+    private static void test_root_col_and_2_cols_hw1(Window window) throws GlyphException {
+        Glyph root = new Column(window, "root"); // root -> (x=0, y=0, w=27, h=16)
+        Glyph col1 = new Column(window, "col1"); // row1 -> (x=0, y=0, w=14, h=16)
+        Glyph col2 = new Column(window, "col2"); // row2 -> (x=14, y=0, w=13, h=16)
+
+        col1.insert(new Character('a'), 0); // a -> (x=0, y=0, w=7, h=16)
+        col1.insert(new Character('b'), 1); // b -> (x=7, y=0, w=7, h=16)
+        col2.insert(new Character('c'), 0); // c -> (x=14, y=0, w=6, h=16)
+        col2.insert(new Character('d'), 1); // d -> (x=20, y=0, w=7, h=16)
+
+        root.insert(col1, 0);
+
+        debug = true;
+        window.setDebug(debug);
+        root.insert(col2, 1);
+
+        DebugUtils.printLexiTree(root);
+        window.setContents(root);
     }
 
     private static void test_root_col_and_2_rows_hw2(Window window) throws GlyphException {
@@ -56,11 +76,11 @@ public class Lexi {
         window.setDebug(debug);
         root.insert(row2, 1);
 
-        printLexiTree(root);
+        DebugUtils.printLexiTree(root);
         window.setContents(root);
     }
 
-        private static void test_root_row_and_2_rows_hw1(Window window) throws GlyphException {
+    private static void test_root_row_and_2_rows_hw1(Window window) throws GlyphException {
         Glyph root = new Row(window, "root"); // root -> (x=0, y=0, w=27, h=16)
         Glyph row1 = new Row(window, "row1"); // row1 -> (x=0, y=0, w=14, h=16)
         Glyph row2 = new Row(window, "row2"); // row2 -> (x=14, y=0, w=13, h=16)
@@ -76,10 +96,10 @@ public class Lexi {
         window.setDebug(debug);
         root.insert(row2, 1);
 
-        printLexiTree(root);
+        DebugUtils.printLexiTree(root);
         window.setContents(root);
     }
-        
+
     private static void test_root_col_and_2_rows_hw1(Window window) throws GlyphException {
         Glyph root = new Column(window, "root");
         Glyph row1 = new Row(window, "row1");
@@ -96,7 +116,7 @@ public class Lexi {
         window.setDebug(debug);
         root.insert(row2, 1);
 
-        printLexiTree(root);
+        DebugUtils.printLexiTree(root);
         window.setContents(root);
     }
 
@@ -112,7 +132,7 @@ public class Lexi {
         window.setDebug(debug);
         root.insert(row, 0);
 
-        printLexiTree(root);
+        DebugUtils.printLexiTree(root);
 
 //        root.insert(new Character('b'), 1);
 //        root.insert(row2, 1);
@@ -196,7 +216,7 @@ public class Lexi {
         insert(row2_lev_1, ch_y, 2);
 
         debug = true;
-        printLexiTree(root);
+        DebugUtils.printLexiTree(root);
 
         window.setContents(root);
     }
@@ -235,29 +255,5 @@ public class Lexi {
 
     private static void insert(Glyph parent, Glyph child, int i) throws GlyphException {
         parent.insert(child, i);
-    }
-
-    public static void printLexiTree(Glyph glyph) throws GlyphException {
-        if (debug) {
-            System.out.println("===================================================");
-            Glyph root = glyph.getRoot();
-            Queue<Glyph> queue = new LinkedList<>();
-            queue.add(root);
-
-            String spaces = "";
-            while (!queue.isEmpty()) {
-                Glyph g = queue.remove();
-                Glyph child;
-                try {
-                    for (int i = 0; (child = g.getChild(i)) != null; i++) {
-                        queue.add(child);
-                    }
-                } catch (Exception ex) {
-                }
-                System.out.println(spaces + g.toString());
-                spaces += " ";
-            }
-            System.out.println("===================================================");
-        }
     }
 }
