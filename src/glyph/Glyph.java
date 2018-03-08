@@ -31,6 +31,8 @@ public abstract class Glyph {
     public abstract Glyph getChild(int position) throws GlyphException;
 
     public abstract Glyph getParent();
+    
+    public abstract void setParent(Glyph parent);
 
     public void compose() {
     }

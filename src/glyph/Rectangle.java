@@ -71,4 +71,9 @@ public class Rectangle extends Glyph {
     @Override
     public void adjustBounds(Bounds cursor) {
     }
+
+    @Override
+    public void setParent(Glyph parent) {
+        this.parent = parent;
+    }
 }

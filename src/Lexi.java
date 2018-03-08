@@ -30,12 +30,16 @@ public class Lexi {
         window.setDebug(debug);
         try {
 //            build_hw1_configuration(window);
-//            build_hw2_configuration(window);
+            build_hw2_configuration(window);
 
 //            test_root_col_and_2_cols_hw1(window);
 //            test_root_row_and_2_rows_hw1(window);
 //            test_root_col_and_2_rows_hw1(window);
-            test_root_col_and_2_rows_hw2(window);
+//            test_root_col_and_2_rows_hw2(window);
+            test_configuration_simple_border_1(window);
+//            test_configuration_simple_scroller_1(window);
+//            test_configuration_simple_scroller_2(window);
+//            test_configuration_simple_scroller_3(window);
 //            test_configuration_simple_w_scrollers(window);
 //            test_configuration_rows(window);
 //            test_configuration_cols(window);
@@ -43,6 +47,59 @@ public class Lexi {
             System.err.println(ex);
             System.exit(1);
         }
+    }
+
+    private static void test_configuration_simple_border_1(Window window) throws GlyphException {
+        Glyph root = new Column(window, "root");
+        debug = true;
+        window.setDebug(debug);
+
+        root.insert(new Border(new Character('a')), 0);
+
+        DebugUtils.printLexiTree(root);
+        window.setContents(root);
+    }
+
+    private static void test_configuration_simple_scroller_1(Window window) throws GlyphException {
+        Glyph root = new Column(window, "root");
+        Glyph row = new Row(window, "row");
+
+        row.insert(new Scroller(new Character('a')), 0);
+        row.insert(new Character('b'), 1);
+        debug = true;
+        window.setDebug(debug);
+        root.insert(row, 0);
+
+        DebugUtils.printLexiTree(root);
+        window.setContents(root);
+    }
+
+    private static void test_configuration_simple_scroller_2(Window window) throws GlyphException {
+        Glyph root = new Column(window, "root");
+        Glyph row = new Scroller(new Row(window, "row"));
+
+        row.insert(new Character('a'), 0);
+        row.insert(new Character('b'), 1);
+        debug = true;
+        window.setDebug(debug);
+        root.insert(row, 0);
+
+        DebugUtils.printLexiTree(root);
+        window.setContents(root);
+    }
+
+    private static void test_configuration_simple_scroller_3(Window window) throws GlyphException {
+        Glyph root = new Column(window, "root");
+        Glyph row = new Scroller(new Row(window, "row"));
+
+        row.insert(new Scroller(new Character('a')), 0);
+        row.insert(new Character('b'), 1);
+        debug = true;
+        window.setDebug(debug);
+        root.insert(row, 0);
+
+        DebugUtils.printLexiTree(root);
+        window.setContents(root);
     }
 
     private static void test_root_col_and_2_cols_hw1(Window window) throws GlyphException {

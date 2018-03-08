@@ -21,14 +21,16 @@ public class Border extends Embellishment {
     @Override
     public void setSize(Window window) {
         _glyph.setSize(window);
+
         _glyph.getBounds().setWidth(_glyph.getBounds().getWidth() + padding * 2);
         _glyph.getBounds().setHeight(_glyph.getBounds().getHeight() + padding * 2);
-        shiftGlyphAndAllChildren(_glyph);
     }
 
     @Override
     public void setPosition(Bounds cursor) {
         _glyph.setPosition(cursor);
+//        _glyph.getBounds().setX(_glyph.getBounds().getX() + padding);
+//        _glyph.getBounds().setY(_glyph.getBounds().getY() + padding);
     }
 
     @Override
@@ -43,14 +45,14 @@ public class Border extends Embellishment {
     }
 
     private void shiftGlyphAndAllChildren(Glyph glyph) {
-        glyph.getBounds().setX(glyph.getBounds().getX() + padding);
-        glyph.getBounds().setY(glyph.getBounds().getY() + padding);
+//        glyph.getBounds().setX(glyph.getBounds().getX() + padding);
+//        glyph.getBounds().setY(glyph.getBounds().getY() + padding);
         int i = 0;
         while (true) {
             try {
                 Glyph child = glyph.getChild(i);
-                child.getBounds().setX(child.getBounds().getX() + padding);
-                child.getBounds().setY(child.getBounds().getY() + padding);
+                child.getBounds().setX(glyph.getBounds().getX() + padding);
+                child.getBounds().setY(glyph.getBounds().getY() + padding);
                 i++;
             } catch (Exception ex) {
                 break;
@@ -62,5 +64,5 @@ public class Border extends Embellishment {
     public String toString() {
         return "Border{" + "_glyph=" + _glyph + '}';
     }
-    
+
 }

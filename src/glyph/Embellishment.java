@@ -36,7 +36,7 @@ public abstract class Embellishment extends Glyph {
 
     @Override
     public Glyph getParent() {
-        return parent;
+        return _glyph.getParent();
     }
 
     @Override
@@ -92,6 +92,12 @@ public abstract class Embellishment extends Glyph {
     @Override
     public void adjustBounds(Bounds cursor) {
         _glyph.adjustBounds(cursor);
+    }
+    
+    @Override
+    public void setParent(Glyph parent) {
+        _glyph.setParent(parent);
+        this.parent = parent;
     }
 
     @Override

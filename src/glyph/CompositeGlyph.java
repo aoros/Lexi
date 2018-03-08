@@ -36,7 +36,7 @@ public abstract class CompositeGlyph extends Composition {
 
     @Override
     public void insert(Glyph glyph, int position) throws GlyphException {
-        glyph.parent = this;
+        glyph.setParent(this);
         children.add(position, glyph);
 
         // go to the root and compose from there

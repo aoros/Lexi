@@ -33,7 +33,11 @@ public class Scroller extends Embellishment {
     public void draw(Window window) {
         _glyph.draw(window);
 
-        int x = _glyph.getBounds().getX() + _glyph.getBounds().getWidth();
+        int x;
+        if (_glyph.compositor == null)
+            x = _glyph.getBounds().getX() + _glyph.getBounds().getWidth() - scrollbarWidth;
+        else
+            x = _glyph.getBounds().getX() + _glyph.getBounds().getWidth();
         int y = _glyph.getBounds().getY();
         int w = scrollbarWidth;
         int h = _glyph.getBounds().getHeight();
