@@ -23,6 +23,7 @@ public abstract class CompositeGlyph extends Composition {
         return parent;
     }
 
+    @Override
     public void setParent(Glyph parent) {
         this.parent = parent;
     }
@@ -66,10 +67,5 @@ public abstract class CompositeGlyph extends Composition {
     @Override
     public boolean intersects(Bounds point) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void resetBounds() {
-        _bounds.reset();
     }
 }

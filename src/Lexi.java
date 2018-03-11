@@ -36,11 +36,18 @@ public class Lexi {
 //            test_root_row_and_2_rows_hw1(window);
 //            test_root_col_and_2_rows_hw1(window);
 //            test_root_col_and_2_rows_hw2(window);
-            test_configuration_simple_border_1(window);
+//
+//          // Simple Border Tests
+//            test_configuration_simple_border_1(window);
+//            test_configuration_simple_border_2(window);
+//            test_configuration_simple_border_3(window);
+//
+//          // Simple Scroller Tests
 //            test_configuration_simple_scroller_1(window);
 //            test_configuration_simple_scroller_2(window);
 //            test_configuration_simple_scroller_3(window);
-//            test_configuration_simple_w_scrollers(window);
+//            test_configuration_simple_scroller_4(window);
+//
 //            test_configuration_rows(window);
 //            test_configuration_cols(window);
         } catch (GlyphException ex) {
@@ -54,7 +61,37 @@ public class Lexi {
         debug = true;
         window.setDebug(debug);
 
-        root.insert(new Border(new Character('a')), 0);
+        root.insert(new Border(new Character('a'), window), 0);
+
+        DebugUtils.printLexiTree(root);
+        window.setContents(root);
+    }
+
+    private static void test_configuration_simple_border_2(Window window) throws GlyphException {
+        Glyph root = new Column(window, "root");
+        Glyph row = new Border(new Row(window, "border_row"), window);
+
+        row.insert(new Character('a'), 0);
+        row.insert(new Character('b'), 1);
+        debug = true;
+        window.setDebug(debug);
+        root.insert(row, 0);
+
+        DebugUtils.printLexiTree(root);
+        window.setContents(root);
+    }
+
+    private static void test_configuration_simple_border_3(Window window) throws GlyphException {
+        Glyph root = new Column(window, "root");
+        Glyph row = new Border(new Row(window, "border_row"), window);
+
+        row.insert(new Character('a'), 0);
+        row.insert(new Character('b'), 1);
+        row.insert(new Character('c'), 2);
+        row.insert(new Character('d'), 3);
+        debug = true;
+        window.setDebug(debug);
+        root.insert(row, 0);
 
         DebugUtils.printLexiTree(root);
         window.setContents(root);
@@ -64,7 +101,7 @@ public class Lexi {
         Glyph root = new Column(window, "root");
         Glyph row = new Row(window, "row");
 
-        row.insert(new Scroller(new Character('a')), 0);
+        row.insert(new Scroller(new Character('a'), window), 0);
         row.insert(new Character('b'), 1);
         debug = true;
         window.setDebug(debug);
@@ -76,7 +113,7 @@ public class Lexi {
 
     private static void test_configuration_simple_scroller_2(Window window) throws GlyphException {
         Glyph root = new Column(window, "root");
-        Glyph row = new Scroller(new Row(window, "row"));
+        Glyph row = new Scroller(new Row(window, "row"), window);
 
         row.insert(new Character('a'), 0);
         row.insert(new Character('b'), 1);
@@ -90,13 +127,31 @@ public class Lexi {
 
     private static void test_configuration_simple_scroller_3(Window window) throws GlyphException {
         Glyph root = new Column(window, "root");
-        Glyph row = new Scroller(new Row(window, "row"));
+        Glyph row = new Scroller(new Row(window, "row"), window);
 
-        row.insert(new Scroller(new Character('a')), 0);
+        row.insert(new Scroller(new Character('a'), window), 0);
         row.insert(new Character('b'), 1);
         debug = true;
         window.setDebug(debug);
         root.insert(row, 0);
+
+        DebugUtils.printLexiTree(root);
+        window.setContents(root);
+    }
+
+    private static void test_configuration_simple_scroller_4(Window window) throws GlyphException {
+        Composition root = new Row(window, "root");
+        Glyph ch_a = new Character('a');
+        Glyph row2 = new Scroller(new Row("ghk", window, "row2"), window);
+        Glyph ch_m = new Character('m');
+
+        // insert into the glyph tree
+        insert(root, ch_a, 0);
+        insert(root, row2, 1);
+
+        debug = true;
+        window.setDebug(debug);
+        insert(root, ch_m, 2);
 
         DebugUtils.printLexiTree(root);
         window.setContents(root);
@@ -177,27 +232,6 @@ public class Lexi {
         window.setContents(root);
     }
 
-    private static void test_configuration_simple_w_scrollers(Window window) throws GlyphException {
-        Glyph root = new Column(window, "root");
-        Glyph row = new Scroller(new Row(window, "row"));
-//        Glyph row2 = new Row(window, "row2");
-
-//        root.insert(row1, 0);
-        row.insert(new Scroller(new Character('a')), 0);
-        row.insert(new Character('b'), 1);
-        debug = true;
-        window.setDebug(debug);
-        root.insert(row, 0);
-
-        DebugUtils.printLexiTree(root);
-
-//        root.insert(new Character('b'), 1);
-//        root.insert(row2, 1);
-//        row1.insert(new Character('c'), 0);
-//        row1.insert(new Character('d'), 1);
-        window.setContents(root);
-    }
-
     private static void test_configuration_rows(Window window) throws GlyphException {
         Glyph ch_a = new Character('a');
         Glyph ch_m = new Character('m');
@@ -205,7 +239,7 @@ public class Lexi {
         Composition row1 = new Row(window, "row1");
         /////////////////////////////////////////////////////////////
 //		Glyph row2 = new Row("ghk", window, "row2");
-        Glyph row2 = new Scroller(new Row("ghk", window, "row2"));
+        Glyph row2 = new Scroller(new Row("ghk", window, "row2"), window);
 //		Glyph row2 = new Border(new Row("ghk", window, "row2"));
 //        Glyph row2 = new Border(new Scroller(new Row("ghk", window, "row2")));
         /////////////////////////////////////////////////////////////        
@@ -229,7 +263,7 @@ public class Lexi {
         Composition col1 = new Column(window, "row1");
         String[] arr = new String[1];
         arr[0] = "ghk";
-        Glyph col2 = new Scroller(new Border(new Column(arr, window, "row2")));
+        Glyph col2 = new Scroller(new Border(new Column(arr, window, "row2"), window), window);
 //        Composition row2 = new Row("ghk", window, "row2");
         Composition col3 = new Column(window, "row3");
 
@@ -289,7 +323,7 @@ public class Lexi {
         Composition root = new Column(window);
         Composition row1_lev_1 = new Row(window);
         Composition row2_lev_1 = new Row(window);
-        Glyph col1_lev_2 = new Scroller(new Border(new Column(window)));
+        Glyph col1_lev_2 = new Scroller(new Border(new Column(window), window), window);
         Composition row1_lev_3 = new Row("This is a", window);
         Composition row2_lev_3 = new Row("border demonstration.", window);
         Composition row3_lev_3 = new Row("Scroller too!", window);

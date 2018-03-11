@@ -5,32 +5,20 @@ import window.Window;
 
 public class Border extends Embellishment {
 
-    private int padding = 5;
-    private int maxHeight;
-    private int maxWidth;
+    private final int padding = 5;
 
-    public Border(Glyph glyph) {
-        super(glyph);
-    }
-
-    public Border(Glyph glyph, int padding) {
-        super(glyph);
-        this.padding = padding;
+    public Border(Glyph glyph, Window window) {
+        super(glyph, window);
     }
 
     @Override
     public void setSize(Window window) {
         _glyph.setSize(window);
-
-        _glyph.getBounds().setWidth(_glyph.getBounds().getWidth() + padding * 2);
-        _glyph.getBounds().setHeight(_glyph.getBounds().getHeight() + padding * 2);
     }
 
     @Override
     public void setPosition(Bounds cursor) {
         _glyph.setPosition(cursor);
-//        _glyph.getBounds().setX(_glyph.getBounds().getX() + padding);
-//        _glyph.getBounds().setY(_glyph.getBounds().getY() + padding);
     }
 
     @Override
@@ -44,25 +32,23 @@ public class Border extends Embellishment {
         window.addBorder(x1, y1, x2, y2, padding);
     }
 
-    private void shiftGlyphAndAllChildren(Glyph glyph) {
-//        glyph.getBounds().setX(glyph.getBounds().getX() + padding);
-//        glyph.getBounds().setY(glyph.getBounds().getY() + padding);
-        int i = 0;
-        while (true) {
-            try {
-                Glyph child = glyph.getChild(i);
-                child.getBounds().setX(glyph.getBounds().getX() + padding);
-                child.getBounds().setY(glyph.getBounds().getY() + padding);
-                i++;
-            } catch (Exception ex) {
-                break;
-            }
-        }
+    @Override
+    public void adjustCursorBeforeComposingChild(Bounds cursor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void adjustBounds(Bounds cursor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String toString() {
         return "Border{" + "_glyph=" + _glyph + '}';
     }
-
 }

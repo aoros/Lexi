@@ -5,15 +5,10 @@ import window.Window;
 
 public class Scroller extends Embellishment {
 
-    private int scrollbarWidth = 10;
+    private final int scrollbarWidth = 10;
 
-    public Scroller(Glyph glyph) {
-        super(glyph);
-    }
-
-    public Scroller(Glyph glyph, int scrollbarWidth) {
-        super(glyph);
-        this.scrollbarWidth = scrollbarWidth;
+    public Scroller(Glyph glyph, Window window) {
+        super(glyph, window);
     }
 
     @Override
@@ -43,6 +38,21 @@ public class Scroller extends Embellishment {
         int h = _glyph.getBounds().getHeight();
 
         window.addScrollBar(x, y, w, h);
+    }
+
+    @Override
+    public void adjustCursorBeforeComposingChild(Bounds cursor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void adjustBounds(Bounds cursor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

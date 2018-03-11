@@ -3,55 +3,13 @@ package glyph;
 
 import window.Window;
 
-public abstract class Embellishment extends Glyph {
+public abstract class Embellishment extends Composition {
 
     Glyph _glyph;
 
-    public Embellishment(Glyph glyph) {
+    public Embellishment(Glyph glyph, Window window) {
+        super(window);
         this._glyph = glyph;
-    }
-
-    public Glyph getGlyph() {
-        return _glyph;
-    }
-
-    public void setComposition(Composition composition) {
-        _glyph = composition;
-    }
-
-    @Override
-    public void compose() {
-        _glyph.compose();
-    }
-
-    @Override
-    public void setName(String name) {
-        _glyph.setName(name);
-    }
-
-    @Override
-    public String getName() {
-        return _glyph.getName();
-    }
-
-    @Override
-    public Glyph getParent() {
-        return _glyph.getParent();
-    }
-
-    @Override
-    public Glyph getChild(int position) throws GlyphException {
-        return _glyph.getChild(position);
-    }
-
-    @Override
-    public void remove(Glyph glyph) {
-        glyph.remove(glyph);
-    }
-
-    @Override
-    public void insert(Glyph glyph, int position) throws GlyphException {
-        _glyph.insert(glyph, position);
     }
 
     @Override
@@ -60,48 +18,42 @@ public abstract class Embellishment extends Glyph {
     }
 
     @Override
+    public void insert(Glyph glyph, int position) throws GlyphException {
+        _glyph.insert(glyph, position);
+    }
+
+    @Override
+    public void remove(Glyph glyph) {
+        _glyph.remove(glyph);
+    }
+
+    @Override
+    public Glyph getChild(int position) throws GlyphException {
+        return _glyph.getChild(position);
+    }
+
+    @Override
+    public Glyph getParent() {
+        return _glyph.getParent();
+    }
+
+    @Override
+    public void setParent(Glyph parent) {
+        _glyph.setParent(parent);
+    }
+
+    @Override
     public Bounds getBounds() {
         return _glyph.getBounds();
     }
 
     @Override
-    public void setPosition(Bounds cursor) {
-        _glyph.setPosition(cursor);
+    public String getName() {
+        return _glyph.getName();
     }
 
     @Override
-    public void setSize(Window window) {
-        _glyph.setSize(window);
-    }
-
-    @Override
-    public void draw(Window window) {
-        _glyph.draw(window);
-    }
-
-    @Override
-    public void adjustCursorBeforeComposingChild(Bounds cursor) {
-        _glyph.adjustCursorBeforeComposingChild(cursor);
-    }
-
-    @Override
-    public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
-        _glyph.adjustCursorAfterComposingChild(cursor, bounds);
-    }
-
-    @Override
-    public void adjustBounds(Bounds cursor) {
-        _glyph.adjustBounds(cursor);
-    }
-    
-    @Override
-    public void setParent(Glyph parent) {
-        _glyph.setParent(parent);
-        this.parent = parent;
-    }
-
-    @Override
-    public String toString() {
-        return "Embellishment{" + "_glyph=" + _glyph + '}';
+    public void compose() {
+        _glyph.compose();
     }
 }

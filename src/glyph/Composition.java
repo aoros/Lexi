@@ -14,6 +14,4 @@ public abstract class Composition extends Glyph {
         this.compositor = new SimpleCompositor(window);
         compositor.setComposition(this);
     }
-
-    public abstract void resetBounds();
 }
