@@ -1,4 +1,5 @@
 // Composite(163).Client
+// Abstract Factory(87).Client
 
 import debug.DebugUtils;
 import glyph.Border;
@@ -266,7 +267,6 @@ public class Lexi {
         String[] arr = new String[1];
         arr[0] = "ghk";
         Glyph col2 = new Scroller(new Border(new Column(arr, window, "row2"), window), window);
-//        Composition row2 = new Row("ghk", window, "row2");
         Composition col3 = new Column(window, "row3");
 
         // insert into the glyph tree
@@ -352,7 +352,6 @@ public class Lexi {
         Glyph rect_A = new Rectangle(10, 20);
         Glyph ch_X = new Character('X');
         Glyph label = GUIFactory.getInstance().createLabel("pq");
-//        Glyph row_pq = new Row("pq", window, "row_pq");
         Glyph ch_Z = new Character('Z');
         Glyph ch_b = new Character('b');
 
@@ -363,7 +362,6 @@ public class Lexi {
 
         // Goes into Row 2 for root
         Glyph button = GUIFactory.getInstance().createButton("PQ");
-//        Glyph row_PQ = new Row("PQ", window, "row_PQ");
 
         Composition root = new Border(new Scroller(new Column(window, "root"), window), window);
         Composition row1_lev_1 = new Row(window, "row1_lev_1");
@@ -383,9 +381,6 @@ public class Lexi {
         insert(row2_lev_1, rect_B, 1);
         insert(row2_lev_1, ch_y, 2);
         insert(root, button, 2);
-
-        debug = true;
-        DebugUtils.printLexiTree(root);
 
         window.setContents(root);
     }

@@ -1,5 +1,5 @@
 // Composite(163).Composite
-//Decorator(175).ConcreteComponent
+// Decorator(175).ConcreteComponent
 package glyph;
 
 import window.Window;

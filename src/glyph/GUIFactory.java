@@ -1,3 +1,5 @@
+// Abstract Factory(87).AbstractFactory
+// Factory(107).Creator
 package glyph;
 
 public abstract class GUIFactory {

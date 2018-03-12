@@ -1,3 +1,6 @@
+// Abstract Factory(87).ConcreteFactory
+// Singleton(127).Singleton
+// Factory(107).ConcreteCreator
 package glyph;
 
 public class GreenFactory extends GUIFactory {

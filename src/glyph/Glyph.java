@@ -1,5 +1,5 @@
 // Composite(163).Component
-//Decorator(175).Component
+// Decorator(175).Component
 package glyph;
 
 import compositor.Compositor;
@@ -31,7 +31,7 @@ public abstract class Glyph {
     public abstract Glyph getChild(int position) throws GlyphException;
 
     public abstract Glyph getParent();
-    
+
     public abstract void setParent(Glyph parent);
 
     public void compose() {

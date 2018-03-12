@@ -1,4 +1,4 @@
-//Decorator(175).ConcreteDecoratorA
+// Decorator(175).ConcreteDecoratorA
 package glyph;
 
 import window.Window;

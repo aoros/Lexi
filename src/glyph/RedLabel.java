@@ -1,3 +1,5 @@
+// Abstract Factory(87).ConcreteProduct
+// Factory(107).ConcreteProduct
 package glyph;
 
 import window.Window;
