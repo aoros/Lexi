@@ -18,6 +18,10 @@ public interface Window {
 
     void addScrollBar(int x, int y, int width, int height);
 
+    void drawButton(int x, int y, int width, int height, String color);
+
+    void drawLabel(int x, int y, int width, int height, String color);
+
     void setDebug(boolean debug);
 
     boolean getDebug();

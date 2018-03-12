@@ -13,6 +13,7 @@ public class SwingWindow implements Window {
     private Glyph _glyph;
     private Pane _pane;
     private JFrame _jFrame;
+    private Color _color;
     private Graphics _graphics;
     private FontMetrics _fm;
     private boolean debug = false;
@@ -32,9 +33,8 @@ public class SwingWindow implements Window {
         public void paintComponent(Graphics graphics) {
             super.paintComponent(graphics);
             _graphics = graphics;
-            if (_glyph != null) {
+            if (_glyph != null)
                 _glyph.draw(_window);
-            }
         }
 
     }
@@ -49,6 +49,7 @@ public class SwingWindow implements Window {
         _jFrame.setSize(width, height);
         _jFrame.setVisible(true);
         _fm = _jFrame.getGraphics().getFontMetrics();
+        _color = _jFrame.getGraphics().getColor();
     }
 
     public int charWidth(char c) {
@@ -90,4 +91,23 @@ public class SwingWindow implements Window {
         _graphics.fillRect(x + 2, y + 2, width - 3, width - 3); // handle
     }
 
+    public Color color(String c) {
+        if (c.equalsIgnoreCase("red"))
+            return Color.red;
+        if (c.equalsIgnoreCase("green"))
+            return Color.green;
+        return _color;
+    }
+
+    public void drawButton(int x, int y, int width, int height, String color) {
+        _graphics.setColor(color(color));
+        _graphics.fillRect(x, y, width, height);
+        _graphics.setColor(_color);
+    }
+
+    public void drawLabel(int x, int y, int width, int height, String color) {
+        _graphics.setColor(color(color));
+        _graphics.drawRect(x, y, width, height);
+        _graphics.setColor(_color);
+    }
 }

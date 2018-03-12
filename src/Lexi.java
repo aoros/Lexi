@@ -10,6 +10,7 @@ import glyph.GlyphException;
 import glyph.Rectangle;
 import glyph.Row;
 import glyph.Scroller;
+import glyph.GUIFactory;
 import window.SwingWindow;
 import window.Window;
 
@@ -30,7 +31,8 @@ public class Lexi {
         window.setDebug(debug);
         try {
 //            build_hw1_configuration(window);
-            build_hw2_configuration(window);
+//            build_hw2_configuration(window);
+            build_hw3_configuration(window);
 
 //            test_root_col_and_2_cols_hw1(window);
 //            test_root_row_and_2_rows_hw1(window);
@@ -340,6 +342,50 @@ public class Lexi {
         insert(row2_lev_1, ch_x, 0);
         insert(row2_lev_1, rect_B, 1);
         insert(row2_lev_1, ch_y, 2);
+
+        window.setContents(root);
+    }
+
+    private static void build_hw3_configuration(Window window) throws GlyphException {
+        // Goes into Row 0 for root
+        Glyph ch_a = new Character('a');
+        Glyph rect_A = new Rectangle(10, 20);
+        Glyph ch_X = new Character('X');
+        Glyph label = GUIFactory.getInstance().createLabel("pq");
+//        Glyph row_pq = new Row("pq", window, "row_pq");
+        Glyph ch_Z = new Character('Z');
+        Glyph ch_b = new Character('b');
+
+        // Goes into Row 1 for root
+        Glyph ch_x = new Character('x');
+        Glyph rect_B = new Rectangle(20, 10);
+        Glyph ch_y = new Character('y');
+
+        // Goes into Row 2 for root
+        Glyph button = GUIFactory.getInstance().createButton("PQ");
+//        Glyph row_PQ = new Row("PQ", window, "row_PQ");
+
+        Composition root = new Border(new Scroller(new Column(window, "root"), window), window);
+        Composition row1_lev_1 = new Row(window, "row1_lev_1");
+        Composition row2_lev_1 = new Row(window, "row2_lev_1");
+        Composition col1_lev_2 = new Column(window, "col1_lev_2");
+
+        insert(root, row1_lev_1, 0);
+        insert(row1_lev_1, ch_a, 0);
+        insert(row1_lev_1, rect_A, 1);
+        insert(row1_lev_1, col1_lev_2, 2);
+        insert(col1_lev_2, ch_X, 0);
+        insert(col1_lev_2, label, 1);
+        insert(col1_lev_2, ch_Z, 2);
+        insert(row1_lev_1, ch_b, 3);
+        insert(root, row2_lev_1, 1);
+        insert(row2_lev_1, ch_x, 0);
+        insert(row2_lev_1, rect_B, 1);
+        insert(row2_lev_1, ch_y, 2);
+        insert(root, button, 2);
+
+        debug = true;
+        DebugUtils.printLexiTree(root);
 
         window.setContents(root);
     }

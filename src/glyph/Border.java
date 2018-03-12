@@ -5,7 +5,7 @@ import window.Window;
 
 public class Border extends Embellishment {
 
-    private final int padding = 5;
+    private final int padding = 2;
 
     public Border(Glyph glyph, Window window) {
         super(glyph, window);
@@ -14,11 +14,20 @@ public class Border extends Embellishment {
     @Override
     public void setSize(Window window) {
         _glyph.setSize(window);
+
+        _glyph.getBounds().setWidth(_glyph.getBounds().getWidth() + padding * 2);
+        _glyph.getBounds().setHeight(_glyph.getBounds().getHeight() + padding * 2);
     }
 
     @Override
     public void setPosition(Bounds cursor) {
         _glyph.setPosition(cursor);
+
+        cursor.setX(cursor.getX() + padding);
+        cursor.setY(cursor.getY() + padding);
+        _glyph.getBounds().setX(cursor.getX());
+        _glyph.getBounds().setY(cursor.getY());
+
     }
 
     @Override
