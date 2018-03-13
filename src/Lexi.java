@@ -11,7 +11,7 @@ import glyph.GlyphException;
 import glyph.Rectangle;
 import glyph.Row;
 import glyph.Scroller;
-import glyph.GUIFactory;
+import glyph.factory.GUIFactory;
 import window.SwingWindow;
 import window.Window;
 

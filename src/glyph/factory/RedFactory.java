@@ -1,7 +1,12 @@
 // Abstract Factory(87).ConcreteFactory
 // Singleton(127).Singleton
 // Factory(107).ConcreteCreator
-package glyph;
+package glyph.factory;
+
+import glyph.Button;
+import glyph.Label;
+import glyph.RedButton;
+import glyph.RedLabel;
 
 public class RedFactory extends GUIFactory {
 

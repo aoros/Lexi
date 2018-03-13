@@ -1,7 +1,12 @@
 // Abstract Factory(87).ConcreteFactory
 // Singleton(127).Singleton
 // Factory(107).ConcreteCreator
-package glyph;
+package glyph.factory;
+
+import glyph.Button;
+import glyph.GreenButton;
+import glyph.GreenLabel;
+import glyph.Label;
 
 public class GreenFactory extends GUIFactory {
 

@@ -1,6 +1,9 @@
 // Abstract Factory(87).AbstractFactory
 // Factory(107).Creator
-package glyph;
+package glyph.factory;
+
+import glyph.Button;
+import glyph.Label;
 
 public abstract class GUIFactory {
 
