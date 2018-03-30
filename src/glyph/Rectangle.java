@@ -16,11 +16,6 @@ public class Rectangle extends Glyph {
     }
 
     @Override
-    public Glyph getParent() {
-        return parent;
-    }
-
-    @Override
     public boolean intersects(Bounds point) {
         return false;
     }
@@ -45,35 +40,11 @@ public class Rectangle extends Glyph {
     }
 
     @Override
-    public void setPosition(Bounds cursor) {
-        _bounds.setX(cursor.getX());
-        _bounds.setY(cursor.getY());
-    }
-
-    @Override
-    public Bounds getBounds() {
-        return _bounds;
+    public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
     }
 
     @Override
     public String toString() {
         return "Rectangle{" + "bounds=" + _bounds + " parentName=" + parent.getName() + '}';
-    }
-
-    @Override
-    public void adjustCursorBeforeComposingChild(Bounds cursor) {
-    }
-
-    @Override
-    public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
-    }
-
-    @Override
-    public void adjustBounds(Bounds cursor) {
-    }
-
-    @Override
-    public void setParent(Glyph parent) {
-        this.parent = parent;
     }
 }

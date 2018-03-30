@@ -1,6 +1,7 @@
 // Composite(163).Composite
 package glyph;
 
+import compositor.SimpleCompositor;
 import java.util.ArrayList;
 import java.util.List;
 import window.Window;
@@ -11,21 +12,7 @@ public abstract class CompositeGlyph extends Composition {
 
     public CompositeGlyph(Window window) {
         super(window);
-    }
-
-    @Override
-    public void compose() {
-        compositor.compose();
-    }
-
-    @Override
-    public Glyph getParent() {
-        return parent;
-    }
-
-    @Override
-    public void setParent(Glyph parent) {
-        this.parent = parent;
+        super.setCompositor(new SimpleCompositor());
     }
 
     @Override
@@ -37,35 +24,33 @@ public abstract class CompositeGlyph extends Composition {
 
     @Override
     public void insert(Glyph glyph, int position) throws GlyphException {
-        glyph.setParent(this);
         children.add(position, glyph);
-
-        // go to the root and compose from there
-        Glyph current = this;
-        Glyph currentParent = this.getParent();
-        while (currentParent != null) {
-            current = currentParent;
-            currentParent = current.getParent();
-        }
-        compositor.composeRoot();
+        glyph.setParent(this);
+        getRoot(this).compose();
     }
 
     @Override
     public void remove(Glyph glyph) {
         children.remove(glyph);
+        getRoot(this).compose();
     }
 
     @Override
-    public Glyph getChild(int position) throws GlyphException {
+    public Glyph getChild(int position) {
         try {
             return children.get(position);
         } catch (IndexOutOfBoundsException ex) {
-            throw new GlyphException("No more children");
+            throw ex;
         }
     }
 
     @Override
     public boolean intersects(Bounds point) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void addChild(Glyph glyph) {
+        children.add(0, glyph);
+        glyph.setParent(this);
     }
 }

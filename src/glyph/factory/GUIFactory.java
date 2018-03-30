@@ -3,6 +3,7 @@
 package glyph.factory;
 
 import glyph.Button;
+import glyph.Composition;
 import glyph.Label;
 
 public abstract class GUIFactory {
@@ -13,37 +14,36 @@ public abstract class GUIFactory {
     protected GUIFactory() {
     }
 
-    public static GUIFactory getInstance() {
-        if (instance == null) {
-            if (SYS_ENV != null && SYS_ENV.equals("Green"))
-                return GreenFactory.getInstance();
-            else
-                return RedFactory.getInstance();
+    public static void getInstance() {
+        try {
+            switch (SYS_ENV) {
+                case "red":
+                    instance = RedFactory.getFactoryInstance();
+                    break;
+                case "green":
+                    instance = GreenFactory.getFactoryInstance();
+                    break;
+                default:
+                    instance = RedFactory.getFactoryInstance();
+            }
+        } catch (Exception ex) {
+            instance = RedFactory.getFactoryInstance();
         }
+    }
+
+    public static GUIFactory getGUIFactory() {
         return instance;
     }
 
-    protected Label labelFactoryMethod(String text) {
-        if (SYS_ENV != null && SYS_ENV.equals("Green"))
-            return GreenFactory.getInstance().createLabel(text);
-        else
-            return RedFactory.getInstance().createLabel(text);
+    public final Button createButton(Composition composition) {
+        return buttonFactoryMethod(composition);
     }
 
-    protected Button buttonFactoryMethod(String text) {
-        String sys_env = System.getenv("LexiWidget");
-        if (sys_env != null && sys_env.equals("Green"))
-            return GreenFactory.getInstance().createButton(text);
-        else
-            return RedFactory.getInstance().createButton(text);
+    public final Label createLabel(Composition composition) {
+        return labelFactoryMethod(composition);
     }
 
-    public Button createButton(String text) {
-        return buttonFactoryMethod(text);
+    protected abstract Label labelFactoryMethod(Composition composition);
 
-    }
-
-    public Label createLabel(String text) {
-        return labelFactoryMethod(text);
-    }
+    protected abstract Button buttonFactoryMethod(Composition composition);
 }

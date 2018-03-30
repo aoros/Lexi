@@ -36,30 +36,15 @@ public class Column extends CompositeGlyph {
     }
 
     @Override
-    public void setPosition(Bounds cursor) {
-        _bounds.setX(cursor.getX());
-        _bounds.setY(cursor.getY());
-    }
-
-    @Override
-    public void adjustCursorBeforeComposingChild(Bounds cursor) {
-    }
-
-    @Override
     public void adjustCursorAfterComposingChild(Bounds cursor, Bounds childBounds) {
-        _bounds.setWidth(_bounds.getWidth() > childBounds.getWidth() ? _bounds.getWidth() : childBounds.getWidth());
-        _bounds.setHeight(cursor.getY() + childBounds.getHeight());
+        _bounds.setHeight(cursor.getY() + childBounds.getHeight() - _bounds.getY());
 
-        cursor.setX(cursor.getX());
-        cursor.setY(cursor.getY() + childBounds.getHeight());
-        cursor.setWidth(_bounds.getWidth());
-        cursor.setHeight(cursor.getY() - _bounds.getY());
-    }
+        if (_bounds.getWidth() < childBounds.getWidth()) {
+            _bounds.setWidth(childBounds.getWidth());
+        }
 
-    @Override
-    public void adjustBounds(Bounds cursor) {
-        _bounds.setWidth(cursor.getWidth());
-        _bounds.setHeight(cursor.getHeight());
+        cursor.setX(_bounds.getX());
+        cursor.setY(_bounds.getY() + _bounds.getHeight());
     }
 
     @Override
@@ -69,6 +54,5 @@ public class Column extends CompositeGlyph {
         } else {
             return "Column{" + "name=" + name + "bounds=" + _bounds + " parentName=root" + '}';
         }
-
     }
 }

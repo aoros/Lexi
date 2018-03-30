@@ -4,32 +4,26 @@
 package glyph.factory;
 
 import glyph.Button;
-import glyph.GreenButton;
-import glyph.GreenLabel;
+import glyph.Composition;
 import glyph.Label;
 
-public class GreenFactory extends GUIFactory {
-
-    private static GreenFactory _instance;
+class GreenFactory extends GUIFactory {
 
     private GreenFactory() {
     }
 
-    public static GreenFactory getInstance() {
-        if (_instance == null)
-            return new GreenFactory();
-
-        return _instance;
+    public static GreenFactory getFactoryInstance() {
+        return new GreenFactory();
     }
 
     @Override
-    public Label createLabel(String text) {
-        return new GreenLabel(text);
+    public Button buttonFactoryMethod(Composition composition) {
+        return new GreenButton(composition);
     }
 
     @Override
-    public Button createButton(String text) {
-        return new GreenButton(text);
+    public Label labelFactoryMethod(Composition composition) {
+        return new GreenLabel(composition);
     }
 
 }

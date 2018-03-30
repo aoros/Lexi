@@ -4,32 +4,25 @@
 package glyph.factory;
 
 import glyph.Button;
+import glyph.Composition;
 import glyph.Label;
-import glyph.RedButton;
-import glyph.RedLabel;
 
-public class RedFactory extends GUIFactory {
-
-    private static RedFactory _instance;
+class RedFactory extends GUIFactory {
 
     private RedFactory() {
     }
 
-    public static RedFactory getInstance() {
-        if (_instance == null)
-            return new RedFactory();
-
-        return _instance;
+    protected static GUIFactory getFactoryInstance() {
+        return new RedFactory();
+    }
+    
+    @Override
+    public Button buttonFactoryMethod(Composition composition){
+        return new RedButton(composition);
     }
 
     @Override
-    public Label createLabel(String text) {
-        return new RedLabel(text);
+    public Label labelFactoryMethod(Composition composition){
+        return new RedLabel(composition);
     }
-
-    @Override
-    public Button createButton(String text) {
-        return new RedButton(text);
-    }
-
 }

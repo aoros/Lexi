@@ -1,59 +1,65 @@
 // Decorator(175).Decorator
 package glyph;
 
+import compositor.Compositor;
 import window.Window;
 
-public abstract class Embellishment extends Composition {
+public abstract class Embellishment extends CompositeGlyph {
 
-    Glyph _glyph;
-
-    public Embellishment(Glyph glyph, Window window) {
-        super(window);
-        this._glyph = glyph;
+    public Embellishment(Composition composition) {
+        super(composition.window);
+        super.addChild(composition);
     }
 
     @Override
-    public boolean intersects(Bounds point) {
-        return _glyph.intersects(point);
+    public void setCompositor(Compositor compositor) {
+        super.setCompositor(compositor);
+        super.getChild(0).setCompositor(compositor);
+    }
+
+    @Override
+    public void draw(Window window) {
+        super.getChild(0).draw(window);
     }
 
     @Override
     public void insert(Glyph glyph, int position) throws GlyphException {
-        _glyph.insert(glyph, position);
+        super.getChild(0).insert(glyph, position);
     }
 
     @Override
     public void remove(Glyph glyph) {
-        _glyph.remove(glyph);
+        super.getChild(0).remove(glyph);
     }
 
     @Override
-    public Glyph getChild(int position) throws GlyphException {
-        return _glyph.getChild(position);
-    }
-
-    @Override
-    public Glyph getParent() {
-        return _glyph.getParent();
-    }
-
-    @Override
-    public void setParent(Glyph parent) {
-        _glyph.setParent(parent);
+    public Glyph getChild(int position) {
+        Glyph child = super.getChild(0);
+        return child.getChild(position);
     }
 
     @Override
     public Bounds getBounds() {
-        return _glyph.getBounds();
+        return super.getChild(0).getBounds();
     }
 
     @Override
     public String getName() {
-        return _glyph.getName();
+        return super.getChild(0).getName();
     }
 
     @Override
     public void compose() {
-        _glyph.compose();
+        super.getChild(0).compose();
+    }
+
+    @Override
+    public void setPosition(Bounds cursor) {
+        super.getChild(0).setPosition(cursor);
+    }
+
+    @Override
+    public void setSize(Window window) {
+        super.getChild(0).setSize(window);
     }
 }

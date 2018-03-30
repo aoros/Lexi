@@ -12,27 +12,22 @@ public abstract class Glyph {
     String name;
     Bounds _bounds = new Bounds(0, 0, 0, 0);
 
-    public abstract void draw(Window window);
-
-    public abstract void setSize(Window window);
-
-    public abstract void setPosition(Bounds cursor);
+    public void setPosition(Bounds cursor) {
+        _bounds.setX(cursor.getX());
+        _bounds.setY(cursor.getY());
+    }
 
     public Bounds getBounds() {
         return _bounds;
     }
 
-    public abstract boolean intersects(Bounds point);
+    public Glyph getParent() {
+        return parent;
+    }
 
-    public abstract void insert(Glyph glyph, int position) throws GlyphException;
-
-    public abstract void remove(Glyph glyph);
-
-    public abstract Glyph getChild(int position) throws GlyphException;
-
-    public abstract Glyph getParent();
-
-    public abstract void setParent(Glyph parent);
+    public void setParent(Glyph parent) {
+        this.parent = parent;
+    }
 
     public void compose() {
     }
@@ -45,19 +40,20 @@ public abstract class Glyph {
         this.name = name;
     }
 
-    public Glyph getRoot() {
-        Glyph curr = this;
-        Glyph p = this.getParent();
-        while (p != null) {
-            curr = p;
-            p = p.getParent();
-        }
-        return curr;
+    public void setCompositor(Compositor compositor) {
     }
 
-    public abstract void adjustCursorBeforeComposingChild(Bounds cursor);
+    public abstract boolean intersects(Bounds point);
+
+    public abstract void insert(Glyph glyph, int position) throws GlyphException;
+
+    public abstract void remove(Glyph glyph);
+
+    public abstract Glyph getChild(int position);
 
     public abstract void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds);
 
-    public abstract void adjustBounds(Bounds cursor);
+    public abstract void draw(Window window);
+
+    public abstract void setSize(Window window);
 }
