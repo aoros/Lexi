@@ -14,6 +14,7 @@ public abstract class Composition extends Glyph {
         this.window = window;
     }
 
+    @Override
     public void setCompositor(Compositor compositor) {
         _compositor = compositor;
         _compositor.setWindow(window);
@@ -22,7 +23,7 @@ public abstract class Composition extends Glyph {
 
     @Override
     public void compose() {
-        compositor.compose();
+        _compositor.compose();
     }
 
     public Glyph getRoot(Glyph glyph) {

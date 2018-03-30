@@ -1,21 +1,21 @@
-// Composite(163).Client
-// Abstract Factory(87).Client
 
 import glyph.Border;
 import glyph.Button;
-import glyph.Character;
 import glyph.Column;
 import glyph.Composition;
 import glyph.Glyph;
 import glyph.GlyphException;
 import glyph.Label;
 import glyph.Rectangle;
+import glyph.Character;
 import glyph.Row;
 import glyph.Scroller;
 import glyph.factory.GUIFactory;
 import window.SwingWindow;
 import window.Window;
 
+// Composite(163).Client
+// Abstract Factory(87).Client
 /**
  * Lexi A WYSIWYG document editor
  *
@@ -28,7 +28,7 @@ public class Lexi {
 
     private static boolean debug = false;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws GlyphException {
         Window window = new SwingWindow("Lexi");
         window.setDebug(debug);
         try {
@@ -310,7 +310,7 @@ public class Lexi {
 //        insert(row2_lev_1, ch_y, 2);
 //
 //        debug = true;
-//        DebugUtils.printLexiTree(root);
+////        DebugUtils.printLexiTree(root);
 //
 //        window.setContents(root);
 //    }
@@ -346,11 +346,10 @@ public class Lexi {
 //
 //        window.setContents(root);
 //    }
-
     private static void build_hw3_configuration(Window window) throws GlyphException {
 
         GUIFactory.getInstance();
-        GUIFactory widgetFactory = GUIFactory.getGUIFactory();
+        GUIFactory guiFactory = GUIFactory.getGUIFactory();
 
         Glyph a = new Character('a');
         Glyph rect1 = new Rectangle(10, 20);
@@ -368,8 +367,8 @@ public class Lexi {
         Composition row2 = new Row(window);
         Composition row3 = new Row(window);
 
-        Label label = widgetFactory.createLabel(new Row("pq", window));
-        Button button = widgetFactory.createButton(new Row("PQ", window));
+        Label label = guiFactory.createLabel(new Row("pq", window));
+        Button button = guiFactory.createButton(new Row("PQ", window));
 
         colRoot.insert(row1, 0);
 
