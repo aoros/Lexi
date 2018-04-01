@@ -1,5 +1,3 @@
-// Abstract Factory(87).ConcreteProduct
-// Factory(107).ConcreteProduct
 package glyph.factory;
 
 import glyph.Bounds;
@@ -7,6 +5,8 @@ import glyph.Composition;
 import glyph.Label;
 import window.Window;
 
+// Abstract Factory(87).ConcreteProduct
+// Factory(107).ConcreteProduct
 public class GreenLabel extends Label {
 
     protected GreenLabel(Composition composition) {
@@ -18,7 +18,7 @@ public class GreenLabel extends Label {
         drawLabel(window);
     }
 
-    private void drawLabel(Window window){
+    private void drawLabel(Window window) {
         int x = super.getBounds().getX();
         int y = super.getBounds().getY();
         int w = super.getBounds().getWidth();

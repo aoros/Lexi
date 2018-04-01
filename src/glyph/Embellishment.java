@@ -1,9 +1,9 @@
-// Decorator(175).Decorator
 package glyph;
 
 import compositor.Compositor;
 import window.Window;
 
+// Decorator(175).Decorator
 public abstract class Embellishment extends CompositeGlyph {
 
     public Embellishment(Composition composition) {

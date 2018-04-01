@@ -1,10 +1,10 @@
-// Composite(163).Component
-// Decorator(175).Component
 package glyph;
 
 import compositor.Compositor;
 import window.Window;
 
+// Composite(163).Component
+// Decorator(175).Component
 public abstract class Glyph {
 
     Compositor compositor;

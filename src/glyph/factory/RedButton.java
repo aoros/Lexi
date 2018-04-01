@@ -1,5 +1,3 @@
-// Abstract Factory(87).ConcreteProduct
-// Factory(107).ConcreteProduct
 package glyph.factory;
 
 import glyph.Bounds;
@@ -7,6 +5,8 @@ import glyph.Button;
 import glyph.Composition;
 import window.Window;
 
+// Abstract Factory(87).ConcreteProduct
+// Factory(107).ConcreteProduct
 public class RedButton extends Button {
 
     protected RedButton(Composition composition) {

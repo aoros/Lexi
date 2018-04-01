@@ -1,8 +1,8 @@
-// Composite(163).Leaf
 package glyph;
 
 import window.Window;
 
+// Composite(163).Leaf
 public class Rectangle extends Glyph {
 
     public Rectangle(int width, int height) {

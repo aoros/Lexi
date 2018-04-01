@@ -1,5 +1,3 @@
-// Abstract Factory(87).ConcreteProduct
-// Factory(107).ConcreteProduct
 package glyph.factory;
 
 import glyph.Bounds;
@@ -7,6 +5,8 @@ import glyph.Composition;
 import glyph.Label;
 import window.Window;
 
+// Abstract Factory(87).ConcreteProduct
+// Factory(107).ConcreteProduct
 public class RedLabel extends Label {
 
     protected RedLabel(Composition composition) {

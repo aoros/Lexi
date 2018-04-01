@@ -1,11 +1,11 @@
-// Abstract Factory(87).AbstractFactory
-// Factory(107).Creator
 package glyph.factory;
 
 import glyph.Button;
 import glyph.Composition;
 import glyph.Label;
 
+// Abstract Factory(87).AbstractFactory
+// Factory(107).Creator
 public abstract class GUIFactory {
 
     private static GUIFactory instance;

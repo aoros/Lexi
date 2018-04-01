@@ -1,8 +1,8 @@
-// Decorator(175).ConcreteDecoratorB
 package glyph;
 
 import window.Window;
 
+// Decorator(175).ConcreteDecoratorB
 public class Scroller extends Embellishment {
 
     private final int padding = 1;
