@@ -2,27 +2,49 @@ package window;
 
 import glyph.*;
 
-public interface Window {
+// Bridge(151): Abstraction
 
-    void drawCharacter(char c, int x, int y);
+public abstract class Window {
 
-    void drawRectangle(int x, int y, int width, int height);
+    final WindowImp _windowImp;
 
-    int charWidth(char c);
+    public Window(String title) {
+        _windowImp = WindowImpFactory.getInstance(title, this);
+    }
 
-    int charHeight(char c);
+    public void drawCharacter(char c, int x, int y) {
+        _windowImp.drawCharacter(c, x, y);
+    }
 
-    void setContents(Glyph glyph);
+    public void drawRectangle(int x, int y, int width, int height) {
+        _windowImp.drawRectangle(x, y, width, height);
+    }
 
-    void addBorder(int x1, int y1, int x2, int y2, int width);
+    public int charWidth(char c) {
+        return _windowImp.charWidth(c);
+    }
 
-    void addScrollBar(int x, int y, int width, int height);
+    public int charHeight(char c) {
+        return _windowImp.charHeight(c);
+    }
 
-    void drawButton(int x, int y, int width, int height, String color);
+    public void addBorder(int x1, int y1, int x2, int y2, int width) {
+        _windowImp.addBorder(x1, y1, x2, y2, width);
+    }
 
-    void drawLabel(int x, int y, int width, int height, String color);
+    public void addScrollBar(int x, int y, int width, int height) {
+        _windowImp.addScrollBar(x, y, width, height);
+    }
 
-    void setDebug(boolean debug);
+    public void drawButton(int x, int y, int width, int height, String color) {
+        _windowImp.drawButton(x, y, width, height, color);
+    }
 
-    boolean getDebug();
+    public void drawLabel(int x, int y, int width, int height, String color) {
+        _windowImp.drawLabel(x, y, width, height, color);
+    }
+
+    public abstract void setContents(Glyph glyph);
+
+    public abstract void draw();
 }

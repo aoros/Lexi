@@ -11,7 +11,7 @@ import glyph.Character;
 import glyph.Row;
 import glyph.Scroller;
 import glyph.factory.GUIFactory;
-import window.SwingWindow;
+import window.LexiWindow;
 import window.Window;
 
 // Composite(163).Client
@@ -29,8 +29,9 @@ public class Lexi {
     private static boolean debug = false;
 
     public static void main(String[] args) throws GlyphException {
-        Window window = new SwingWindow("Lexi");
-        window.setDebug(debug);
+        System.out.println(System.getenv("LexiWindow"));
+        Window window = new LexiWindow("Lexi");
+//        window.setDebug(debug);
         try {
 //            build_hw1_configuration(window);
 //            build_hw2_configuration(window);
