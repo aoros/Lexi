@@ -1,9 +1,9 @@
-// Abstract Factory(87).AbstractProduct
-// Factory(107).Product
 package glyph;
 
 import window.Window;
 
+// Abstract Factory(87).AbstractProduct
+// Factory(107).Product
 public abstract class Button extends Embellishment {
 
     public Button(Composition composition) {

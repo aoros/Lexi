@@ -2,7 +2,6 @@ package window;
 
 // AbstractFactory(87): AbstractFactory
 // Factory(107): Creator
-
 public class WindowImpFactory {
 
     private static WindowImp instance;

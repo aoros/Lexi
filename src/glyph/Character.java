@@ -1,8 +1,8 @@
-// Composite(163).Leaf
 package glyph;
 
 import window.Window;
 
+// Composite(163).Leaf
 public class Character extends Glyph {
 
     private final char c;

@@ -1,9 +1,9 @@
-// Composite(163).Composite
-// Decorator(175).ConcreteComponent
 package glyph;
 
 import window.Window;
 
+// Composite(163).Composite
+// Decorator(175).ConcreteComponent
 public class Column extends CompositeGlyph {
 
     public Column(Window window) {

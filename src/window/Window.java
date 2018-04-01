@@ -3,7 +3,6 @@ package window;
 import glyph.*;
 
 // Bridge(151): Abstraction
-
 public abstract class Window {
 
     final WindowImp _windowImp;

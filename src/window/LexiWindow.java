@@ -3,7 +3,6 @@ package window;
 import glyph.Glyph;
 
 // Bridge(151): RefinedAbstraction
-
 public class LexiWindow extends Window {
 
     private Glyph _glyph;

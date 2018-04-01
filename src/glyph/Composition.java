@@ -1,10 +1,10 @@
-// Composite(163).Composite
-// Strategy(315).Context
 package glyph;
 
 import compositor.Compositor;
 import window.Window;
 
+// Composite(163).Composite
+// Strategy(315).Context
 public abstract class Composition extends Glyph {
 
     Compositor _compositor;

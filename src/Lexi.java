@@ -16,14 +16,6 @@ import window.Window;
 
 // Composite(163).Client
 // Abstract Factory(87).Client
-/**
- * Lexi A WYSIWYG document editor
- *
- * I think that we set the compositor on the root Glyph only. Then as each
- * insert on either a Character or Rectangle occurs, it calls the
- * compositor.compose() method. The column and row inserts are just organizing
- * where the characters and rectangles will go.
- */
 public class Lexi {
 
     private static boolean debug = false;

@@ -1,7 +1,6 @@
 package window;
 
 // Bridge(151): Implementor
-
 public interface WindowImp {
 
     void drawCharacter(char c, int x, int y);

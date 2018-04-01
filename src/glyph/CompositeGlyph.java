@@ -1,4 +1,3 @@
-// Composite(163).Composite
 package glyph;
 
 import compositor.SimpleCompositor;
@@ -6,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import window.Window;
 
+// Composite(163).Composite
 public abstract class CompositeGlyph extends Composition {
 
     private final List<Glyph> children = new ArrayList<>();
