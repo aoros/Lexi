@@ -25,11 +25,68 @@ public class Lexi {
         Window window = new LexiWindow("Lexi");
 
         try {
-            build_hw4_configuration(window);
+//            build_hw4_configuration(window);
+            build_hw5_configuration(window);
         } catch (GlyphException ex) {
             System.err.println(ex);
             System.exit(1);
         }
+    }
+
+    private static void build_hw5_configuration(Window window) throws GlyphException {
+        GUIFactory.getInstance();
+        GUIFactory guiFactory = GUIFactory.getGUIFactory();
+
+        Glyph a = new Character('a');
+        Glyph rect1 = new Rectangle(10, 20);
+        Glyph b = new Character('b');
+        Glyph x = new Character('x');
+        Glyph y = new Character('y');
+        Glyph rect2 = new Rectangle(20, 10);
+        Glyph X = new Character('X');
+        Glyph Y = new Character('Y');
+        Glyph Z = new Character('Z');
+
+        Composition colRoot = new Border(new Scroller(new Column(window)));
+        Composition col1 = new Column(window);
+        Composition row1 = new Row(window);
+        Composition row2 = new Row(window);
+        Composition row3 = new Row(window);
+        Composition row4 = new Row(window);
+
+        Label label = guiFactory.createLabel(new Row("pq", window));
+        Button pq_button = guiFactory.createButton(new Row("PQ", window));
+        Button plus_button = guiFactory.createButton(new Row("+", window));
+        Button minus_button = guiFactory.createButton(new Row("-", window));
+        Button s14_button = guiFactory.createButton(new Row(" 14 ", window));
+        Button s20_button = guiFactory.createButton(new Row(" 20 ", window));
+        
+        colRoot.insert(row1, 0);
+
+        row1.insert(a, 0);
+        row1.insert(rect1, 1);
+        row1.insert(col1, 2);
+        col1.insert(X, 0);
+        col1.insert(label, 1);
+        col1.insert(Z, 2);
+        row1.insert(b, 3);
+
+        colRoot.insert(row2, 1);
+        row2.insert(x, 0);
+        row2.insert(rect2, 1);
+        row2.insert(y, 2);
+
+        colRoot.insert(row3, 2);
+        row3.insert(pq_button, 0);
+        
+        colRoot.insert(row4, 3);
+        row4.insert(plus_button, 0);
+        row4.insert(minus_button, 1);
+        row4.insert(s14_button, 2);
+        row4.insert(s20_button, 3);
+
+        window.setContents(colRoot);
+        
     }
 
     private static void build_hw4_configuration(Window window) throws GlyphException {

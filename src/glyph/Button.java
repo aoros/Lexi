@@ -1,5 +1,7 @@
 package glyph;
 
+import command.Command;
+import command.SetFontSizeCommand;
 import window.Window;
 
 // Abstract Factory(87).AbstractProduct
@@ -18,5 +20,10 @@ public abstract class Button extends Embellishment {
     @Override
     public Bounds getBounds() {
         return super.getBounds();
+    }
+
+    @Override
+    public Command click() {
+        return new SetFontSizeCommand(window);
     }
 }

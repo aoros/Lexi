@@ -22,4 +22,15 @@ public class LexiWindow extends Window {
         if (_glyph != null)
             _glyph.draw(this);
     }
+
+    @Override
+    public void key(char keyChar) {
+        System.out.println("the keyChar is " + keyChar);
+    }
+
+    @Override
+    public void click(int x, int y) {
+        Glyph root = _glyph.getRoot();
+        System.out.println("the click x=" + x + " and y=" + y);
+    }
 }

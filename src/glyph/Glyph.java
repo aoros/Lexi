@@ -1,5 +1,6 @@
 package glyph;
 
+import command.Command;
 import compositor.Compositor;
 import window.Window;
 
@@ -43,7 +44,27 @@ public abstract class Glyph {
     public void setCompositor(Compositor compositor) {
     }
 
-    public abstract boolean intersects(Bounds point);
+    public boolean intersects(Bounds point) {
+        int thisX_low = _bounds.getX();
+        int thisX_high = _bounds.getX() + _bounds.getWidth();
+        int thisY_low = _bounds.getY();
+        int thisY_high = _bounds.getY() + _bounds.getHeight();
+
+        return point.getX() >= thisX_low && point.getX() <= thisX_high
+                && point.getY() >= thisY_low && point.getY() <= thisY_high;
+    }
+
+    public Glyph getRoot() {
+        Glyph root = this;
+        while (root.getParent() != null) {
+            root = root.getParent();
+        }
+        return root;
+    }
+
+    public Command click() {
+        return null;
+    }
 
     public abstract void insert(Glyph glyph, int position) throws GlyphException;
 

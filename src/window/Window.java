@@ -43,7 +43,15 @@ public abstract class Window {
         _windowImp.drawLabel(x, y, width, height, color);
     }
 
+    public void setFontSize(int size) {
+        _windowImp.setFontSize(size);
+    }
+
     public abstract void setContents(Glyph glyph);
 
     public abstract void draw();
+
+    public abstract void key(char keyChar);
+
+    public abstract void click(int x, int y);
 }

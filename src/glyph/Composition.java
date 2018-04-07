@@ -25,12 +25,4 @@ public abstract class Composition extends Glyph {
     public void compose() {
         _compositor.compose();
     }
-
-    public Glyph getRoot(Glyph glyph) {
-        Glyph root = glyph;
-        while (root.getParent() != null) {
-            root = root.getParent();
-        }
-        return root;
-    }
 }

@@ -26,13 +26,13 @@ public abstract class CompositeGlyph extends Composition {
     public void insert(Glyph glyph, int position) throws GlyphException {
         children.add(position, glyph);
         glyph.setParent(this);
-        getRoot(this).compose();
+        getRoot().compose();
     }
 
     @Override
     public void remove(Glyph glyph) {
         children.remove(glyph);
-        getRoot(this).compose();
+        getRoot().compose();
     }
 
     @Override
@@ -42,11 +42,6 @@ public abstract class CompositeGlyph extends Composition {
         } catch (IndexOutOfBoundsException ex) {
             throw ex;
         }
-    }
-
-    @Override
-    public boolean intersects(Bounds point) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public void addChild(Glyph glyph) {

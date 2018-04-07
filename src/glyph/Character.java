@@ -18,11 +18,6 @@ public class Character extends Glyph {
     }
 
     @Override
-    public boolean intersects(Bounds point) {
-        return false;
-    }
-
-    @Override
     public void insert(Glyph glyph, int position) {
         throw new UnsupportedOperationException("Character glyph is a leaf node.");
     }
