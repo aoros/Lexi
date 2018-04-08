@@ -1,4 +1,5 @@
 
+import glyph.ActionType;
 import glyph.Border;
 import glyph.Button;
 import glyph.Column;
@@ -55,12 +56,13 @@ public class Lexi {
         Composition row4 = new Row(window);
 
         Label label = guiFactory.createLabel(new Row("pq", window));
+
         Button pq_button = guiFactory.createButton(new Row("PQ", window));
-        Button plus_button = guiFactory.createButton(new Row("+", window));
-        Button minus_button = guiFactory.createButton(new Row("-", window));
-        Button s14_button = guiFactory.createButton(new Row(" 14 ", window));
-        Button s20_button = guiFactory.createButton(new Row(" 20 ", window));
-        
+        Button plus_button = guiFactory.createButton(new Row("+", window), ActionType.INCR_FONT_SIZE_BY_1);
+        Button minus_button = guiFactory.createButton(new Row("-", window), ActionType.DECR_FONT_SIZE_BY_1);
+        Button s14_button = guiFactory.createButton(new Row(" 14 ", window), ActionType.SET_FONT_SIZE_TO_14);
+        Button s20_button = guiFactory.createButton(new Row(" 20 ", window), ActionType.SET_FONT_SIZE_TO_20);
+
         colRoot.insert(row1, 0);
 
         row1.insert(a, 0);
@@ -78,7 +80,7 @@ public class Lexi {
 
         colRoot.insert(row3, 2);
         row3.insert(pq_button, 0);
-        
+
         colRoot.insert(row4, 3);
         row4.insert(plus_button, 0);
         row4.insert(minus_button, 1);
@@ -86,7 +88,7 @@ public class Lexi {
         row4.insert(s20_button, 3);
 
         window.setContents(colRoot);
-        
+
     }
 
     private static void build_hw4_configuration(Window window) throws GlyphException {

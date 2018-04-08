@@ -1,5 +1,6 @@
 package window;
 
+import command.Command;
 import glyph.Glyph;
 
 // Bridge(151): RefinedAbstraction
@@ -31,6 +32,17 @@ public class LexiWindow extends Window {
     @Override
     public void click(int x, int y) {
         Glyph root = _glyph.getRoot();
+        if (root != null) {
+            Glyph selectedGlyph = root.find(x, y);
+            if (selectedGlyph != null) {
+                Command c = selectedGlyph.click();
+                c.execute();
+                root.compose();
+                setContents(root);
+            }
+            System.out.println(selectedGlyph);
+        }
+
         System.out.println("the click x=" + x + " and y=" + y);
     }
 }

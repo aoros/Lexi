@@ -2,6 +2,8 @@ package glyph;
 
 import command.Command;
 import compositor.Compositor;
+import java.util.LinkedList;
+import java.util.Queue;
 import window.Window;
 
 // Composite(163).Component
@@ -45,13 +47,7 @@ public abstract class Glyph {
     }
 
     public boolean intersects(Bounds point) {
-        int thisX_low = _bounds.getX();
-        int thisX_high = _bounds.getX() + _bounds.getWidth();
-        int thisY_low = _bounds.getY();
-        int thisY_high = _bounds.getY() + _bounds.getHeight();
-
-        return point.getX() >= thisX_low && point.getX() <= thisX_high
-                && point.getY() >= thisY_low && point.getY() <= thisY_high;
+        return false;
     }
 
     public Glyph getRoot() {
@@ -77,4 +73,26 @@ public abstract class Glyph {
     public abstract void draw(Window window);
 
     public abstract void setSize(Window window);
+
+    public Glyph find(int x, int y) {
+        Queue<Glyph> queue = new LinkedList<>();
+        queue.add(getRoot());
+        while (!queue.isEmpty()) {
+            Glyph g = queue.remove();
+            if (g.intersects(new Bounds(x, y, 0, 0)))
+                return g;
+            else {
+                int i = 0;
+                while (true) {
+                    try {
+                        queue.add(g.getChild(i));
+                        i++;
+                    } catch (Exception ex) {
+                        break;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }

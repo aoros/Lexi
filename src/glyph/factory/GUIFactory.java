@@ -1,6 +1,7 @@
 package glyph.factory;
 
 import glyph.Button;
+import glyph.ActionType;
 import glyph.Composition;
 import glyph.Label;
 
@@ -39,6 +40,10 @@ public abstract class GUIFactory {
         return buttonFactoryMethod(composition);
     }
 
+    public final Button createButton(Composition composition, ActionType actionType) {
+        return buttonFactoryMethod(composition, actionType);
+    }
+
     public final Label createLabel(Composition composition) {
         return labelFactoryMethod(composition);
     }
@@ -46,4 +51,6 @@ public abstract class GUIFactory {
     protected abstract Label labelFactoryMethod(Composition composition);
 
     protected abstract Button buttonFactoryMethod(Composition composition);
+    
+    protected abstract Button buttonFactoryMethod(Composition composition, ActionType actionType);
 }

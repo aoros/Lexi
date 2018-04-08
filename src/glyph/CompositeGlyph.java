@@ -48,4 +48,9 @@ public abstract class CompositeGlyph extends Composition {
         children.add(0, glyph);
         glyph.setParent(this);
     }
+    
+    @Override
+    public boolean intersects(Bounds point) {
+        return false;
+    }
 }

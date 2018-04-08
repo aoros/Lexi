@@ -43,6 +43,10 @@ public abstract class Window {
         _windowImp.drawLabel(x, y, width, height, color);
     }
 
+    public int getFontSize() {
+        return _windowImp.getFontSize();
+    }
+
     public void setFontSize(int size) {
         _windowImp.setFontSize(size);
     }

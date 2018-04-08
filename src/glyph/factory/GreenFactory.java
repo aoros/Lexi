@@ -1,6 +1,7 @@
 package glyph.factory;
 
 import glyph.Button;
+import glyph.ActionType;
 import glyph.Composition;
 import glyph.Label;
 
@@ -18,12 +19,17 @@ class GreenFactory extends GUIFactory {
 
     @Override
     public Button buttonFactoryMethod(Composition composition) {
-        return new GreenButton(composition);
+        return new GreenButton(composition, null);
     }
 
     @Override
     public Label labelFactoryMethod(Composition composition) {
         return new GreenLabel(composition);
+    }
+
+    @Override
+    protected Button buttonFactoryMethod(Composition composition, ActionType actionType) {
+        return new GreenButton(composition, actionType);
     }
 
 }
