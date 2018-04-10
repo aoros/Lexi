@@ -1,18 +1,17 @@
 package glyph;
 
 import command.Command;
-import command.SetFontSizeCommand;
 import window.Window;
 
 // Abstract Factory(87).AbstractProduct
 // Factory(107).Product
 public abstract class Button extends Embellishment {
 
-    private final ActionType actionType;
+    private final Command command;
 
-    public Button(Composition composition, ActionType actionType) {
+    public Button(Composition composition, Command command) {
         super(composition);
-        this.actionType = actionType;
+        this.command = command;
     }
 
     @Override
@@ -27,7 +26,7 @@ public abstract class Button extends Embellishment {
 
     @Override
     public Command click() {
-        return new SetFontSizeCommand(this, window, actionType);
+        return command;
     }
 
     @Override

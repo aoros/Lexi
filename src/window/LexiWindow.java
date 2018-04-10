@@ -1,12 +1,14 @@
 package window;
 
 import command.Command;
+import command.KeyMap;
 import glyph.Glyph;
 
 // Bridge(151): RefinedAbstraction
 public class LexiWindow extends Window {
 
     private Glyph _glyph;
+    private KeyMap keyMap;
 
     public LexiWindow(String title) {
         super(title);
@@ -20,8 +22,9 @@ public class LexiWindow extends Window {
 
     @Override
     public void draw() {
-        if (_glyph != null)
+        if (_glyph != null) {
             _glyph.draw(this);
+        }
     }
 
     @Override
@@ -44,5 +47,10 @@ public class LexiWindow extends Window {
         }
 
         System.out.println("the click x=" + x + " and y=" + y);
+    }
+
+    @Override
+    public void setKeyMap(KeyMap keyMap) {
+        this.keyMap = keyMap;
     }
 }

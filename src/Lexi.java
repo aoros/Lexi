@@ -1,14 +1,18 @@
 
+import command.KeyMap;
+import command.RedoCommand;
+import command.SetFontSizeCommand;
+import command.UndoCommand;
 import glyph.ActionType;
 import glyph.Border;
 import glyph.Button;
+import glyph.Character;
 import glyph.Column;
 import glyph.Composition;
 import glyph.Glyph;
 import glyph.GlyphException;
 import glyph.Label;
 import glyph.Rectangle;
-import glyph.Character;
 import glyph.Row;
 import glyph.Scroller;
 import glyph.factory.GUIFactory;
@@ -19,14 +23,21 @@ import window.Window;
 // Abstract Factory(87).Client
 public class Lexi {
 
-    private static boolean debug = false;
+    private static final boolean DEBUG = false;
+    private static final KeyMap KEY_MAP = new KeyMap();
 
     public static void main(String[] args) throws GlyphException {
         System.out.println(System.getenv("LexiWindow"));
         Window window = new LexiWindow("Lexi");
 
+        KEY_MAP.put('i', new SetFontSizeCommand(window, ActionType.INCR_FONT_SIZE_BY_1));
+        KEY_MAP.put('d', new SetFontSizeCommand(window, ActionType.DECR_FONT_SIZE_BY_1));
+        KEY_MAP.put('u', new UndoCommand(window));
+        KEY_MAP.put('r', new RedoCommand(window));
+
+        window.setKeyMap(KEY_MAP);
+
         try {
-//            build_hw4_configuration(window);
             build_hw5_configuration(window);
         } catch (GlyphException ex) {
             System.err.println(ex);
@@ -58,10 +69,10 @@ public class Lexi {
         Label label = guiFactory.createLabel(new Row("pq", window));
 
         Button pq_button = guiFactory.createButton(new Row("PQ", window));
-        Button plus_button = guiFactory.createButton(new Row("+", window), ActionType.INCR_FONT_SIZE_BY_1);
-        Button minus_button = guiFactory.createButton(new Row("-", window), ActionType.DECR_FONT_SIZE_BY_1);
-        Button s14_button = guiFactory.createButton(new Row(" 14 ", window), ActionType.SET_FONT_SIZE_TO_14);
-        Button s20_button = guiFactory.createButton(new Row(" 20 ", window), ActionType.SET_FONT_SIZE_TO_20);
+        Button plus_button = guiFactory.createButton(new Row(" + ", window), new SetFontSizeCommand(window, ActionType.INCR_FONT_SIZE_BY_1));
+        Button minus_button = guiFactory.createButton(new Row(" - ", window), new SetFontSizeCommand(window, ActionType.DECR_FONT_SIZE_BY_1));
+        Button s14_button = guiFactory.createButton(new Row(" 14 ", window), new SetFontSizeCommand(window, ActionType.SET_FONT_SIZE_TO_14));
+        Button s20_button = guiFactory.createButton(new Row(" 20 ", window), new SetFontSizeCommand(window, ActionType.SET_FONT_SIZE_TO_20));
 
         colRoot.insert(row1, 0);
 

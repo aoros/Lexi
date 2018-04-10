@@ -1,8 +1,8 @@
 package glyph.factory;
 
+import command.Command;
 import glyph.Bounds;
 import glyph.Button;
-import glyph.ActionType;
 import glyph.Composition;
 import window.Window;
 
@@ -10,8 +10,8 @@ import window.Window;
 // Factory(107).ConcreteProduct
 public class GreenButton extends Button {
 
-    protected GreenButton(Composition composition, ActionType actionType) {
-        super(composition, actionType);
+    protected GreenButton(Composition composition, Command command) {
+        super(composition, command);
     }
 
     @Override

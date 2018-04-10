@@ -16,9 +16,13 @@ public class SetFontSizeCommand implements Command {
         this._actionType = actionType;
     }
 
-    public SetFontSizeCommand(Window _window) {
-        this._glyph = null;
-        this._window = _window;
+    public SetFontSizeCommand(Window _window, ActionType actionType) {
+        this(null, _window, actionType);
+    }
+
+    @Override
+    public void setGlyph(Glyph _glyph) {
+        this._glyph = _glyph;
     }
 
     @Override

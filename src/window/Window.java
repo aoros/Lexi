@@ -1,5 +1,6 @@
 package window;
 
+import command.KeyMap;
 import glyph.*;
 
 // Bridge(151): Abstraction
@@ -58,4 +59,6 @@ public abstract class Window {
     public abstract void key(char keyChar);
 
     public abstract void click(int x, int y);
+    
+    public abstract void setKeyMap(KeyMap keyMap);
 }

@@ -1,7 +1,7 @@
 package glyph.factory;
 
+import command.Command;
 import glyph.Button;
-import glyph.ActionType;
 import glyph.Composition;
 import glyph.Label;
 
@@ -28,8 +28,8 @@ class GreenFactory extends GUIFactory {
     }
 
     @Override
-    protected Button buttonFactoryMethod(Composition composition, ActionType actionType) {
-        return new GreenButton(composition, actionType);
+    protected Button buttonFactoryMethod(Composition composition, Command command) {
+        return new GreenButton(composition, command);
     }
 
 }

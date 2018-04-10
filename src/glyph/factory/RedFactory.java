@@ -1,7 +1,7 @@
 package glyph.factory;
 
+import command.Command;
 import glyph.Button;
-import glyph.ActionType;
 import glyph.Composition;
 import glyph.Label;
 
@@ -28,7 +28,7 @@ class RedFactory extends GUIFactory {
     }
 
     @Override
-    protected Button buttonFactoryMethod(Composition composition, ActionType actionType) {
-        return new RedButton(composition, actionType);
+    protected Button buttonFactoryMethod(Composition composition, Command command) {
+        return new RedButton(composition, command);
     }
 }
