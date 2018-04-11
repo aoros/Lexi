@@ -11,4 +11,6 @@ public interface Command {
     public Command clone();
 
     public void setGlyph(Glyph _glyph);
+
+    public Glyph getGlyph();
 }

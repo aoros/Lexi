@@ -30,13 +30,6 @@ public class Lexi {
         System.out.println(System.getenv("LexiWindow"));
         Window window = new LexiWindow("Lexi");
 
-        KEY_MAP.put('i', new SetFontSizeCommand(window, ActionType.INCR_FONT_SIZE_BY_1));
-        KEY_MAP.put('d', new SetFontSizeCommand(window, ActionType.DECR_FONT_SIZE_BY_1));
-        KEY_MAP.put('u', new UndoCommand(window));
-        KEY_MAP.put('r', new RedoCommand(window));
-
-        window.setKeyMap(KEY_MAP);
-
         try {
             build_hw5_configuration(window);
         } catch (GlyphException ex) {
@@ -98,8 +91,13 @@ public class Lexi {
         row4.insert(s14_button, 2);
         row4.insert(s20_button, 3);
 
-        window.setContents(colRoot);
+        KEY_MAP.put('i', new SetFontSizeCommand(colRoot, window, ActionType.INCR_FONT_SIZE_BY_1, 0));
+        KEY_MAP.put('d', new SetFontSizeCommand(colRoot, window, ActionType.DECR_FONT_SIZE_BY_1, 0));
+        KEY_MAP.put('u', new UndoCommand(colRoot, window));
+        KEY_MAP.put('r', new RedoCommand(colRoot, window));
 
+        window.setKeyMap(KEY_MAP);
+        window.setContents(colRoot);
     }
 
     private static void build_hw4_configuration(Window window) throws GlyphException {

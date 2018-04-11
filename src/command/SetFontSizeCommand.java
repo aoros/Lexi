@@ -4,20 +4,26 @@ import glyph.ActionType;
 import glyph.Glyph;
 import window.Window;
 
-public class SetFontSizeCommand implements Command {
+public class SetFontSizeCommand implements Command, Cloneable {
 
-    private Glyph _glyph;
-    private Window _window;
-    private ActionType _actionType;
+    Glyph _glyph;
+    Window _window;
+    ActionType _actionType;
+    int _previousFontSize;
 
-    public SetFontSizeCommand(Glyph _glyph, Window _window, ActionType actionType) {
+    public SetFontSizeCommand(Glyph _glyph, Window _window, ActionType actionType, int previousFontSize) {
         this._glyph = _glyph;
         this._window = _window;
         this._actionType = actionType;
+        this._previousFontSize = previousFontSize;
     }
 
     public SetFontSizeCommand(Window _window, ActionType actionType) {
-        this(null, _window, actionType);
+        this(null, _window, actionType, 0);
+    }
+
+    private SetFontSizeCommand(SetFontSizeCommand clone) {
+        this(clone._glyph, clone._window, clone._actionType, clone._previousFontSize);
     }
 
     @Override
@@ -27,6 +33,7 @@ public class SetFontSizeCommand implements Command {
 
     @Override
     public void execute() {
+        _previousFontSize = _window.getFontSize();
         if (_actionType != null) {
             if (null != _actionType) switch (_actionType) {
                 case INCR_FONT_SIZE_BY_1:
@@ -45,21 +52,28 @@ public class SetFontSizeCommand implements Command {
                     break;
             }
         }
+        CommandHistory.getInstance().add(this);
     }
 
     @Override
     public void unexecute() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        _window.setFontSize(_previousFontSize);
     }
 
     @Override
     public Command clone() {
         Command copy = null;
         try {
-            copy = (SetFontSizeCommand) super.clone();
+            copy = new SetFontSizeCommand((SetFontSizeCommand) super.clone());
+//            copy = (SetFontSizeCommand) super.clone();
         } catch (CloneNotSupportedException ex) {
             ex.printStackTrace();
         }
         return copy;
+    }
+
+    @Override
+    public Glyph getGlyph() {
+        return _glyph;
     }
 }

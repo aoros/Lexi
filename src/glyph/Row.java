@@ -38,7 +38,7 @@ public class Row extends CompositeGlyph {
     @Override
     public void adjustCursorAfterComposingChild(Bounds cursor, Bounds childBounds) {
         _bounds.setWidth(cursor.getX() + childBounds.getWidth() - _bounds.getX());
-
+        
         if (_bounds.getHeight() < childBounds.getHeight())
             _bounds.setHeight(childBounds.getHeight());
 

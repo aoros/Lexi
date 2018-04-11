@@ -29,7 +29,12 @@ public class LexiWindow extends Window {
 
     @Override
     public void key(char keyChar) {
-        System.out.println("the keyChar is " + keyChar);
+        Command c = keyMap.get(keyChar);
+        _glyph = c.getGlyph();
+        Glyph root = c.getGlyph().getRoot();
+        c.execute();
+        root.compose();
+        setContents(root);
     }
 
     @Override
@@ -39,7 +44,9 @@ public class LexiWindow extends Window {
             Glyph selectedGlyph = root.find(x, y);
             if (selectedGlyph != null) {
                 Command c = selectedGlyph.click();
-                c.execute();
+                if (c != null)
+                    c.execute();
+
                 root.compose();
                 setContents(root);
             }
