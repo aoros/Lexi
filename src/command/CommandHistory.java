@@ -24,14 +24,35 @@ public class CommandHistory {
     public void add(Command command) {
         commands.add(cmdIndex, command.clone());
         cmdIndex++;
+        
+        removeAnyCommandsAfterIndex();
     }
 
-    public Command getLastIndexedCommand() {
+    public Command getCommandForUndo() {
         if (cmdIndex > 0) {
             cmdIndex--;
             Command c = commands.get(cmdIndex);
             return c;
         }
         return null;
+    }
+
+    public Command getCommandForRedo() {
+        if (cmdIndex < commands.size()) {
+            Command c = commands.get(cmdIndex);
+            return c;
+        }
+        return null;
+    }
+
+    private void removeAnyCommandsAfterIndex() {
+        while (cmdIndex < commands.size()) {
+            commands.remove(cmdIndex);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "CommandHistory{ i="+ cmdIndex + "  " + commands + '}';
     }
 }

@@ -1,6 +1,7 @@
 package command;
 
 import glyph.Glyph;
+import java.util.Objects;
 import window.Window;
 
 public class UndoCommand implements Command {
@@ -15,9 +16,11 @@ public class UndoCommand implements Command {
 
     @Override
     public void execute() {
-        Command command = CommandHistory.getInstance().getLastIndexedCommand();
-        if (command != null)
+        Command command = CommandHistory.getInstance().getCommandForUndo();
+        if (command != null) {
             command.unexecute();
+        }
+        System.out.println(CommandHistory.getInstance().toString());
     }
 
     @Override
@@ -40,4 +43,16 @@ public class UndoCommand implements Command {
         return _glyph;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this._window);
+        hash = 53 * hash + Objects.hashCode(this._glyph);
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+        return "UndoCommand{" + hashCode() + '}';
+    }
 }

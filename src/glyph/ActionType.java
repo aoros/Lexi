@@ -21,4 +21,9 @@ public enum ActionType {
     public int getActionValue() {
         return actionValue;
     }
+
+    @Override
+    public String toString() {
+        return actionType + ", " + actionValue;
+    }
 }

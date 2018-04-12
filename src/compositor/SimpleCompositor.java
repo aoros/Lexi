@@ -24,6 +24,9 @@ public class SimpleCompositor implements Compositor {
 
     @Override
     public void compose() {
+        composition.getBounds().setHeight(0);
+        composition.getBounds().setWidth(0);
+
         Bounds cursor = new Bounds(composition.getBounds().getX(), composition.getBounds().getY(), 0, 0);
 
         Glyph parent = composition;
