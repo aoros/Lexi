@@ -9,6 +9,7 @@ public class CommandHistory {
     private static final List<Command> commands = new ArrayList<>();
     // index is the position where the next command will be placed
     private static int cmdIndex;
+    private boolean isRedoCommand = false;
 
     private CommandHistory() {
         cmdIndex = 0;
@@ -24,23 +25,25 @@ public class CommandHistory {
     public void add(Command command) {
         commands.add(cmdIndex, command.clone());
         cmdIndex++;
-        
-        removeAnyCommandsAfterIndex();
+
+        if (!isRedoCommand) {
+            removeAnyCommandsAfterIndex();
+        }
+        isRedoCommand = false;
     }
 
     public Command getCommandForUndo() {
         if (cmdIndex > 0) {
             cmdIndex--;
-            Command c = commands.get(cmdIndex);
-            return c;
+            return commands.get(cmdIndex);
         }
         return null;
     }
 
     public Command getCommandForRedo() {
         if (cmdIndex < commands.size()) {
-            Command c = commands.get(cmdIndex);
-            return c;
+            isRedoCommand = true;
+            return commands.remove(cmdIndex);
         }
         return null;
     }
@@ -53,6 +56,6 @@ public class CommandHistory {
 
     @Override
     public String toString() {
-        return "CommandHistory{ i="+ cmdIndex + "  " + commands + '}';
+        return "CommandHistory{ i=" + cmdIndex + "  " + commands + '}';
     }
 }

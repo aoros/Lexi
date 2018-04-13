@@ -23,11 +23,9 @@ import window.Window;
 // Abstract Factory(87).Client
 public class Lexi {
 
-    private static final boolean DEBUG = false;
     private static final KeyMap KEY_MAP = new KeyMap();
 
     public static void main(String[] args) throws GlyphException {
-        System.out.println(System.getenv("LexiWindow"));
         Window window = new LexiWindow("Lexi");
 
         try {

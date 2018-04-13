@@ -22,7 +22,7 @@ public class Column extends CompositeGlyph {
                 super.insert(new Row(strings[i], window), i);
             }
         } catch (GlyphException e) {
-            System.out.println(e);
+//            System.out.println(e);
         }
     }
 
