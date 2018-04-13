@@ -4,6 +4,8 @@ import glyph.ActionType;
 import glyph.Glyph;
 import window.Window;
 
+// Command(233).ConcreteCommand
+// Prototype(119).ConcretePrototype
 public class SetFontSizeCommand implements Command {
 
     Glyph _glyph;

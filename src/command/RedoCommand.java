@@ -3,6 +3,7 @@ package command;
 import glyph.Glyph;
 import window.Window;
 
+// Command(233).ConcreteCommand
 public class RedoCommand implements Command {
 
     private Window _window;

@@ -21,6 +21,7 @@ import window.Window;
 
 // Composite(163).Client
 // Abstract Factory(87).Client
+// Command(233).Client
 public class Lexi {
 
     private static final KeyMap KEY_MAP = new KeyMap();

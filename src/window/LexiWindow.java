@@ -4,7 +4,9 @@ import command.Command;
 import command.KeyMap;
 import glyph.Glyph;
 
-// Bridge(151): RefinedAbstraction
+// Bridge(151).RefinedAbstraction
+// Command(233).Invoker
+// Chain of Responsibility(223).Client
 public class LexiWindow extends Window {
 
     private Glyph _glyph;

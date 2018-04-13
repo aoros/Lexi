@@ -8,6 +8,8 @@ import window.Window;
 
 // Composite(163).Component
 // Decorator(175).Component
+// Command(233).Receiver
+// Chain of Responsibility(223).Handler
 public abstract class Glyph {
 
     Compositor compositor;

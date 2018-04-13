@@ -3,7 +3,8 @@ package window;
 import command.KeyMap;
 import glyph.*;
 
-// Bridge(151): Abstraction
+// Bridge(151).Abstraction
+// Command(233).Receiver
 public abstract class Window {
 
     final WindowImp _windowImp;

@@ -3,6 +3,7 @@ package command;
 import java.util.ArrayList;
 import java.util.List;
 
+// Prototype(119).Client
 public class CommandHistory {
 
     private static CommandHistory instance;

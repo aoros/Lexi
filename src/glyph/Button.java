@@ -5,6 +5,7 @@ import window.Window;
 
 // Abstract Factory(87).AbstractProduct
 // Factory(107).Product
+// Chain of Responsibility(223).ConcreteHandler
 public abstract class Button extends Embellishment {
 
     private final Command command;

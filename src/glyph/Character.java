@@ -1,6 +1,5 @@
 package glyph;
 
-import command.Command;
 import window.Window;
 
 // Composite(163).Leaf
@@ -41,11 +40,6 @@ public class Character extends Glyph {
 
     @Override
     public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
-    }
-
-    @Override
-    public Command click() {
-        return null;
     }
 
     @Override
