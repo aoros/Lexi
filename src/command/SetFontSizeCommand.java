@@ -38,8 +38,6 @@ public class SetFontSizeCommand implements Command, Cloneable {
         _previousFontSize = _window.getFontSize();
         setFontSize();
         CommandHistory.getInstance().add(this);
-        System.out.println("SetFontSize -> " + _actionType.getActionType());
-//        System.out.println(CommandHistory.getInstance().toString());
     }
 
     private void setFontSize() {

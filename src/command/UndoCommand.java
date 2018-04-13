@@ -20,7 +20,6 @@ public class UndoCommand implements Command {
         if (command != null) {
             command.unexecute();
         }
-        System.out.println(CommandHistory.getInstance().toString());
     }
 
     @Override

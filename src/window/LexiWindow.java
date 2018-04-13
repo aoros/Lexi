@@ -52,9 +52,7 @@ public class LexiWindow extends Window {
                 root.compose();
                 setContents(root);
             }
-//            System.out.println(selectedGlyph);
         }
-//        System.out.println("the click x=" + x + " and y=" + y);
     }
 
     @Override

@@ -19,8 +19,6 @@ public class RedoCommand implements Command {
         Command c = CommandHistory.getInstance().getCommandForRedo();
         if (c != null)
             c.execute();
-
-        System.out.println(CommandHistory.getInstance().toString());
     }
 
     @Override
