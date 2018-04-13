@@ -100,7 +100,6 @@ public class Lexi {
     }
 
     private static void build_hw4_configuration(Window window) throws GlyphException {
-
         GUIFactory.getInstance();
         GUIFactory guiFactory = GUIFactory.getGUIFactory();
 
