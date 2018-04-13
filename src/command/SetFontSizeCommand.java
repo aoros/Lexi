@@ -2,10 +2,9 @@ package command;
 
 import glyph.ActionType;
 import glyph.Glyph;
-import java.util.Objects;
 import window.Window;
 
-public class SetFontSizeCommand implements Command, Cloneable {
+public class SetFontSizeCommand implements Command {
 
     Glyph _glyph;
     Window _window;
@@ -70,48 +69,11 @@ public class SetFontSizeCommand implements Command, Cloneable {
 
     @Override
     public Command clone() {
-        Command copy = null;
-        try {
-            copy = new SetFontSizeCommand((SetFontSizeCommand) super.clone());
-//            copy = (SetFontSizeCommand) super.clone();
-        } catch (CloneNotSupportedException ex) {
-            ex.printStackTrace();
-        }
-        return copy;
+        return new SetFontSizeCommand(this);
     }
 
     @Override
     public Glyph getGlyph() {
         return _glyph;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this._glyph);
-        hash = 79 * hash + Objects.hashCode(this._window);
-        hash = 79 * hash + Objects.hashCode(this._actionType);
-        hash = 79 * hash + this._previousFontSize;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final SetFontSizeCommand other = (SetFontSizeCommand) obj;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "SetFontSizeCommand{" + _actionType + '}';
     }
 }

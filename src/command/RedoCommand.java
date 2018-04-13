@@ -1,7 +1,6 @@
 package command;
 
 import glyph.Glyph;
-import java.util.Objects;
 import window.Window;
 
 public class RedoCommand implements Command {
@@ -40,33 +39,4 @@ public class RedoCommand implements Command {
     public Glyph getGlyph() {
         return _glyph;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this._window);
-        hash = 41 * hash + Objects.hashCode(this._glyph);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final RedoCommand other = (RedoCommand) obj;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "RedoCommand{" + hashCode() + '}';
-    }
-
 }

@@ -1,7 +1,6 @@
 package glyph;
 
 import command.Command;
-import command.InsertCharacterCommand;
 import window.Window;
 
 // Composite(163).Leaf
@@ -46,7 +45,7 @@ public class Character extends Glyph {
 
     @Override
     public Command click() {
-        return new InsertCharacterCommand();
+        return null;
     }
 
     @Override
