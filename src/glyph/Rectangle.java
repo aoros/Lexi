@@ -21,12 +21,7 @@ public class Rectangle extends Glyph {
     public void insert(Glyph glyph, int position) {
         throw new UnsupportedOperationException("Rectangle glyph is a leaf node.");
     }
-
-    @Override
-    public Glyph getChild(int position) {
-        throw new UnsupportedOperationException("Rectangle glyph is a leaf node.");
-    }
-
+    
     @Override
     public void remove(Glyph glyph) {
         throw new UnsupportedOperationException("Rectangle glyph is a leaf node.");

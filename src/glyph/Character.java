@@ -25,11 +25,6 @@ public class Character extends Glyph {
     }
 
     @Override
-    public Glyph getChild(int position) {
-        throw new UnsupportedOperationException("Character glyph is a leaf node.");
-    }
-
-    @Override
     public void remove(Glyph glyph) {
         throw new UnsupportedOperationException("Character glyph is a leaf node.");
     }

@@ -37,15 +37,6 @@ public abstract class CompositeGlyph extends Composition {
         getRoot().compose();
     }
 
-    @Override
-    public Glyph getChild(int position) {
-        try {
-            return children.get(position);
-        } catch (IndexOutOfBoundsException ex) {
-            throw ex;
-        }
-    }
-
     public void addChild(Glyph glyph) {
         children.add(0, glyph);
         glyph.setParent(this);

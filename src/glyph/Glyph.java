@@ -70,8 +70,6 @@ public abstract class Glyph implements IsIterable {
 
     public abstract void remove(Glyph glyph);
 
-    public abstract Glyph getChild(int position);
-
     public abstract void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds);
 
     public abstract void draw(Window window);
