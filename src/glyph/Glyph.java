@@ -5,12 +5,14 @@ import compositor.Compositor;
 import java.util.LinkedList;
 import java.util.Queue;
 import window.Window;
+import iterator.IsIterable;
+import iterator.Iterator;
 
 // Composite(163).Component
 // Decorator(175).Component
 // Command(233).Receiver
 // Chain of Responsibility(223).Handler
-public abstract class Glyph {
+public abstract class Glyph implements IsIterable {
 
     Compositor compositor;
     Glyph parent;
@@ -84,14 +86,10 @@ public abstract class Glyph {
             if (g.intersects(new Bounds(x, y, 0, 0)))
                 return g;
             else {
-                int i = 0;
-                while (true) {
-                    try {
-                        queue.add(g.getChild(i));
-                        i++;
-                    } catch (Exception ex) {
-                        break;
-                    }
+                Iterator iter = g.createIterator();
+                while (!iter.isDone()) {
+                    queue.add(iter.currentItem());
+                    iter.next();
                 }
             }
         }

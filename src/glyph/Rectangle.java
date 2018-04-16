@@ -1,5 +1,7 @@
 package glyph;
 
+import iterator.Iterator;
+import iterator.NullIterator;
 import window.Window;
 
 // Composite(163).Leaf
@@ -36,6 +38,11 @@ public class Rectangle extends Glyph {
 
     @Override
     public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
+    }
+    
+    @Override
+    public Iterator createIterator() {
+        return new NullIterator();
     }
 
     @Override

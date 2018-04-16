@@ -1,5 +1,7 @@
 package glyph;
 
+import iterator.Iterator;
+import iterator.NullIterator;
 import window.Window;
 
 // Composite(163).Leaf
@@ -51,6 +53,11 @@ public class Character extends Glyph {
 
         return point.getX() >= thisX_low && point.getX() <= thisX_high
                 && point.getY() >= thisY_low && point.getY() <= thisY_high;
+    }
+
+    @Override
+    public Iterator createIterator() {
+        return new NullIterator();
     }
 
     @Override

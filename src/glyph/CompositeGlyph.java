@@ -1,6 +1,8 @@
 package glyph;
 
 import compositor.SimpleCompositor;
+import iterator.Iterator;
+import iterator.ListIterator;
 import java.util.ArrayList;
 import java.util.List;
 import window.Window;
@@ -48,9 +50,18 @@ public abstract class CompositeGlyph extends Composition {
         children.add(0, glyph);
         glyph.setParent(this);
     }
-    
+
     @Override
     public boolean intersects(Bounds point) {
         return false;
+    }
+
+    public List<Glyph> getChildren() {
+        return children;
+    }
+
+    @Override
+    public Iterator createIterator() {
+        return new ListIterator(this);
     }
 }

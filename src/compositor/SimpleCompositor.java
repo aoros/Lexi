@@ -3,6 +3,7 @@ package compositor;
 import glyph.Bounds;
 import glyph.Composition;
 import glyph.Glyph;
+import iterator.Iterator;
 import window.Window;
 
 // Composite(163).Client
@@ -30,18 +31,15 @@ public class SimpleCompositor implements Compositor {
         Bounds cursor = new Bounds(composition.getBounds().getX(), composition.getBounds().getY(), 0, 0);
 
         Glyph parent = composition;
-        int i = 0;
-        while (true) {
-            try {
-                Glyph child = parent.getChild(i);
-                child.setSize(window);
-                child.setPosition(cursor);
-                child.compose();
-                parent.adjustCursorAfterComposingChild(cursor, child.getBounds());
-                i++;
-            } catch (Exception ex) {
-                break;
-            }
+        Iterator iter = parent.createIterator();
+
+        while (!iter.isDone()) {
+            Glyph child = iter.currentItem();
+            child.setSize(window);
+            child.setPosition(cursor);
+            child.compose();
+            parent.adjustCursorAfterComposingChild(cursor, child.getBounds());
+            iter.next();
         }
     }
 }

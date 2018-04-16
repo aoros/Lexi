@@ -14,52 +14,61 @@ public abstract class Embellishment extends CompositeGlyph {
     @Override
     public void setCompositor(Compositor compositor) {
         super.setCompositor(compositor);
-        super.getChild(0).setCompositor(compositor);
+        super.createIterator().currentItem().setCompositor(compositor);
+//        super.getChild(0).setCompositor(compositor);
     }
 
     @Override
     public void draw(Window window) {
-        super.getChild(0).draw(window);
+        super.createIterator().currentItem().draw(window);
+//        super.getChild(0).draw(window);
     }
 
     @Override
     public void insert(Glyph glyph, int position) throws GlyphException {
-        super.getChild(0).insert(glyph, position);
+        super.createIterator().currentItem().insert(glyph, position);
+//        super.getChild(0).insert(glyph, position);
     }
 
     @Override
     public void remove(Glyph glyph) {
-        super.getChild(0).remove(glyph);
+        super.createIterator().currentItem().remove(glyph);
+//        super.getChild(0).remove(glyph);
     }
 
     @Override
     public Glyph getChild(int position) {
-        Glyph child = super.getChild(0);
-        return child.getChild(position);
+//        Glyph child = super.getChild(0);
+        return super.createIterator().currentItem();
     }
 
     @Override
     public Bounds getBounds() {
-        return super.getChild(0).getBounds();
+        return super.createIterator().currentItem().getBounds();
+//        return super.getChild(0).getBounds();
     }
 
     @Override
     public String getName() {
-        return super.getChild(0).getName();
+        return super.createIterator().currentItem().getName();
+//        return super.getChild(0).getName();
     }
 
     @Override
     public void compose() {
-        super.getChild(0).compose();
+        super.createIterator().currentItem().compose();
+//        super.getChild(0).compose();
     }
 
     @Override
     public void setPosition(Bounds cursor) {
-        super.getChild(0).setPosition(cursor);
+        super.createIterator().currentItem().setPosition(cursor);
+//        super.getChild(0).setPosition(cursor);
     }
 
     @Override
     public void setSize(Window window) {
-        super.getChild(0).setSize(window);
+        super.createIterator().currentItem().setSize(window);
+//        super.getChild(0).setSize(window);
     }
 }

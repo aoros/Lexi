@@ -1,4 +1,5 @@
 
+import command.PrintWordsCommand;
 import command.KeyMap;
 import command.RedoCommand;
 import command.SetFontSizeCommand;
@@ -94,6 +95,7 @@ public class Lexi {
         KEY_MAP.put('d', new SetFontSizeCommand(colRoot, window, ActionType.DECR_FONT_SIZE_BY_1, 0));
         KEY_MAP.put('u', new UndoCommand(colRoot, window));
         KEY_MAP.put('r', new RedoCommand(colRoot, window));
+        KEY_MAP.put('w', new PrintWordsCommand(colRoot, window));
 
         window.setKeyMap(KEY_MAP);
         window.setContents(colRoot);
