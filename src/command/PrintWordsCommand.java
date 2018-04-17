@@ -18,10 +18,10 @@ public class PrintWordsCommand implements Command {
     @Override
     public void execute() {
         GlyphVisitor v = new WordsVisitor();
-        Iterator i = new PreorderIterator(_glyph);
+        Iterator i = new PreorderIterator<>(_glyph);
         i.first();
         while (!i.isDone()) {
-            i.currentItem().accept(v);
+            ((Glyph) i.currentItem()).accept(v);
             i.next();
         }
         System.out.println(v);

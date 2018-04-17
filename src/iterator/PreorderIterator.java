@@ -1,26 +1,25 @@
 package iterator;
 
-import glyph.Glyph;
 import java.util.Stack;
 
-public class PreorderIterator extends Iterator {
+public class PreorderIterator<T extends IsIterable> extends Iterator<T> {
 
-    Glyph _glyph;
+    T _t;
     Stack<Iterator> _stack;
 
-    public PreorderIterator(Glyph glyph) {
+    public PreorderIterator(T t) {
         this._stack = new Stack<>();
-        this._glyph = glyph;
+        this._t = t;
     }
 
     @Override
     public void first() {
-        _stack.add(_glyph.createIterator());
+        _stack.add(_t.createIterator());
     }
 
     @Override
     public void next() {
-        Iterator iter = _stack.peek().currentItem().createIterator();
+        Iterator iter = ((T) _stack.peek().currentItem()).createIterator();
         iter.first();
         _stack.push(iter);
 
@@ -28,8 +27,9 @@ public class PreorderIterator extends Iterator {
             _stack.pop();
             if (!_stack.isEmpty() && !_stack.peek().isDone()) {
                 _stack.peek().next();
-                if (!_stack.peek().isDone())
+                if (!_stack.peek().isDone()) {
                     break;
+                }
             }
         }
     }
@@ -40,8 +40,8 @@ public class PreorderIterator extends Iterator {
     }
 
     @Override
-    public Glyph currentItem() {
-        return _stack.peek().currentItem();
+    public T currentItem() {
+        return (T) _stack.peek().currentItem();
     }
 
 }

@@ -34,7 +34,7 @@ public class SimpleCompositor implements Compositor {
         Iterator iter = parent.createIterator();
 
         while (!iter.isDone()) {
-            Glyph child = iter.currentItem();
+            Glyph child = (Glyph) iter.currentItem();
             child.setSize(window);
             child.setPosition(cursor);
             child.compose();

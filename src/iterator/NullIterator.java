@@ -1,8 +1,6 @@
 package iterator;
 
-import glyph.Glyph;
-
-public class NullIterator extends Iterator {
+public class NullIterator<T extends IsIterable> extends Iterator<T> {
 
     @Override
     public void first() {
@@ -18,7 +16,7 @@ public class NullIterator extends Iterator {
     }
 
     @Override
-    public Glyph currentItem() {
+    public T currentItem() {
         return null;
     }
 

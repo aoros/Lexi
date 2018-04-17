@@ -1,8 +1,6 @@
 package iterator;
 
-import glyph.Glyph;
-
-public abstract class Iterator {
+public abstract class Iterator<T> {
 
     public abstract void first();
 
@@ -10,5 +8,5 @@ public abstract class Iterator {
 
     public abstract boolean isDone();
 
-    public abstract Glyph currentItem();
+    public abstract T currentItem();
 }

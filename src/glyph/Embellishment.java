@@ -1,6 +1,7 @@
 package glyph;
 
 import compositor.Compositor;
+import iterator.Iterator;
 import visitor.GlyphVisitor;
 import window.Window;
 
@@ -15,47 +16,56 @@ public abstract class Embellishment extends CompositeGlyph {
     @Override
     public void setCompositor(Compositor compositor) {
         super.setCompositor(compositor);
-        super.createIterator().currentItem().setCompositor(compositor);
+        Iterator<Glyph> iter = super.createIterator();
+        iter.currentItem().setCompositor(compositor);
     }
 
     @Override
     public void draw(Window window) {
-        super.createIterator().currentItem().draw(window);
+        Iterator<Glyph> iter = super.createIterator();
+        iter.currentItem().draw(window);
     }
 
     @Override
     public void insert(Glyph glyph, int position) throws GlyphException {
-        super.createIterator().currentItem().insert(glyph, position);
+        Iterator<Glyph> iter = super.createIterator();
+        iter.currentItem().insert(glyph, position);
     }
 
     @Override
     public void remove(Glyph glyph) {
-        super.createIterator().currentItem().remove(glyph);
+        Iterator<Glyph> iter = super.createIterator();
+        iter.currentItem().remove(glyph);
     }
 
     @Override
     public Bounds getBounds() {
-        return super.createIterator().currentItem().getBounds();
+        Iterator<Glyph> iter = super.createIterator();
+        return iter.currentItem().getBounds();
     }
 
     @Override
     public String getName() {
-        return super.createIterator().currentItem().getName();
+        Iterator<Glyph> iter = super.createIterator();
+        return iter.currentItem().getName();
     }
 
     @Override
     public void compose() {
-        super.createIterator().currentItem().compose();
+        Iterator<Glyph> iter = super.createIterator();
+        iter.currentItem().compose();
     }
 
     @Override
     public void setPosition(Bounds cursor) {
-        super.createIterator().currentItem().setPosition(cursor);
+        Iterator<Glyph> iter = super.createIterator();
+        iter.currentItem().setPosition(cursor);
     }
 
     @Override
     public void setSize(Window window) {
-        super.createIterator().currentItem().setSize(window);
+        Iterator<Glyph> iter = super.createIterator();
+        iter.currentItem().setSize(window);
     }
 
     @Override

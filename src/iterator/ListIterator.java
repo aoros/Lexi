@@ -1,17 +1,16 @@
 package iterator;
 
 import glyph.CompositeGlyph;
-import glyph.Glyph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListIterator extends Iterator {
+public class ListIterator<T extends IsIterable> extends Iterator<T> {
 
     private int index = 0;
-    List<Glyph> children = new ArrayList<>();
+    List<T> children = new ArrayList<>();
 
     public ListIterator(CompositeGlyph glyph) {
-        this.children = glyph.getChildren();
+        this.children = (List<T>) glyph.getChildren();
     }
 
     @Override
@@ -30,7 +29,7 @@ public class ListIterator extends Iterator {
     }
 
     @Override
-    public Glyph currentItem() {
+    public T currentItem() {
         return children.get(index);
     }
 }

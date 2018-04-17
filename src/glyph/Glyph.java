@@ -2,12 +2,12 @@ package glyph;
 
 import command.Command;
 import compositor.Compositor;
-import java.util.LinkedList;
-import java.util.Queue;
-import window.Window;
 import iterator.IsIterable;
 import iterator.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 import visitor.GlyphVisitor;
+import window.Window;
 
 // Composite(163).Component
 // Decorator(175).Component
@@ -85,7 +85,7 @@ public abstract class Glyph implements IsIterable {
             if (g.intersects(new Bounds(x, y, 0, 0)))
                 return g;
             else {
-                Iterator iter = g.createIterator();
+                Iterator<Glyph> iter = g.createIterator();
                 while (!iter.isDone()) {
                     queue.add(iter.currentItem());
                     iter.next();
