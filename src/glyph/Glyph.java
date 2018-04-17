@@ -7,6 +7,7 @@ import java.util.Queue;
 import window.Window;
 import iterator.IsIterable;
 import iterator.Iterator;
+import visitor.GlyphVisitor;
 
 // Composite(163).Component
 // Decorator(175).Component
@@ -92,5 +93,9 @@ public abstract class Glyph implements IsIterable {
             }
         }
         return null;
+    }
+
+    public void accept(GlyphVisitor visitor) {
+        visitor.visit(this);
     }
 }

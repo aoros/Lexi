@@ -1,5 +1,6 @@
 package glyph;
 
+import visitor.GlyphVisitor;
 import window.Window;
 
 // Decorator(175).ConcreteDecoratorA
@@ -31,5 +32,10 @@ public class Border extends Embellishment {
     @Override
     public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void accept(GlyphVisitor visitor) {
+        super.accept(visitor);
     }
 }

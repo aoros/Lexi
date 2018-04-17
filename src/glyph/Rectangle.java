@@ -2,6 +2,7 @@ package glyph;
 
 import iterator.Iterator;
 import iterator.NullIterator;
+import visitor.GlyphVisitor;
 import window.Window;
 
 // Composite(163).Leaf
@@ -21,7 +22,7 @@ public class Rectangle extends Glyph {
     public void insert(Glyph glyph, int position) {
         throw new UnsupportedOperationException("Rectangle glyph is a leaf node.");
     }
-    
+
     @Override
     public void remove(Glyph glyph) {
         throw new UnsupportedOperationException("Rectangle glyph is a leaf node.");
@@ -34,10 +35,15 @@ public class Rectangle extends Glyph {
     @Override
     public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
     }
-    
+
     @Override
     public Iterator createIterator() {
         return new NullIterator();
+    }
+
+    @Override
+    public void accept(GlyphVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override

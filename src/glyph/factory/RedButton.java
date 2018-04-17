@@ -4,6 +4,7 @@ import command.Command;
 import glyph.Bounds;
 import glyph.Button;
 import glyph.Composition;
+import visitor.GlyphVisitor;
 import window.Window;
 
 // Abstract Factory(87).ConcreteProduct
@@ -12,7 +13,7 @@ public class RedButton extends Button {
 
     protected RedButton(Composition composition, Command command) {
         super(composition, command);
-        
+
     }
 
     @Override
@@ -33,5 +34,10 @@ public class RedButton extends Button {
     @Override
     public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void accept(GlyphVisitor visitor) {
+        super.accept(visitor);
     }
 }

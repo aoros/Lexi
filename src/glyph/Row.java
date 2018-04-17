@@ -1,5 +1,6 @@
 package glyph;
 
+import visitor.GlyphVisitor;
 import window.Window;
 
 // Composite(163).Composite
@@ -44,6 +45,11 @@ public class Row extends CompositeGlyph {
 
         cursor.setX(_bounds.getX() + _bounds.getWidth());
         cursor.setY(_bounds.getY());
+    }
+
+    @Override
+    public void accept(GlyphVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override

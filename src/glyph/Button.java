@@ -1,6 +1,7 @@
 package glyph;
 
 import command.Command;
+import visitor.GlyphVisitor;
 import window.Window;
 
 // Abstract Factory(87).AbstractProduct
@@ -39,5 +40,10 @@ public abstract class Button extends Embellishment {
 
         return point.getX() >= thisX_low && point.getX() <= thisX_high
                 && point.getY() >= thisY_low && point.getY() <= thisY_high;
+    }
+
+    @Override
+    public void accept(GlyphVisitor visitor) {
+        super.accept(visitor);
     }
 }

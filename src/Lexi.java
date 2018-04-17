@@ -31,11 +31,42 @@ public class Lexi {
         Window window = new LexiWindow("Lexi");
 
         try {
-            build_hw5_configuration(window);
+            build_hw6_configuration(window);
         } catch (GlyphException ex) {
             System.err.println(ex);
             System.exit(1);
         }
+    }
+
+    private static void build_hw6_configuration(Window window) throws GlyphException {
+        GUIFactory.getInstance();
+        GUIFactory guiFactory = GUIFactory.getGUIFactory();
+
+        Composition colRoot = new Column(window);
+        Glyph a = new Row("Word Up Yo!", window);
+        Glyph b = new Row("Another Line 1", window);
+        Glyph c = new Row("Another Line 2", window);
+        Glyph d = new Row("Yet Another Line 3", window);
+        Label label = guiFactory.createLabel(new Row("pq", window));
+        Button pq_button = guiFactory.createButton(new Row("PQ", window));
+        Glyph rect = new Rectangle(10, 20);
+
+        colRoot.insert(a, 0);
+        colRoot.insert(label, 1);
+        colRoot.insert(b, 2);
+        colRoot.insert(pq_button, 3);
+        colRoot.insert(c, 4);
+        colRoot.insert(rect, 5);
+        colRoot.insert(d, 6);
+
+        KEY_MAP.put('i', new SetFontSizeCommand(colRoot, window, ActionType.INCR_FONT_SIZE_BY_1, 0));
+        KEY_MAP.put('d', new SetFontSizeCommand(colRoot, window, ActionType.DECR_FONT_SIZE_BY_1, 0));
+        KEY_MAP.put('u', new UndoCommand(colRoot, window));
+        KEY_MAP.put('r', new RedoCommand(colRoot, window));
+        KEY_MAP.put('w', new PrintWordsCommand(colRoot, window));
+
+        window.setKeyMap(KEY_MAP);
+        window.setContents(colRoot);
     }
 
     private static void build_hw5_configuration(Window window) throws GlyphException {

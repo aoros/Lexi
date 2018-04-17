@@ -1,5 +1,6 @@
 package glyph;
 
+import visitor.GlyphVisitor;
 import window.Window;
 
 // Abstract Factory(87).AbstractProduct
@@ -18,5 +19,10 @@ public abstract class Label extends Embellishment {
     @Override
     public Bounds getBounds() {
         return super.getBounds();
+    }
+
+    @Override
+    public void accept(GlyphVisitor visitor) {
+        super.accept(visitor);
     }
 }

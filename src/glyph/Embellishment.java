@@ -1,6 +1,7 @@
 package glyph;
 
 import compositor.Compositor;
+import visitor.GlyphVisitor;
 import window.Window;
 
 // Decorator(175).Decorator
@@ -55,5 +56,10 @@ public abstract class Embellishment extends CompositeGlyph {
     @Override
     public void setSize(Window window) {
         super.createIterator().currentItem().setSize(window);
+    }
+
+    @Override
+    public void accept(GlyphVisitor visitor) {
+        visitor.visit(this);
     }
 }

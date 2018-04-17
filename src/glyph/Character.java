@@ -2,6 +2,7 @@ package glyph;
 
 import iterator.Iterator;
 import iterator.NullIterator;
+import visitor.GlyphVisitor;
 import window.Window;
 
 // Composite(163).Leaf
@@ -12,6 +13,15 @@ public class Character extends Glyph {
     public Character(char c) {
         this.c = c;
         this.name = "char_" + c;
+    }
+
+    @Override
+    public void accept(GlyphVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    public char getChar() {
+        return c;
     }
 
     @Override

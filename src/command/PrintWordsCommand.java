@@ -1,18 +1,30 @@
 package command;
 
-import glyph.Composition;
 import glyph.Glyph;
+import iterator.Iterator;
+import iterator.PreorderIterator;
+import visitor.GlyphVisitor;
+import visitor.WordsVisitor;
 import window.Window;
 
 public class PrintWordsCommand implements Command {
 
-    public PrintWordsCommand(Composition colRoot, Window window) {
-        super();
+    Glyph _glyph;
+
+    public PrintWordsCommand(Glyph glyph, Window window) {
+        this._glyph = glyph;
     }
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        GlyphVisitor v = new WordsVisitor();
+        Iterator i = new PreorderIterator(_glyph);
+        i.first();
+        while (!i.isDone()) {
+            i.currentItem().accept(v);
+            i.next();
+        }
+        System.out.println(v);
     }
 
     @Override
@@ -32,6 +44,6 @@ public class PrintWordsCommand implements Command {
 
     @Override
     public Glyph getGlyph() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return _glyph;
     }
 }

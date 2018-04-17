@@ -3,6 +3,7 @@ package glyph.factory;
 import glyph.Bounds;
 import glyph.Composition;
 import glyph.Label;
+import visitor.GlyphVisitor;
 import window.Window;
 
 // Abstract Factory(87).ConcreteProduct
@@ -30,5 +31,10 @@ public class GreenLabel extends Label {
     @Override
     public void adjustCursorAfterComposingChild(Bounds cursor, Bounds bounds) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void accept(GlyphVisitor visitor) {
+        super.accept(visitor);
     }
 }
