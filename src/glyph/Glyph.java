@@ -13,6 +13,8 @@ import window.Window;
 // Decorator(175).Component
 // Command(233).Receiver
 // Chain of Responsibility(223).Handler
+// Iterator(257).ConcreteAggregate
+// Visitor(331).Element
 public abstract class Glyph implements IsIterable {
 
     Compositor compositor;

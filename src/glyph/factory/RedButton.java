@@ -9,6 +9,7 @@ import window.Window;
 
 // Abstract Factory(87).ConcreteProduct
 // Factory(107).ConcreteProduct
+// Visitor(331).ConcreteElement
 public class RedButton extends Button {
 
     protected RedButton(Composition composition, Command command) {

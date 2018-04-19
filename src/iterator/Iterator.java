@@ -1,5 +1,6 @@
 package iterator;
 
+// Iterator(257).Iterator
 public abstract class Iterator<T> {
 
     public abstract void first();

@@ -8,6 +8,7 @@ import window.Window;
 
 // Abstract Factory(87).ConcreteProduct
 // Factory(107).ConcreteProduct
+// Visitor(331).ConcreteElement
 public class RedLabel extends Label {
 
     protected RedLabel(Composition composition) {

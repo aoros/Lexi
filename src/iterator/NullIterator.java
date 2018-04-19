@@ -1,5 +1,6 @@
 package iterator;
 
+// Iterator(257).ConcreteIterator
 public class NullIterator<T extends IsIterable> extends Iterator<T> {
 
     @Override

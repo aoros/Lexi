@@ -6,6 +6,8 @@ import visitor.GlyphVisitor;
 import window.Window;
 
 // Composite(163).Leaf
+// Iterator(257).ConcreteAggregate
+// Visitor(331).ConcreteElement
 public class Rectangle extends Glyph {
 
     public Rectangle(int width, int height) {

@@ -4,6 +4,7 @@ import glyph.CompositeGlyph;
 import java.util.ArrayList;
 import java.util.List;
 
+// Iterator(257).ConcreteIterator
 public class ListIterator<T extends IsIterable> extends Iterator<T> {
 
     private int index = 0;

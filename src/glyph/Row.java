@@ -5,6 +5,7 @@ import window.Window;
 
 // Composite(163).Composite
 // Decorator(175).ConcreteComponent
+// Visitor(331).ConcreteElement
 public class Row extends CompositeGlyph {
 
     public Row(Window window) {

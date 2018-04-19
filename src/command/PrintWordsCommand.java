@@ -7,6 +7,8 @@ import visitor.GlyphVisitor;
 import visitor.WordsVisitor;
 import window.Window;
 
+// Visitor(331).ObjectStructure
+// Command(233).ConcreteCommand
 public class PrintWordsCommand implements Command {
 
     Glyph _glyph;

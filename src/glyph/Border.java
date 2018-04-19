@@ -4,6 +4,7 @@ import visitor.GlyphVisitor;
 import window.Window;
 
 // Decorator(175).ConcreteDecoratorA
+// Visitor(331).ConcreteElement
 public class Border extends Embellishment {
 
     private int padding = 2;

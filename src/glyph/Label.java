@@ -5,6 +5,7 @@ import window.Window;
 
 // Abstract Factory(87).AbstractProduct
 // Factory(107).Product
+// Visitor(331).ConcreteElement
 public abstract class Label extends Embellishment {
 
     public Label(Composition composition) {

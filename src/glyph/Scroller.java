@@ -4,6 +4,7 @@ import visitor.GlyphVisitor;
 import window.Window;
 
 // Decorator(175).ConcreteDecoratorB
+// Visitor(331).ConcreteElement
 public class Scroller extends Embellishment {
 
     private final int padding = 1;

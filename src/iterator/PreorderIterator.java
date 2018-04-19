@@ -2,6 +2,7 @@ package iterator;
 
 import java.util.Stack;
 
+// Iterator(257).ConcreteIterator
 public class PreorderIterator<T extends IsIterable> extends Iterator<T> {
 
     T _t;

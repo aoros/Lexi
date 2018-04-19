@@ -6,6 +6,7 @@ import visitor.GlyphVisitor;
 import window.Window;
 
 // Decorator(175).Decorator
+// Visitor(331).ConcreteElement
 public abstract class Embellishment extends CompositeGlyph {
 
     public Embellishment(Composition composition) {

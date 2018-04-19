@@ -8,6 +8,7 @@ import java.util.List;
 import window.Window;
 
 // Composite(163).Composite
+// Iterator(257).ConcreteAggregate
 public abstract class CompositeGlyph extends Composition {
 
     private final List<Glyph> children = new ArrayList<>();
